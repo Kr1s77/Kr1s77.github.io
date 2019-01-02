@@ -1,0 +1,1421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Crise-Genius</title>
+    <description>嗨，我是梁英健(@Crise-LYJ)，我会成为一名出色的开发者。</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 02 Jan 2019 23:34:26 +0800</pubDate>
+    <lastBuildDate>Wed, 02 Jan 2019 23:34:26 +0800</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>python代码这样写才优雅</title>
+        <description>&lt;h4 id=&quot;martinbob大叔曾在代码整洁之道一书打趣地说当你的代码在做-code-review-时审查者要是愤怒地吼道&quot;&gt;Martin(Bob大叔)曾在《代码整洁之道》一书打趣地说：当你的代码在做 Code Review 时，审查者要是愤怒地吼道：&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;“What the fuck is this shit?”
+“Dude, What the fuck！”
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;等言辞激烈的词语时那说明你写的代码是-bad-code如果审查者只是漫不经心的吐出几个&quot;&gt;等言辞激烈的词语时，那说明你写的代码是 Bad Code，如果审查者只是漫不经心的吐出几个&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;“What the fuck?”，
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;那说明你写的是-good-code衡量代码质量的唯一标准就是每分钟骂出wtf-的频率&quot;&gt;那说明你写的是 Good Code。衡量代码质量的唯一标准就是每分钟骂出“WTF” 的频率。&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/wtfm.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;一份优雅、干净、整洁的代码通常自带文档和注释属性，读代码即是读作者的思路。Python 开发中很少要像 Java 一样把遵循某种设计模式作为开发原则来应用到系统中，毕竟设计模式只是一种实现手段而已，代码清晰才是最终目的，而 Python 灵活而不失优雅，这也是为什么 Python 能够深受 geek 喜爱的原因之一。&lt;/p&gt;
+
+&lt;h3 id=&quot;链式比较操作&quot;&gt;链式比较操作&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;young man&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;pythonic&quot;&gt;pythonic&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;young man&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;理解了链式比较操作，那么你应该知道为什么下面这行代码输出的结果是 False。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;False == False == True 
+False&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;ifelse-三目运算&quot;&gt;if/else 三目运算&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gender&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'male'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'男'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'女'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;pythonic-1&quot;&gt;pythonic&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'男'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gender&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'male'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'女'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;在类c的语言中都支持三目运算-bxypython之禅有这样一句话&quot;&gt;在类C的语言中都支持三目运算 b?x:y，Python之禅有这样一句话：&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;“There should be one-- and preferably only one --obvious way to do it. ”。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;能够用 if/else 清晰表达逻辑时，就没必要再额外新增一种方式来实现。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;真值判断&quot;&gt;真值判断&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;检查某个对象是否为真值时，还显示地与 True 和 False 做比较就显得多此一举，不专业&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;do_something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 判断列表是否为空
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;do_something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pythonic&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;do_something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;do_something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;真假值对照表&quot;&gt;真假值对照表：&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;类型	False	True
+布尔	False （与0等价）	True （与1等价）
+字符串	&quot;&quot;（ 空字符串）	非空字符串，例如 &quot; &quot;, &quot;blog&quot;
+数值	0, 0.0	非0的数值，例如：1, 0.1, -1, 2
+容器	[], (),	至少有一个元素的容器对象，例如：[0], (None,), ['']
+None	None	非None对象
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;forelse语句&quot;&gt;for/else语句&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;for else 是 Python 中特有的语法格式，else 中的代码在 for 循环遍历完所有元素之后执行。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;flagfound&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mylist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theflag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;flagfound&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flagfound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ValueError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;List argument missing terminal flag.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;pythonic-2&quot;&gt;pythonic&lt;/h4&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mylist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theflag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ValueError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;List argument missing terminal flag.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;字符串格式化&quot;&gt;字符串格式化&lt;/h3&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;s1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;foofish.net&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;s2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;vttalk&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;s3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;welcome to &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s and following &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;pythonic-3&quot;&gt;pythonic&lt;/h4&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;s3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;welcome to {blog} and following {wechat}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;blog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;foofish.net&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wechat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;vttalk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;很难说用&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;比用&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;的代码量少，但是&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;更易于理解。&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;“Explicit is better than implicit --- Zen of Python”
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;列表切片&quot;&gt;列表切片&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;获取列表中的部分元素最先想到的就是用 for 循环根据条件提取元素，这也是其它语言中惯用的手段，而在 Python 中还有强大的切片功能。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;奇数&quot;&gt;奇数&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;odd_items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;odd_items&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;拷贝&quot;&gt;拷贝&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;copy_items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;copy_items&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;pythonic-4&quot;&gt;pythonic&lt;/h4&gt;
+
+&lt;h1 id=&quot;第1到第4个元素的范围区间&quot;&gt;第1到第4个元素的范围区间&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sub_items = items[1:4] # 奇数
+odd_items = items[1::2] #拷贝
+copy_items = items[::] 或者 items[:]
+列表元素的下标不仅可以用正数表示，还是用负数表示，最后一个元素的位置是 -1，从右往左，依次递减。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;| P | y | t | h | o | n |
+————————–
+   0   1   2   3   4   5 
+  -6  -5  -4  -3  -2  -1
+————————–&lt;/p&gt;
+&lt;h3 id=&quot;善用生成器&quot;&gt;善用生成器&lt;/h3&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;pythonic-5&quot;&gt;pythonic&lt;/h4&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;上面是用生成器生成费波那契数列。生成器的好处就是无需一次性把所有元素加载到内存，只有迭代获取元素时才返回该元素，而列表是预先一次性把全部元素加载到了内存。此外用 yield 代码看起来更清晰。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;获取字典元素&quot;&gt;获取字典元素&lt;/h3&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'foo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;has_key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'unkonw'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;pythonic-6&quot;&gt;pythonic&lt;/h4&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;unknow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;预设字典默认值&quot;&gt;预设字典默认值&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;通过 key 分组的时候，不得不每次检查 key 是否已经存在于字典中。
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'foo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'foo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;39&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pythonic-7&quot;&gt;pythonic&lt;/h3&gt;
+
+&lt;p&gt;#　第一种方式&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setdefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;第二种方式&quot;&gt;第二种方式&lt;/h1&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;字典推导式&quot;&gt;字典推导式&lt;/h3&gt;
+&lt;p&gt;在python2.7之前，构建字典对象一般使用下面这种方式，可读性非常差&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# {1: 2, 2: 4, 3: 6}
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;h4 id=&quot;pythonic-8&quot;&gt;pythonic&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# {1: 2, 2: 4, 3: 6}
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;还可以指定过滤条件&quot;&gt;还可以指定过滤条件&lt;/h1&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# {2: 4, 3: 6}
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;字典推导式是python2.7新增的特性，可读性增强了很多，类似的还是列表推导式和集合推导式。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 02 Jan 2019 21:15:11 +0800</pubDate>
+        <link>http://localhost:4000/2019/01/%E4%BC%98%E9%9B%85%E7%9A%84(python)%E4%BB%A3%E7%A0%81/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/01/%E4%BC%98%E9%9B%85%E7%9A%84(python)%E4%BB%A3%E7%A0%81/</guid>
+        
+        <category>python</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>PYTHON网络编程</title>
+        <description>&lt;h1 id=&quot;高级班课程&quot;&gt;高级班课程：&lt;/h1&gt;
+&lt;h3 id=&quot;导出为pdf可能每页内容可能有点乱&quot;&gt;导出为pdf可能每页内容可能有点乱&lt;/h3&gt;
+&lt;h3 id=&quot;重要为&quot;&gt;重要为🍅&lt;/h3&gt;
+&lt;h3 id=&quot;次重要为&quot;&gt;次重要为🍎&lt;/h3&gt;
+&lt;h3 id=&quot;思考为&quot;&gt;思考为🥔&lt;/h3&gt;
+&lt;h3 id=&quot;没有标示为普普通通&quot;&gt;没有标示为普普通通&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;linux&quot;&gt;linux&lt;/h1&gt;
+
+&lt;h2 id=&quot;liux操作系统&quot;&gt;liux操作系统&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;操作系统（Operation System，OS）是管理硬件和控制软件运行的计算机程序, 是直接运行在“裸机”上的系统软件, 任何其他软件都必须在操作系统的支持下才能运行.&lt;/li&gt;
+  &lt;li&gt;主要作用是向下控制硬件向上支持软件的运行，具有承上启下的作用.&lt;/li&gt;
+  &lt;li&gt;大量的软件都直接依赖于操作系统的支持.&lt;/li&gt;
+  &lt;li&gt;Linux 在服务器领域的应用是其重要分支.相比 Windows Server, Linux 具有免费、稳定、高效的特点. Linux 在服务器领域的占用率大大高于 Windows Server.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;linux诞生&quot;&gt;linux诞生&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;1973 年初, 美国的 Thompson 和 Ritchie 使用 C 语言开发了 Unix 操作系统&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/mdimg/unix之父.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;由于 Unix 版权问题, 大学不能再使用 Unix 源代码. 荷兰的 Andrew S. Tanenbaum (塔能鲍姆) 教授为了教学于 1987 年自行开发与 UNIX 兼容的 Minix 操作系统.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/mdimg/塔能鲍姆.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;1991 年, 林纳斯(Linus) 就读于赫尔辛基大学期间, 受到 Minix 的影响, 并在 Minix 操作平台建立了一个新的操作系统的内核, 他把它叫做 Linux.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/mdimg/Linus.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;内核&quot;&gt;内核&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;概念：
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;内核, 是一个操作系统的核心. 是基于硬件的第一层软件扩充, 提供操作系统的最基本的功能, 是操作系统工作的基础.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;它负责管理系统的进程、内存、设备驱动程序、文件和网络系统，决定着系统的性能和稳定性.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/mdimg/Linux内核.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;linux文件操作&quot;&gt;🍎linux文件操作&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;touch(文件名) :创建文件
+rm (文件名)：删除文件
+rm -r (文件夹名称) ：可以删除空的文件夹，也可以删除非空的文件夹
+mkdir （文件夹名称）:创建文件夹
+rmdir （文件夹名称）:删除文件夹 ：只能删除空的文件夹（不过用的较多的还是rm -r)
+cp (要复制的文件路径) (要复制到的位置) ：从一个目录复制一个文件到另外一个目录
+cp - i (要复制的文件路径) (要复制到的位置) ：复制的时候如果目录存在，会打印提示信息
+clear :清空终端内容
+tree :树状显示文件夹中的内容
+mv (文件夹路径)(要移动到的路径) ：将一个文件夹移动到另外一个文件夹
+mv (原文件件名)(要改为的文件名) ：重命名 ：如果本地有同名文件，将会直接替换
+cd ~ : 回到家目录
+cd - : 切换到上一次所在的目录
+命令 --help : 查看帮助文件
+man 命令 ： 帮助文档
+	
+$ tree -a          //显示所有文件和目录。
+$ tree -d         //显示目录名称而非内容
+$ tree -L 2      //这个命令是比较实用的，后面的数字2代表几层
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在当前目录的文件夹中创建一个文本文档
+    &lt;ul&gt;
+      &lt;li&gt;touch ./A/a.txt&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;将一个文件夹复制到另外一个文件夹
+    &lt;ul&gt;
+      &lt;li&gt;cp -r A B&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;扩展的命令&quot;&gt;扩展的命令😢&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir .（文件夹名称） :将会创建一个隐藏的文件夹
+cd .(文件夹名称) ： 将会进入隐藏文件夹 
+ls -a ：可以显示所有文件，包括隐藏的文件
+ls -l ：可以查看文件的信息 前缀为d是文件夹 前缀为-是文件 前缀后面三个为用户权限，后面三个为不再这个组的权限
+ll ：同上，还可以显示隐藏信息（mac不可用）
+l -al or l -la : 同上（mac使用）
+mkdir -p (多级文件夹) ：创建多级文件夹
+rm -f (文件名称) : 删除文件的时候如果文件不存在不提示
+cp -v :显示复制信息
+mv -i ：显示提示信息
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;重定向&quot;&gt;重定向：&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    ls &amp;gt; a.txt : 把当前目录下的信息输出到一个文件中（原先输输出到屏幕）
+    cat a.txt : 查看这个文件中的内容
+    ls &amp;gt;&amp;gt; a.txt : 把内容追加到一个文件中
+    more a.txt : 同上
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;链接&quot;&gt;链接：&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;linux可以创建快捷方式
+    &lt;ul&gt;
+      &lt;li&gt;软链接文件
+        &lt;ul&gt;
+          &lt;li&gt;ln -s 文件名 快捷方式名&lt;/li&gt;
+          &lt;li&gt;两个指向同一个内存：在其中一个删除两个都会变&lt;/li&gt;
+          &lt;li&gt;删除其中一个，另外一个内容会被清空&lt;/li&gt;
+          &lt;li&gt;b 文件直接指向 a 文件&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;硬链接文件
+        &lt;ul&gt;
+          &lt;li&gt;ln 文件名 新文件名&lt;/li&gt;
+          &lt;li&gt;就是python中的引用&lt;/li&gt;
+          &lt;li&gt;只能链接文件，不能链接文件夹&lt;/li&gt;
+          &lt;li&gt;更改的时候两个都会变，删除的时候没被删除的不变&lt;/li&gt;
+          &lt;li&gt;b 指向的是 a 的引用&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;grep文件内容查询&quot;&gt;grep文件内容查询：&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;grep 'a' a.txt ：在a.txt中查找 a 
+	
+grep -n 'a' a.txt : 显示行号
+	
+grep -n '^a' a.txt : 查找以a开头的数据
+	
+grep -n 'a$' a.txt : 查找以a结尾的数据
+	
+grep -n '[abc]' a.txt : 查找包含中括号数据中的内容的数据=(a或者b或者c)
+[]中括号就是或者的意思
+	
+grep -n 't.t' a.txt : 匹配任意一个字符
+🥔. 点就代表拿个字符
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;管道&quot;&gt;管道&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls | grep 'a.txt' :将文件存到管道中，然后使用正则进行过滤
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;相对路径-光标所处的位置&quot;&gt;相对路径 ：光标所处的位置&lt;/h3&gt;
+
+&lt;h3 id=&quot;绝对路径根目录开始&quot;&gt;绝对路径：根目录开始&lt;/h3&gt;
+
+&lt;h2 id=&quot;linux文件操作2&quot;&gt;linux文件操作2&lt;/h2&gt;
+
+&lt;h3 id=&quot;find文件查询&quot;&gt;find文件查询&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;需求：grep只能查询当前目录第一级
+find是整个目录的遍历
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;find---name-atxt-find-查询的目录名-查询的方式-匹配的正则&quot;&gt;find ./ -name ‘a.txt’ (find 查询的目录名 查询的方式 匹配的正则)&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* 代表0个或者多个任意字符
+    find ./ -name '*.txt'
+? 代表任意一个字符(没有排序功能)
+    find ./ -name 'day0?'
+[] 或者
+    find ./ -name '[ab].txt'(a.txt或者b.txt)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;压缩-解压缩&quot;&gt;压缩 解压缩&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- c 生成档案文件
+- v 显示压缩过程
+- f 不可省略
+- x 解压缩
+- z 代表gz格式
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;gz格式&quot;&gt;gz格式&lt;/h3&gt;
+
+&lt;h3 id=&quot;打包tar--cvf-girltar-girl&quot;&gt;打包：tar -cvf girl.tar girl&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 压缩：gzip girl.tar
+ 一键压缩：tar -zcvf girl.tar.gz girl（压缩名字 文件夹名称）
+ 简洁版压缩：tar -zcvf girl.tar girl(同样可以解压，但是解压很费劲，不提倡)
+ 解压缩：tar -zxvf girl.tar.gz
+ 解压到特定的目录：tar -zxvf girl.tar.gz -C B
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;bz2格式&quot;&gt;bz2格式&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;压缩：tar -jcvf girl.tar.bz2 girl
+解压：tar -jxvf girl.tar.bz2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;zip格式压缩大小会低很多但是windows可以兼容&quot;&gt;zip格式(压缩大小会低很多，但是windows可以兼容)&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;压缩：zip -r girl.zip girl(压缩文件夹，如果不加-r压缩之后会是一个空包)
+解压：unzip girl.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;修改文件权限&quot;&gt;修改文件权限&lt;/h3&gt;
+
+&lt;h4 id=&quot;-ugoa-含义&quot;&gt;[ u/g/o/a ]含义&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;u user 表示该文件的所有者
+g grop 用户组
+o other 表示其他以外的人
+a all 所有人
+w write 写
+r read 读
+x excute 执行
++ 增加权限
+- 撤销权限
+= 设定权限 (相当于变量的赋值)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;chmod-修改权限字母法&quot;&gt;chmod 修改权限（字母法）&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chmod u+x (文件名)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;chmod-修改权限-数字法&quot;&gt;chmod 修改权限 （数字法）&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;r = 4
+w = 2
+x = 1
+没权限=0
+所有权限 = 7
+chmod 777 （文件名）所有组，所有权限
+chmod 700  (文件名) 用户组，所有权限
+---------------------------------
+🍅推荐字母法
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;其他&quot;&gt;其他&lt;/h3&gt;
+
+&lt;h4 id=&quot;查看命令的位置&quot;&gt;查看命令的位置&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;which 命令 ：查看命令所在位置
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;最高权限&quot;&gt;最高权限&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo -s
+exit 退出权限
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;当前用户&quot;&gt;当前用户&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;whoami
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;更改密码&quot;&gt;更改密码&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo passwd 用户名
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;查看所有用户&quot;&gt;查看所有用户&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;who
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;format-恢复&quot;&gt;format 恢复&lt;/h4&gt;
+
+&lt;h4 id=&quot;远程&quot;&gt;远程&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scp 从哪里复制 复制到哪里
+文件夹加上-r
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;网络编程&quot;&gt;网络编程&lt;/h1&gt;
+
+&lt;h3 id=&quot;vim扩展&quot;&gt;🥔vim扩展：&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim -On能同时打开多个文件
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;理论
+    &lt;ul&gt;
+      &lt;li&gt;一些相互连接的、以共享资源为目的、自治的计算机的集合.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ip地址&quot;&gt;IP地址&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;IP 地址是指互联网协议地址（英语：Internet Protocol Address，又译为网际协议地址）, 是 IP Address 的缩写. IP 地址是 IP 协议提供的一种统一的地址格式.&lt;/li&gt;
+  &lt;li&gt;🥔🥔理解
+    &lt;ul&gt;
+      &lt;li&gt;IP 地址被用来给 Internet 上的电脑一个编号。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;查看和设置IP地址：
+    &lt;ul&gt;
+      &lt;li&gt;linux下使用ifconfig命令来查看和配置网卡的IP地址&lt;/li&gt;
+      &lt;li&gt;windows下使用ipconfig&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;检查网络的连通性
+    &lt;ul&gt;
+      &lt;li&gt;通过ping命令查看网络的连通性&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;端口&quot;&gt;端口&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;端口的作用
+    &lt;ul&gt;
+      &lt;li&gt;端口是操作系统分配给网络应用程序的编号, 当接收到数据之后, 操作系统会根据编号来将数据转发到对应编号的应用程序.&lt;/li&gt;
+      &lt;li&gt;网络程序必须要有端口号.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;端口号
+    &lt;ul&gt;
+      &lt;li&gt;端口号就是标识端口的一个编号. 在 Linux 系统中, 端口号在 0-65535 之间. 端口号不是随意使用的, 而是按照一定的规定(操作系统规定)进行分配. 端口号分:
+        &lt;ol&gt;
+          &lt;li&gt;知名端口号。&lt;/li&gt;
+          &lt;li&gt;动态端口号.&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;查看端口号
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;table&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td&gt;用 netstat -an&lt;/td&gt;
+              &lt;td&gt;grep “:8080” 检验本机各端口的网络连接情况.&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/li&gt;
+      &lt;li&gt;用 lsof -i [tcp/udp]:8080 列出当前系统端口所对应的程序.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ip端口总结&quot;&gt;IP，端口总结：&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;IP 用于标示网络设备的唯一标识
+Port 网络应用的唯一标识
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;udp&quot;&gt;UDP&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;概念
+    &lt;ul&gt;
+      &lt;li&gt;UDP 英文全拼 (User Datagram Protocol) 简称用户数据报协议， 它是无连接的、不可靠的网络传输协议.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;udp-特点&quot;&gt;UDP 特点&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;查看哪些端口被占用： netstat -n&lt;/li&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;无连接&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;资源开销小&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;传输速度快&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;udp每个数据包最大是64K&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;udp优缺点&quot;&gt;UDP优缺点&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;优点:
+    &lt;ul&gt;
+      &lt;li&gt;传输速度快&lt;/li&gt;
+      &lt;li&gt;不需要连接，资源开销小&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;缺点:
+    &lt;ul&gt;
+      &lt;li&gt;传输数据不可靠，容易丢数据包&lt;/li&gt;
+      &lt;li&gt;没有流量控制，当对方没有及时接收数据，发送方一直发送数据会导致缓冲区数据满了，电脑出现卡死情况，所有接收方需要及时接收数据。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;socket&quot;&gt;socket&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;理论：
+    &lt;ul&gt;
+      &lt;li&gt;socket(简称 套接字) 是进程间通信一个工具，它能实现把数据从一方传输到另外一方，完成不同电脑上进程之间的通信， 它好比数据的搬运工。&lt;/li&gt;
+      &lt;li&gt;🥔🥔就是实现不同进程之间的通信&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;udp网络程序流程&quot;&gt;UDP网络程序流程&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;创建udp套接字(socket.socket(socket.AF_INET, socket.SOCK_DGRAM))&lt;/li&gt;
+  &lt;li&gt;绑定端口：bind()&lt;/li&gt;
+  &lt;li&gt;发送/接收数据（发送：sendto().  接收:recvfrom(一次接收多少字节).）&lt;/li&gt;
+  &lt;li&gt;关闭套接字	:close()&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;初始化&quot;&gt;初始化&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;（代表&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AF_INET&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;代表&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;udp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOCKET_DGRAM&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;）&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;udp网络程序流程-1&quot;&gt;UDP网络程序流程&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;UDP网络程序发送数据不需要建立数据&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;打包：encode
+拆包：decode
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;udp广播&quot;&gt;UDP广播&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;设置允许广播&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;udp_sock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setsockopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOL_SOCKET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SO_BROADCAST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;tcp&quot;&gt;TCP&lt;/h2&gt;
+
+&lt;h4 id=&quot;特点&quot;&gt;特点&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;有连接
+可靠传输：采用应答机制，必须对象给响应才能正常通信
+连接一对一，不适用广播的应用程序
+超时重新传
+错误校验：验证数据包
+流量控制和阻塞管理：避免主机发送的过快，客户机收不过来
+首先需要校验
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;优点&quot;&gt;优点&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;可靠：可以得出其他特点&lt;/li&gt;
+  &lt;li&gt;稳定&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;缺点&quot;&gt;缺点&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;传输速度慢&lt;/li&gt;
+  &lt;li&gt;占用系统资源高&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;应用场景&quot;&gt;应用场景&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;网站开发，保证数据可靠&lt;/li&gt;
+  &lt;li&gt;文件传输&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;tcp-以数据流形式发送代码&quot;&gt;TCP 以数据流形式发送代码&lt;/h3&gt;
+
+&lt;h3 id=&quot;tcp流程客户端&quot;&gt;TCP流程：客户端&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;初始化：socket () ：&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;（代表&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AF_INET&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;代表&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOCKET_STREAM&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;）&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;连接: connect()&lt;/li&gt;
+  &lt;li&gt;发送：send（）&lt;/li&gt;
+  &lt;li&gt;接收：recv（）&lt;/li&gt;
+  &lt;li&gt;关闭：close（）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 上午10.49.04.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 上午9.21.27.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;tcp流程服务器端&quot;&gt;TCP流程：服务器端&lt;/h3&gt;
+
+&lt;h4 id=&quot;初始化-1&quot;&gt;初始化：&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;初始化：socket () ：两个参数&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AF_INET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;代表&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOCKET_STREAM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;绑定端口：bind ()&lt;/li&gt;
+  &lt;li&gt;监听：等待:listen（）：128代表系象征意义，现在按内存数来算&lt;/li&gt;
+  &lt;li&gt;接听：同意接收：accept（）返回一个元组：cilent:给客户端服务的对象  address：客户端地址&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;传输&quot;&gt;传输：&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;接收：recv（）&lt;/li&gt;
+  &lt;li&gt;发送：send（）&lt;/li&gt;
+  &lt;li&gt;关闭：close（）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;重新使用端口循环发送与接收&quot;&gt;重新使用端口：循环发送与接收&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 下午2.37.25.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 重新使用端口，这个一定要在绑定之前写
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOL_SOCKET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SO_REUSEADDR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;服务器端与客户端总结&quot;&gt;🍅服务器端与客户端：总结&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;服务器端需要绑定端口&lt;/li&gt;
+  &lt;li&gt;客户端不需要进行端口绑定&lt;/li&gt;
+  &lt;li&gt;如果客户端关闭了，那么我们服务器会接收空的信息NONE&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;三次握手&quot;&gt;🍎🍎三次握手：&lt;/h3&gt;
+&lt;h4 id=&quot;标志位&quot;&gt;标志位&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;SYN：表示连接请求&lt;/li&gt;
+  &lt;li&gt;ACK：标示确认&lt;/li&gt;
+  &lt;li&gt;FIN：标示关闭连接&lt;/li&gt;
+  &lt;li&gt;Seq：表示报文序号&lt;/li&gt;
+  &lt;li&gt;ack：表示序号&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 下午3.20.08.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tcp是可靠的传输，因为客户端在连接服务器端时使用三次握手，三次握手分别客户端与服务器端都做了一次数据的确定，保证客户端跟服务器端是通的
+作用：
+	分别三次确认！！！
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;四次挥手&quot;&gt;四次挥手：&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;客户端关闭的时候做了四次挥手，
+保证关闭的可靠性
+客户端做了一次关闭的请求
+服务器资源处理完以后也做了一个关闭的请求
+也进行一次确认
+双方都确认以后才会关闭
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 下午3.50.52.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;作业&quot;&gt;作业：&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 下午3.06.30.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;聊天器多任务版&quot;&gt;聊天器多任务版&lt;/h4&gt;
+
+&lt;h1 id=&quot;多线程进程协程&quot;&gt;🍅多线程/进程/协程&lt;/h1&gt;
+&lt;h2 id=&quot;多线程&quot;&gt;多线程&lt;/h2&gt;
+&lt;h3 id=&quot;概念&quot;&gt;概念：&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;同一时间执行多个任务，每个人物可以理解成层现实生活中干的每个活&lt;/li&gt;
+  &lt;li&gt;函数后加括号是引用函数的值&lt;/li&gt;
+  &lt;li&gt;不加括号是引用函数&lt;/li&gt;
+  &lt;li&gt;target:对象&lt;/li&gt;
+  &lt;li&gt;代码：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 下午4.20.40.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;线程的步骤&quot;&gt;线程的步骤：&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;导入模块&lt;/li&gt;
+  &lt;li&gt;加入任务&lt;/li&gt;
+  &lt;li&gt;开启任务&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;理解&quot;&gt;🥔🥔理解：&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 下午4.48.01.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;如果主线程堵塞，所有线程都会堵住，如果副线程堵塞，对其他线程不影响
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;代码理解：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 下午4.50.50.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;传参&quot;&gt;传参&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;args:元组&lt;/li&gt;
+  &lt;li&gt;kwargs：字典&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 下午5.09.51.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 传元组参数顺序必须一样
+- 传字典时参数名必须一致
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;拓展函数专题&quot;&gt;拓展：函数专题&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 下午5.15.47.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;打印出来的是引用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 下午5.16.30.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-18 下午5.17.14.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;调用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;线程注意点&quot;&gt;线程注意点&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;线程是无序的&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;主线程要等所有的子线程结束才结束&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;主线程死了，所有的子线程也会结束&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;线程之间共享全局变量&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;多线程中，如果其中哪一个线程出错，其他线程不会停止&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-20 上午10.55.17.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-20 上午11.03.15.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;守护线程理解&quot;&gt;🥔🥔守护线程理解：&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;主线结束即所有线程结束&lt;/li&gt;
+  &lt;li&gt;当有多个子线程，但不是所有的字线程都是守护的，所有线程要等没有守护的线程结束才会结束&lt;/li&gt;
+  &lt;li&gt;当有多个子线程的时候，没有守护的线程结束（程序结束），守护的线程也会结束&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;共享全局变量问题分析&quot;&gt;共享全局变量问题分析&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;线程共享全局变量会出错&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;原理：&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;计算num += 1：&lt;/li&gt;
+  &lt;li&gt;总共三步：&lt;/li&gt;
+  &lt;li&gt;cpu去内存中获取num的值&lt;/li&gt;
+  &lt;li&gt;cpu对num值计算加1： 🍅此时内存中的值还没有变化&lt;/li&gt;
+  &lt;li&gt;cpu把计算完的值重新赋值给内存
+    &lt;h3 id=&quot;拓展&quot;&gt;拓展：&lt;/h3&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  * cpu执行没有顺序
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;答案&quot;&gt;🍅答案：&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-20 下午3.05.23.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;共享全局变量问题解决&quot;&gt;🍅共享全局变量问题解决&lt;/h3&gt;
+
+&lt;h3 id=&quot;互斥锁同性相斥&quot;&gt;互斥锁：同性相斥&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-20 下午3.11.38.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;将这三步锁上，形成一个对象&lt;/li&gt;
+  &lt;li&gt;判断多个线程之间对象是否相同&lt;/li&gt;
+  &lt;li&gt;如果相同，就把其他的都阻塞住&lt;/li&gt;
+  &lt;li&gt;当运行完之后，就会解锁，执行其他线程&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;总结就是产生多个相同的对象在当前线程没结束之前所有相同对象的进程都会被锁住&quot;&gt;🥔🥔总结：就是产生多个相同的对象，在当前线程没结束之前，所有相同对象的进程都会被锁住！&lt;/h3&gt;
+
+&lt;h3 id=&quot;添加互斥锁过程&quot;&gt;添加互斥锁过程：&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;创建互斥锁&lt;/li&gt;
+  &lt;li&gt;lock = threading.Lock()&lt;/li&gt;
+  &lt;li&gt;加锁:加在需要加锁的代码上面和后面&lt;/li&gt;
+  &lt;li&gt;加锁：Lock.acquire()&amp;lt;——代码段——&amp;gt;lock.release()：解锁&lt;/li&gt;
+  &lt;li&gt;解锁&lt;/li&gt;
+  &lt;li&gt;lock.release()&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;需要互斥的代码都必须加锁而且必须是同一把锁&quot;&gt;需要互斥的代码都必须加锁：而且必须是同一把锁&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;如果不是同一把锁，同样会出错
+&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-20 下午3.47.05.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;死锁是一个bug&quot;&gt;死锁：是一个BUG&lt;/h3&gt;
+
+&lt;h4 id=&quot;概念-1&quot;&gt;概念：&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;其中一个线程挂了：cpu无法结束判断当前进程已经结束，被锁住出不来了&lt;/li&gt;
+  &lt;li&gt;实例代码：
+&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-20 下午3.50.44.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;解决方法&quot;&gt;解决方法&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;🍅🍅在退出之前解锁&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;自定义线程&quot;&gt;自定义线程&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;创建一个类&lt;/li&gt;
+  &lt;li&gt;继承多线程类&lt;/li&gt;
+  &lt;li&gt;🍅🍅 重写run方法：方法名必须是run
+&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-20 下午4.15.10.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;自定义线程传参&quot;&gt;自定义线程传参：&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-20 下午4.37.08.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;并行与并发&quot;&gt;并行与并发&lt;/h3&gt;
+&lt;h4 id=&quot;线程是cpu执行调度的单位&quot;&gt;线程是cpu执行（调度）的单位&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;并发
+    &lt;ul&gt;
+      &lt;li&gt;看上去像同时发生的（但是并不是同时运行的）&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;并行
+    &lt;ul&gt;
+      &lt;li&gt;🍎要有硬件支持：多核&lt;/li&gt;
+      &lt;li&gt;就是真的同时发生的&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;任务数大于核数也是并发
+    &lt;ul&gt;
+      &lt;li&gt;🥔🥔比如双核，执行三个线程，也是并发&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;线程有bug&quot;&gt;线程有BUG：&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;如果只用线程做不到并行：不能充分的利用cpu&lt;/li&gt;
+  &lt;li&gt;gil问题 全局 解释器锁&lt;/li&gt;
+  &lt;li&gt;🥔🥔所以要去学习进程：进程可以充分利用cpu&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;多线程最根本的问题&quot;&gt;多线程最根本的问题&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;🍅就是解决了主线程被阻塞的问题&lt;/li&gt;
+  &lt;li&gt;🥔当主线程在被阻塞时，而又需要继续跑多线程，那么就需要多线程来解决问题&lt;/li&gt;
+  &lt;li&gt;🥔哪个方法堵住了，就在哪加线程&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;进程&quot;&gt;进程&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;单词收集：
+	current：当前的
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;可以充分利用cpu&quot;&gt;可以充分利用cpu&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;🍅gil:全局解释器锁&lt;/li&gt;
+  &lt;li&gt;进程：通俗理解一个运行的程序或者软件，进程时操作系统的资源分配的基本单位&lt;/li&gt;
+  &lt;li&gt;线程是cpu进行调度的单位&lt;/li&gt;
+  &lt;li&gt;🍅：线程做任务，进程用来申请资源（内存）&lt;/li&gt;
+  &lt;li&gt;🥔干活的是线程，申请资源的是进程&lt;/li&gt;
+  &lt;li&gt;线程是cpu进行调度的单位&lt;/li&gt;
+  &lt;li&gt;程序只要开启就有一个进程，进程内包含一个线程&lt;/li&gt;
+  &lt;li&gt;程序验证：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-21 上午10.06.28.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-21 上午10.07.00.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;怎么写&quot;&gt;怎么写：&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 导入
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;multiprocessing&lt;/span&gt; 
+
+&lt;span class=&quot;c1&quot;&gt;#加入任务
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;函数名&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;）&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;函数名&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;）&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 开启
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;传参与多线程一样&quot;&gt;传参：与多线程一样&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;args：传元组&lt;/li&gt;
+  &lt;li&gt;kwargs：传字典&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;进程的状态&quot;&gt;进程的状态&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-21 上午10.10.30.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;调度
+    &lt;ul&gt;
+      &lt;li&gt;调用进程里面的线程&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;进程缺陷
+    &lt;ul&gt;
+      &lt;li&gt;开了多个进程后可能会造成资源浪费&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;每一个进程中第一个线程都是主线程&quot;&gt;每一个进程中，第一个线程都是主线程&lt;/h3&gt;
+
+&lt;h3 id=&quot;进程全局变量问题&quot;&gt;🍎进程全局变量问题&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 进程之间不共享全局变量  - 🍅🍅进程如果想要共享全局变量
+* 队列：操作系统提供的一块公共的区域，使进程可以在队列中进行通讯
+* 进程一将数据存入队列中，进程二可以直接从队列中取出来
+
+![](/assets/mdimg/屏幕快照 2018-12-21 上午10.50.15.png)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;队列&quot;&gt;🍎队列&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. 队列是先进先出
+2. 取完数据，队列中的数据就没了
+3. 如果添加超过了定义的最大的数据量，会进行阻塞，不会报错
+4. 如果队列中的数据为空，那么再取会进行阻塞，不会报错
+5. queue.qsize():判断队列中还有多少数据
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;代码实现&lt;/p&gt;
+
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c1&quot;&gt;#导入
+&lt;/span&gt;  &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;multiprocessing&lt;/span&gt;
+	
+  &lt;span class=&quot;c1&quot;&gt;# 定义一个队列
+&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 最大放三个数据
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;multiprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 如果括号内不写数据，默认为最大值
+&lt;/span&gt;	
+  &lt;span class=&quot;c1&quot;&gt;# 放数据
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	
+  &lt;span class=&quot;c1&quot;&gt;# 判断队列中还有多少数据
+&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;个数&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qsize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+	
+  &lt;span class=&quot;c1&quot;&gt;# 取数据
+&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+	
+  &lt;span class=&quot;c1&quot;&gt;# 打印出的数据
+&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;个数&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;队列有bug&quot;&gt;队列有BUG&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; get_nowait/put_nowait：不等待直接放进去/不等待直接放进去
+ 如果不能放数据了直接报错
+ 如果没有数据了再取直接报错
+ 🍅这些方法有bug，尽量不要去用
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;进程池pool&quot;&gt;进程池pool&lt;/h3&gt;
+&lt;h4 id=&quot;概念-2&quot;&gt;概念：&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;池子里面放的是进程，进程池会根据任务执行情况自动创建进程，而且尽量少创建进程，合理利用进程池中的进程完成多任务&lt;/li&gt;
+  &lt;li&gt;🥔通俗的讲就是重复的利用进程&lt;/li&gt;
+  &lt;li&gt;减少我们的资源&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;代码&quot;&gt;代码：&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 进程池的作用就是重复使用进程
+# 循环创建是个进程做事情
+# 复制
+# 如果不是用进程池，每个进程都不重复
+&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;multiprocessing&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;gevent&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;copy-----&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getpid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 查看当前进程pid
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# 创建10个进程做事情
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# 最大三个线程同时运行
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;pool&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# multiprocessing.Process(target=copy).start()
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# 加入任务
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# 同步进程池
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;pool&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;步骤&quot;&gt;步骤：&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;创建进程池&lt;/li&gt;
+  &lt;li&gt;加入任务&lt;/li&gt;
+  &lt;li&gt;告诉主线程等待子线程&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;同步异步&quot;&gt;同步/异步&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;第一种方案：apply()：同步进程池
+     - 问题：就是变成了单线程：🍎平时工作不用&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/mdimg/屏幕快照 2018-12-21 下午2.50.02.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;第二种方案：apply_async()：异步需要进行等待
+    &lt;ul&gt;
+      &lt;li&gt;问题：主进程会直接结束&lt;/li&gt;
+      &lt;li&gt;解决：下面两个必须写
+        &lt;ul&gt;
+          &lt;li&gt;pool.close():告诉主进程我不在添加其他任务了&lt;/li&gt;
+          &lt;li&gt;pool.join() :让我们的主进程等等（等待）&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;解决之后会多个进程一起跑&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;进程的注意点&quot;&gt;进程的注意点&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;主进程会等待子进程结束而结束
+ 🥔主线程代码执行结束，会等待子进程结束，才会结束子进程&lt;/li&gt;
+  &lt;li&gt;销毁子进程&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 关闭进程
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 关闭进程
+&lt;/span&gt;	
+&lt;span class=&quot;c1&quot;&gt;# 打印PID
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getpid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 打印pid
+&lt;/span&gt;	
+&lt;span class=&quot;c1&quot;&gt;# 进程是由哪个进程创建的
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ppid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;命令行杀死进程&quot;&gt;🍎命令行杀死进程&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ps -aux 查看进程
+$ ps -aus | grep &quot;python&quot; ：查看python名称的程序
+$ kill -9 PID ：杀死进程
+- 如果直接杀死主进程，所有子进程也会停止
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;拓展-1&quot;&gt;拓展：&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ os.system(&quot;ls&quot;) # 查看所在目录所有文件
+$ os.system(&quot;mkdir AAA&quot;)  # 创建一个文件夹
+$ os.system(&quot;kill -9 PID&quot;)  # 杀死一个进程
+思考；能不能查看本地正在播放的音乐的音乐名称和歌手
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;进程与线程的区别&quot;&gt;进程与线程的区别&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. 两者都能完成多任务
+2. 进程是操作系统分配资源的单位
+3. 线程是cpu调度的单位
+4. 进程不共享全局变量
+5. 线程共享全局变量
+6. 进程使用内存比线程大
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;作业-1&quot;&gt;作业：&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;文件夹的复制copy&amp;gt;
+1. 新建文件夹
+2. 得到目录
+3. 打开目录
+4. 打开文件
+5. 读取文件
+6. 写到另外一个位置
+7. 使用循环
+8. 如何让性能提高，使用多任务
+9. 写多任务之前先写单任务
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;协程&quot;&gt;协程&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;单词收集：
+1. spawn：大量产卵/孵化
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;协程代码实现&quot;&gt;协程代码实现&lt;/h3&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 跳舞
+# 1. 导入
+# 2. 加入任务
+# 3. 等待
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 1.导入
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;跳舞“）&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;		&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;def main():&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;	&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;协程&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;	
+	# 2. 加入任务
+	spawn_dance = gevent.spawn(dance)
+	
+	# 3. join()-------&amp;gt;等待
+	spawn_dance.join()
+
+-------------------------------------
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;协程靠解释器切换只要遇到耗时的就会自动切换如果代码不耗时就不会自动切换&quot;&gt;协程靠解释器切换:只要遇到耗时的就会自动切换，如果代码不耗时就不会自动切换&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;切换方法1：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  import gevent
+  -----------------
+  gevent.sleep(时间)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;切换方法2:&lt;/p&gt;
+
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c1&quot;&gt;# 导入
+&lt;/span&gt;  &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;gevent&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# 请猴子
+&lt;/span&gt;  &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;gevent&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;monkey&lt;/span&gt;
+	
+  &lt;span class=&quot;c1&quot;&gt;# 打补丁:打补丁以后就可以使用time.sleep()
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;monkey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;patch_all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	
+  &lt;span class=&quot;c1&quot;&gt;# 使用time.sleep()
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;🍅🍅注意不能直接使用time.sleep()&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;切换方法3:&lt;/p&gt;
+
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c1&quot;&gt;# 创建一个空列表
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;spawn_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.........................&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# 加入列表中
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;spawn_list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;函数名&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.........................&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# 等待列表
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;gevent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;joinall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spawn_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;协程使用的步骤&quot;&gt;协程使用的步骤&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;导入&lt;/li&gt;
+  &lt;li&gt;请猴子打补丁&lt;/li&gt;
+  &lt;li&gt;加入到任务列表中&lt;/li&gt;
+  &lt;li&gt;等待列表&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;协程传参&quot;&gt;协程传参&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 传参：第一个是任务，第二个及以后都是参数
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gevent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spawn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;函数名，&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;参数1“，”参数2“......&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;参数&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;协程是在线程里面的&quot;&gt;🍅🍅协程是在线程里面的&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;关系
+    &lt;ul&gt;
+      &lt;li&gt;一个程序开启就有一个进程，一个进程自带一个线程，线程中包含协程&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;section class=&quot;post-comments&quot;&gt;
+  
+    &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+    &lt;script&gt;
+    
+    var disqus_config = function () {
+        this.page.url = &quot;http://localhost:4000/2018/12/Pyhton-%E9%AB%98%E7%BA%A7/&quot;;
+        this.page.identifier = &quot;/2018/12/Pyhton-%E9%AB%98%E7%BA%A7/&quot;;
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    &lt;/script&gt;
+    &lt;noscript&gt;要查看&lt;a href=&quot;http://disqus.com/?ref_noscript&quot;&gt; Disqus &lt;/a&gt;评论，请启用 JavaScript&lt;/noscript&gt;
+    
+  
+  
+  
+  
+&lt;/section&gt;
+
+</description>
+        <pubDate>Sat, 22 Dec 2018 17:11:11 +0800</pubDate>
+        <link>http://localhost:4000/2018/12/Pyhton-%E9%AB%98%E7%BA%A7/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/Pyhton-%E9%AB%98%E7%BA%A7/</guid>
+        
+        <category>python</category>
+        
+        <category>网络编程</category>
+        
+        <category>多线程/进程/协程</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

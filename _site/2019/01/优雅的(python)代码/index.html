@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>python代码这样写才优雅</title>
+  <meta name="description" content="Martin(Bob大叔)曾在《代码整洁之道》一书打趣地说：当你的代码在做 Code Review 时，审查者要是愤怒地吼道：">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="python代码这样写才优雅">
+  <meta name="twitter:description" content="Martin(Bob大叔)曾在《代码整洁之道》一书打趣地说：当你的代码在做 Code Review 时，审查者要是愤怒地吼道：">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="python代码这样写才优雅">
+  <meta property="og:description" content="Martin(Bob大叔)曾在《代码整洁之道》一书打趣地说：当你的代码在做 Code Review 时，审查者要是愤怒地吼道：">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/01/%E4%BC%98%E9%9B%85%E7%9A%84(python)%E4%BB%A3%E7%A0%81/">
+  <link rel="alternate" type="application/rss+xml" title="Crise-Genius" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Crise-Genius 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Crise-Genius logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Crise-Genius" class="blog-button">Crise-Genius</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">站在巨人的肩膀上 We Will Be Giants</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">嗨，我是梁英健(@Crise-LYJ)，我会成为一名出色的开发者。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="https://github.com/CriseLYJ" target="_blank">Here Is My Github</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://criselyj.github.io/" target="_blank" title="My Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/Github每日开源KYZG" title="@Github每日开源KYZG 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/CriseLYJ" title="@CriseLYJ 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/CriseLYJ" title="@CriseLYJ" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Google Plus -->
+  <li class="navigation__item">
+    <a href="https://plus.google.com/1998lyjvip@gmail.com" rel="author" title="Google+" target="_blank">
+      <i class='social fa fa-google-plus-square'></i>
+      <span class="label">Google Plus</span>
+    </a>
+  </li>
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:1148995537@qq.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-read"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-01-02 21:15:11 +0800" itemprop="datePublished" class="post-meta__date date">2019-01-02</time> &#8226; <span class="post-meta__tags tags">python</span>
+    </div>
+    <h1 class="post-title">python代码这样写才优雅</h1>
+  </header>
+
+  <section class="post">
+    <h4 id="martinbob大叔曾在代码整洁之道一书打趣地说当你的代码在做-code-review-时审查者要是愤怒地吼道">Martin(Bob大叔)曾在《代码整洁之道》一书打趣地说：当你的代码在做 Code Review 时，审查者要是愤怒地吼道：</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>“What the fuck is this shit?”
+“Dude, What the fuck！”
+</code></pre></div></div>
+
+<h4 id="等言辞激烈的词语时那说明你写的代码是-bad-code如果审查者只是漫不经心的吐出几个">等言辞激烈的词语时，那说明你写的代码是 Bad Code，如果审查者只是漫不经心的吐出几个</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>“What the fuck?”，
+</code></pre></div></div>
+
+<h4 id="那说明你写的是-good-code衡量代码质量的唯一标准就是每分钟骂出wtf-的频率">那说明你写的是 Good Code。衡量代码质量的唯一标准就是每分钟骂出“WTF” 的频率。</h4>
+
+<p><img src="/assets/mdimg/wtfm.jpg" alt="" /></p>
+
+<p>一份优雅、干净、整洁的代码通常自带文档和注释属性，读代码即是读作者的思路。Python 开发中很少要像 Java 一样把遵循某种设计模式作为开发原则来应用到系统中，毕竟设计模式只是一种实现手段而已，代码清晰才是最终目的，而 Python 灵活而不失优雅，这也是为什么 Python 能够深受 geek 喜爱的原因之一。</p>
+
+<h3 id="链式比较操作">链式比较操作</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">18</span> <span class="ow">and</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"young man"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="pythonic">pythonic</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="mi">18</span> <span class="o">&lt;</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"young man"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>理解了链式比较操作，那么你应该知道为什么下面这行代码输出的结果是 False。</li>
+</ul>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>False == False == True 
+False</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h3 id="ifelse-三目运算">if/else 三目运算</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">gender</span> <span class="o">==</span> <span class="s">'male'</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s">'男'</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s">'女'</span>
+</code></pre></div></div>
+
+<h4 id="pythonic-1">pythonic</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">text</span> <span class="o">=</span> <span class="s">'男'</span> <span class="k">if</span> <span class="n">gender</span> <span class="o">==</span> <span class="s">'male'</span> <span class="k">else</span> <span class="s">'女'</span>
+</code></pre></div></div>
+
+<h3 id="在类c的语言中都支持三目运算-bxypython之禅有这样一句话">在类C的语言中都支持三目运算 b?x:y，Python之禅有这样一句话：</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>“There should be one-- and preferably only one --obvious way to do it. ”。
+</code></pre></div></div>
+
+<ul>
+  <li>能够用 if/else 清晰表达逻辑时，就没必要再额外新增一种方式来实现。</li>
+</ul>
+
+<h3 id="真值判断">真值判断</h3>
+<ul>
+  <li>检查某个对象是否为真值时，还显示地与 True 和 False 做比较就显得多此一举，不专业</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">do_something</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># 判断列表是否为空
+</span>    <span class="n">do_something</span><span class="p">()</span>
+<span class="n">pythonic</span>
+
+<span class="k">if</span> <span class="n">attr</span><span class="p">:</span>
+    <span class="n">do_something</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">values</span><span class="p">:</span>
+    <span class="n">do_something</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="真假值对照表">真假值对照表：</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>类型	False	True
+布尔	False （与0等价）	True （与1等价）
+字符串	""（ 空字符串）	非空字符串，例如 " ", "blog"
+数值	0, 0.0	非0的数值，例如：1, 0.1, -1, 2
+容器	[], (),	至少有一个元素的容器对象，例如：[0], (None,), ['']
+None	None	非None对象
+</code></pre></div></div>
+
+<h3 id="forelse语句">for/else语句</h3>
+<ul>
+  <li>for else 是 Python 中特有的语法格式，else 中的代码在 for 循环遍历完所有元素之后执行。</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flagfound</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">theflag</span><span class="p">:</span>
+        <span class="n">flagfound</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">break</span>
+    <span class="n">process</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">flagfound</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"List argument missing terminal flag."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="pythonic-2">pythonic</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">theflag</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">process</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"List argument missing terminal flag."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="字符串格式化">字符串格式化</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="s">"foofish.net"</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s">"vttalk"</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="s">"welcome to </span><span class="si">%</span><span class="s">s and following </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="pythonic-3">pythonic</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s3</span> <span class="o">=</span> <span class="s">"welcome to {blog} and following {wechat}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">blog</span><span class="o">=</span><span class="s">"foofish.net"</span><span class="p">,</span> <span class="n">wechat</span><span class="o">=</span><span class="s">"vttalk"</span><span class="p">)</span>
+<span class="err">很难说用</span> <span class="nb">format</span> <span class="err">比用</span> <span class="o">%</span><span class="n">s</span> <span class="err">的代码量少，但是</span> <span class="nb">format</span> <span class="err">更易于理解。</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>“Explicit is better than implicit --- Zen of Python”
+</code></pre></div></div>
+
+<h3 id="列表切片">列表切片</h3>
+<ul>
+  <li>获取列表中的部分元素最先想到的就是用 for 循环根据条件提取元素，这也是其它语言中惯用的手段，而在 Python 中还有强大的切片功能。</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">items</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="奇数">奇数</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">odd_items</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">odd_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="拷贝">拷贝</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">copy_items</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="n">copy_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="pythonic-4">pythonic</h4>
+
+<h1 id="第1到第4个元素的范围区间">第1到第4个元素的范围区间</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sub_items = items[1:4] # 奇数
+odd_items = items[1::2] #拷贝
+copy_items = items[::] 或者 items[:]
+列表元素的下标不仅可以用正数表示，还是用负数表示，最后一个元素的位置是 -1，从右往左，依次递减。
+</code></pre></div></div>
+
+<hr />
+<p>| P | y | t | h | o | n |
+————————–
+   0   1   2   3   4   5 
+  -6  -5  -4  -3  -2  -1
+————————–</p>
+<h3 id="善用生成器">善用生成器</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+     <span class="k">while</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<h4 id="pythonic-5">pythonic</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">a</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div></div>
+<ul>
+  <li>上面是用生成器生成费波那契数列。生成器的好处就是无需一次性把所有元素加载到内存，只有迭代获取元素时才返回该元素，而列表是预先一次性把全部元素加载到了内存。此外用 yield 代码看起来更清晰。</li>
+</ul>
+
+<h3 id="获取字典元素">获取字典元素</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'foo'</span><span class="p">}</span>
+<span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">'name'</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s">'name'</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'unkonw'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="pythonic-6">pythonic</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"name"</span><span class="p">,</span> <span class="s">"unknow"</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="预设字典默认值">预设字典默认值</h3>
+<ul>
+  <li>通过 key 分组的时候，不得不每次检查 key 是否已经存在于字典中。
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s">'foo'</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s">'bar'</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="s">'foo'</span><span class="p">,</span> <span class="mi">39</span><span class="p">),</span> <span class="p">(</span><span class="s">'bar'</span><span class="p">,</span> <span class="mi">49</span><span class="p">)]</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+      <span class="n">groups</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">groups</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="pythonic-7">pythonic</h3>
+
+<p>#　第一种方式</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">groups</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">groups</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<h1 id="第二种方式">第二种方式</h1>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">groups</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="字典推导式">字典推导式</h3>
+<p>在python2.7之前，构建字典对象一般使用下面这种方式，可读性非常差</p>
+<ul>
+  <li>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">number</span><span class="p">,</span><span class="n">number</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>  <span class="c1"># {1: 2, 2: 4, 3: 6}
+</span></code></pre></div>    </div>
+    <h4 id="pythonic-8">pythonic</h4>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">number</span><span class="p">:</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>  <span class="c1"># {1: 2, 2: 4, 3: 6}
+</span></code></pre></div></div>
+
+<h1 id="还可以指定过滤条件">还可以指定过滤条件</h1>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">number</span><span class="p">:</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>  <span class="c1"># {2: 4, 3: 6}
+</span></code></pre></div></div>
+<ul>
+  <li>字典推导式是python2.7新增的特性，可读性增强了很多，类似的还是列表推导式和集合推导式。</li>
+</ul>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/12/Pyhton-%E9%AB%98%E7%BA%A7/" title="link to PYTHON网络编程">PYTHON网络编程</a></h2>
+       <p class="excerpt">高级班课程：导出为pdf可能每页内容可能有点乱重要为🍅次重要为🍎思考为🥔没有标示为普普通通linuxliux操作系统  操作系统（Operation System，OS）是管理硬件和控制软件运行的计算机程序, 是直接运行在“裸机”上的系统软件, 任何其他软件都必须在操作系统的支持下才能运行.  主要作用是向下控制硬件向上支持软件的运行，具有承上启下的作用.  大量的软件都直接依赖于操作系统的支持.  Linux 在服务器领域的应用是其重要分支.相比 Windows Server, Linu...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-12-22 17:11:11 +0800" class="post-list__meta--date date">2018-12-22</time> &#8226; <span class="post-list__meta--tags tags">python 网络编程 多线程/进程/协程</span><a class="btn-border-small" href=/2018/12/Pyhton-%E9%AB%98%E7%BA%A7/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://localhost:4000/2019/01/%E4%BC%98%E9%9B%85%E7%9A%84(python)%E4%BB%A3%E7%A0%81/";
+        this.page.identifier = "/2019/01/%E4%BC%98%E9%9B%85%E7%9A%84(python)%E4%BB%A3%E7%A0%81/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-01-02 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/CriseLYJ">@Crise-LYJ</a> 创建，采用 <a href="https://github.com/CriseLYJ/criselyj.github.io">Genius</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/CriseLYJ/criselyj.github.io">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

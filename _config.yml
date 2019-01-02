@@ -1,0 +1,49 @@
+# Basic
+title: Crise-Genius
+subtitle: 站在巨人的肩膀上 We Will Be Giants
+welcome_message: <a href="https://github.com/CriseLYJ" target="_blank">Here Is My Github</a>
+description: 嗨，我是梁英健(@Crise-LYJ)，我会成为一名出色的开发者。
+creator: <a href="https://github.com/CriseLYJ">@Crise-LYJ</a>
+
+url: "https://criselyj.github.io/"
+
+permalink: /:year/:month/:title/
+
+# Format
+highlighter: rouge
+
+# supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
+cover_color: read
+
+# The blog button should not be removed.
+blog_button:
+    title: Blog
+    description: Visit blog
+
+# Navigation buttons in the front page.
+nav:
+    - {title: Projects, description: My Projects, url: 'https://criselyj.github.io/'}
+    # - {title: Another Button, description: A button, url: 'http://example.com'}
+
+# Pagination
+plugins: [jekyll-paginate]
+paginate: 10
+paginate_path: "page/:num/"
+
+# Comment
+comment:
+    disqus: vno-jekyll
+    # duoshuo: 
+    
+# Social
+social:
+    weibo: Github每日开源KYZG
+    github: CriseLYJ
+    twitter: CriseLYJ
+    gplus: 1998lyjvip@gmail.com
+    mail: 1148995537@qq.com
+
+# Google Analytics
+ga:
+    # id: your_ga_id
+    # host: your_host
