@@ -5,8 +5,8 @@
     <description>嗨，我是梁英健(@Crise-LYJ)，我会成为一名出色的开发者。</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 20 Jan 2019 15:57:51 +0800</pubDate>
-    <lastBuildDate>Sun, 20 Jan 2019 15:57:51 +0800</lastBuildDate>
+    <pubDate>Sun, 20 Jan 2019 16:29:45 +0800</pubDate>
+    <lastBuildDate>Sun, 20 Jan 2019 16:29:45 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -400,6 +400,151 @@ copy_items = items[::] 或者 items[:]
         <guid isPermaLink="true">http://localhost:4000/2019/01/%E4%BC%98%E9%9B%85%E7%9A%84(python)%E4%BB%A3%E7%A0%81/</guid>
         
         <category>python</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>算法</title>
+        <description>&lt;h1 id=&quot;算法更新中&quot;&gt;算法（更新中）&lt;/h1&gt;
+&lt;h3 id=&quot;概念简述&quot;&gt;概念简述&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;算法（Algorithm）是基于特定的计算模型
+旨在解决某一信息处理问题而设计的一个指令序列
+不正式地说，算法是任何定义明确的计算过程
+该过程取某个值或值的集合作为输入
+并产生某个值或值的集合作为输出
+算法就是这样的把输入转换成输出的计算步骤的一个序列。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;必备特征&quot;&gt;必备特征&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;算法必须具有以下特征：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  输入：待计算问题的任一实例，都需要以某种方式交给对应的算法，对所求解问题特定实例的这种描述统称为输入；
+  输出：经计算和处理之后得到的信息，即针对输入问题实例的答案，称作输出；
+  确定性：算法应可描述为由若干语义明确的基本操作组成的指令序列；
+  可行性：每一基本操作在对应的计算模型中均可兑现；
+  有穷性：任意算法都应在执行有限次基本操作之后终止并给出输出。
+  实际例子
+  算法不是计算机领域中才有的概念，不仅仅局限于编程语言，它可以用任何方式来描述，比如对于问题：过直线l上给定的点P，作该直线的垂线。古埃及人解决该问题的一个算法为：
+
+  输入：直线l及其上一点P
+  输出：经过P且垂直于l的直线
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;取12段等长绳索，依次首尾联结成环，联结处称作“结”，按顺时针方向编号为0到11&lt;/li&gt;
+  &lt;li&gt;奴隶A看管0号结，将其固定于点P处&lt;/li&gt;
+  &lt;li&gt;奴隶B牵动4号结，将绳索沿直线l方向尽可能地拉直&lt;/li&gt;
+  &lt;li&gt;奴隶C牵动9号结，将绳索尽可能地拉直&lt;/li&gt;
+  &lt;li&gt;经过0号和9号结，绘制一条直线
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;计算机中的算法则是描述计算机上的计算过程，比如插入排序算法的伪代码描述：&lt;/p&gt;
+
+        &lt;p&gt;输入：n个数的一个序列&amp;lt;a[1], a[2], …, a[n]&amp;gt;
+   输出：输入序列的一个排列&amp;lt;b[1], b[2], …, b[n]&amp;gt;，满足b[1] &amp;lt;= b[2] &amp;lt;= … &amp;lt;= b[n]&lt;/p&gt;
+
+        &lt;p&gt;INSERTION-SORT(A)
+   for j = 2 to A.length
+       key = A[j]
+       i = j - 1
+       while i &amp;gt; 0 and A[i] &amp;gt; key
+           A[i + 1] = A[i]
+           i = i - 1
+           A[i + 1] = key
+   上述算法可以用不同的编程语言来描述，比如用Python描述：&lt;/p&gt;
+
+        &lt;p&gt;def insertSort(A):
+       for j in range(2, len(A)):
+           key = A[j]
+           i = j - 1
+           while i &amp;gt; 0 and A[i] &amp;gt; key:
+               A[i + 1] = A[i]
+               i = i - 1
+               A[i + 1] = key
+   比如用C++描述：&lt;/p&gt;
+
+        &lt;p&gt;template&lt;typename T=&quot;&quot;&gt;
+   void insertSort(std::vector&lt;T&gt;&amp;amp; A)
+   {
+       for (int j = 2; j &amp;lt; A.size(); ++j)
+       {
+           auto key = A[j];
+           int i = j - 1;
+           while (i &amp;gt; 0 &amp;amp;&amp;amp; A[i] &amp;gt; key)
+           {
+               A[i + 1] = A[i];
+               --i;
+               A[i + 1] = key;
+           }
+       }
+       }&lt;/T&gt;&lt;/typename&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;优劣分析&quot;&gt;优劣分析&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;由于计算机不是无限快，内存不是免费的，计算时间和空间是一种有限资源，高效的算法可以更好地利用这些资源，因此算法可以像计算机硬件一样视为一种技术。度量算法成本的方式称为复杂度分析，复杂度可分为时间复杂度和空间复杂度。由于运行任一算法的空间消耗都不会多于运行期间进行的基本操作次数，即时间复杂度本身就是空间复杂度的上界，因此复杂度分析主要关注时间复杂度，而时间复杂度分析主要关注最坏情况下的运行时间，即最长运行时间。复杂度分析一般用渐进记号大O表示，它用一个函数来描述某个函数的数量级上界。最低复杂度是O(1)，代表常数时间复杂度，因为不能指望没有任何代价来运行算法。依次递增的常见复杂度层级还有O(log n)、 O(√n)、O(n)、O(nlog n)、O(n^2)、O(n^3）、O(2^n)等。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;常见种类&quot;&gt;常见种类&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;计算机中存储和组织数据的方式称为数据结构，因此计算机中的算法通常也与数据结构紧密相连，最常见的一类算法就是数据结构的插入、删除、查找、遍历、排序等，一般此类算法会封装为编程语言的标准之一，如C++ STL中的算法。除了数据结构相关算法外，还有图算法、数论算法、矩阵运算、计算几何、压缩算法、加密算法、数据挖掘算法、并行算法等。算法设计与分析的基本方法有蛮力法、分治法、动态规划、贪心算法等。并非所有问题都存在有效算法，对于NP完全问题是否存在有效算法是未知的。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;排序算法原始版本之选择排序&quot;&gt;排序算法原始版本之选择排序&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;这种方法排序太浪费时间&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;434&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3213&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;312&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;43123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3223&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;34&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;large_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:]:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;large_list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;large_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;从小到大排序：函数版&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findSmallest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;smallest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;smallest_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smallest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;smallest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;smallest_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smallest_index&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;selectionSort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;newArr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;smallest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findSmallest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;newArr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;smallest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newArr&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 25 Dec 2018 09:21:32 +0800</pubDate>
+        <link>http://localhost:4000/2018/12/Pyhton-%E7%AE%97%E6%B3%95/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/Pyhton-%E7%AE%97%E6%B3%95/</guid>
+        
+        <category>python</category>
+        
+        <category>算法</category>
         
         
       </item>
