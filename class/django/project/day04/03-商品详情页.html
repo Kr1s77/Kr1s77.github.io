@@ -1,0 +1,3111 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>商品详情页静态化 | Introduction</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../project/day04/04-用户浏览历史记录.html" />
+    
+    
+    <link rel="prev" href="../../project/day04/02-定时任务.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="14.3"
+        data-chapter-title="商品详情页静态化"
+        data-filepath="project/day04/03-商品详情页.md"
+        data-basepath="../.."
+        data-revision="Sun Feb 17 2019 19:01:21 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="day01/part00.html">
+            
+                
+                    <a href="../../day01/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        第一部分
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="day01/part01.html">
+            
+                
+                    <a href="../../day01/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        web框架介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="day01/part02.html">
+            
+                
+                    <a href="../../day01/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Django框架介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="day01/part03.html">
+            
+                
+                    <a href="../../day01/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        环境搭建
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="day01/part04.html">
+            
+                
+                    <a href="../../day01/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        创建Django项目工程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="day01/part05.html">
+            
+                
+                    <a href="../../day01/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        Pycharm启动项目
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="day01/part06.html">
+            
+                
+                    <a href="../../day01/part06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        创建子应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="day01/part07.html">
+            
+                
+                    <a href="../../day01/part07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        创建视图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="day01/part08.html">
+            
+                
+                    <a href="../../day01/part08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                        项目配置, 静态文件和路由
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="day01/part09.html">
+            
+                
+                    <a href="../../day01/part09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.9.</b>
+                        
+                        路由说明
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="day01/part10.html">
+            
+                
+                    <a href="../../day01/part10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.10.</b>
+                        
+                        App应用配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="day02/part00.html">
+            
+                
+                    <a href="../../day02/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        第二部分
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="day02/part01.html">
+            
+                
+                    <a href="../../day02/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        请求
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="day02/part02.html">
+            
+                
+                    <a href="../../day02/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        响应
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="day02/part03.html">
+            
+                
+                    <a href="../../day02/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Cookie
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="day02/part04.html">
+            
+                
+                    <a href="../../day02/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        Session
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="day02/part05.html">
+            
+                
+                    <a href="../../day02/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        类视图和中间件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="day03/part08.html">
+            
+                
+                    <a href="../../day03/part08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        模板
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="day03/part00.html">
+            
+                
+                    <a href="../../day03/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第三部分
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="day03/part01.html">
+            
+                
+                    <a href="../../day03/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        数据库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="day03/part02.html">
+            
+                
+                    <a href="../../day03/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="day03/part03.html">
+            
+                
+                    <a href="../../day03/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        定义模型类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="day03/part04.html">
+            
+                
+                    <a href="../../day03/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        演示工具使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="day03/part05.html">
+            
+                
+                    <a href="../../day03/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        数据库操作: 增删改查
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="day03/part06.html">
+            
+                
+                    <a href="../../day03/part06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        查询集
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="day03/part10.html">
+            
+                
+                    <a href="../../day03/part10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        Admin
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="day03/part11.html">
+            
+                
+                    <a href="../../day03/part11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        调整列表页展示
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="day03/part12.html">
+            
+                
+                    <a href="../../day03/part12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        调整编辑页展示
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="day03/part13.html">
+            
+                
+                    <a href="../../day03/part13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                        调整站点信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="day03/part14.html">
+            
+                
+                    <a href="../../day03/part14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.11.</b>
+                        
+                        上传图片
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="day04/part00.html">
+            
+                
+                    <a href="../../day04/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        引入Django REST framework
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="day04/part01.html">
+            
+                
+                    <a href="../../day04/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Web应用模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="day04/part02.html">
+            
+                
+                    <a href="../../day04/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        RESTful设计方法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="day04/part03.html">
+            
+                
+                    <a href="../../day04/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        使用Django开发REST 接口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="day04/part04.html">
+            
+                
+                    <a href="../../day04/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        明确REST接口开发的核心任务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="day04/part05.html">
+            
+                
+                    <a href="../../day04/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        Django REST framework 简介
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="day05/part00.html">
+            
+                
+                    <a href="../../day05/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        DRF工程搭建
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="day05/part01.html">
+            
+                
+                    <a href="../../day05/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        环境安装与配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="day05/part02.html">
+            
+                
+                    <a href="../../day05/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        见识DRF的魅力
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="day06/part00.html">
+            
+                
+                    <a href="../../day06/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Serializer序列化器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="day06/part01.html">
+            
+                
+                    <a href="../../day06/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        定义Serializer
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="day06/part02.html">
+            
+                
+                    <a href="../../day06/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        序列化使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="day06/part03.html">
+            
+                
+                    <a href="../../day06/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        反序列化使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="day06/part04.html">
+            
+                
+                    <a href="../../day06/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        模型类序列化器ModelSerializer
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="day07/part00.html">
+            
+                
+                    <a href="../../day07/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        视图
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="day07/part01.html">
+            
+                
+                    <a href="../../day07/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        Request 与 Response
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="day07/part02.html">
+            
+                
+                    <a href="../../day07/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        视图概览
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="day07/part03.html">
+            
+                
+                    <a href="../../day07/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        视图说明
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="day07/part04.html">
+            
+                
+                    <a href="../../day07/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        视图集ViewSet
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="day07/part05.html">
+            
+                
+                    <a href="../../day07/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        路由Routers
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="day08/part00.html">
+            
+                
+                    <a href="../../day08/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        其他功能
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="day08/part01.html">
+            
+                
+                    <a href="../../day08/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        认证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="day08/part02.html">
+            
+                
+                    <a href="../../day08/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        权限
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="day08/part03.html">
+            
+                
+                    <a href="../../day08/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        限流
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="day08/part04.html">
+            
+                
+                    <a href="../../day08/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        过滤
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="day08/part05.html">
+            
+                
+                    <a href="../../day08/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="day08/part06.html">
+            
+                
+                    <a href="../../day08/part06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        分页
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="day08/part07.html">
+            
+                
+                    <a href="../../day08/part07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        异常处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.8" data-path="day08/part08.html">
+            
+                
+                    <a href="../../day08/part08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.8.</b>
+                        
+                        自动生成接口文档
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" >
+            
+            <span><b>9.</b> 美多商城</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="project/day01/1.1商业模式介绍.html">
+            
+                
+                    <a href="../../project/day01/1.1商业模式介绍.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        商业模式介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="project/day01/1.2开发流程.html">
+            
+                
+                    <a href="../../project/day01/1.2开发流程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        开发流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="project/day01/1.3需求分析.html">
+            
+                
+                    <a href="../../project/day01/1.3需求分析.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        需求分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="project/day01/1.4项目架构.html">
+            
+                
+                    <a href="../../project/day01/1.4项目架构.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        项目架构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="project/day01/1.5创建工程.html">
+            
+                
+                    <a href="../../project/day01/1.5创建工程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        创建工程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="project/day01/1.6配置.html">
+            
+                
+                    <a href="../../project/day01/1.6配置.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" >
+            
+            <span><b>10.</b> 用户部分</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="project/day02/2.1用户模型类.html">
+            
+                
+                    <a href="../../project/day02/2.1用户模型类.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        用户模型类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="project/day02/2.2注册.html">
+            
+                
+                    <a href="../../project/day02/2.2注册.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        注册业务接口分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="project/day02/2.3短信验证码.html">
+            
+                
+                    <a href="../../project/day02/2.3短信验证码.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        短信验证码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="project/day02/2.4跨域CORS.html">
+            
+                
+                    <a href="../../project/day02/2.4跨域CORS.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        跨域CORS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="project/day02/2.5使用Celery完成发送短信.html">
+            
+                
+                    <a href="../../project/day02/2.5使用Celery完成发送短信.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        使用Celery完成发送短信
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="project/day02/2.6判断帐号是否存在.html">
+            
+                
+                    <a href="../../project/day02/2.6判断帐号是否存在.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        判断帐号是否存在
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="project/day02/2.7注册.html">
+            
+                
+                    <a href="../../project/day02/2.7注册.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        注册
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="project/day02/2.8JWT.html">
+            
+                
+                    <a href="../../project/day02/2.8JWT.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.8.</b>
+                        
+                        JWT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.9" data-path="project/day02/2.9Django REST framework JWT.html">
+            
+                
+                    <a href="../../project/day02/2.9Django REST framework JWT.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.9.</b>
+                        
+                        Django REST framework JWT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.10" data-path="project/day02/2.10登录.html">
+            
+                
+                    <a href="../../project/day02/2.10登录.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.10.</b>
+                        
+                        登录
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.11" data-path="project/day02/2.11.0QQ登录.html">
+            
+                
+                    <a href="../../project/day02/2.11.0QQ登录.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.11.</b>
+                        
+                        QQ登录
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.11.1" data-path="project/day02/2.11.1返回QQ登录网址的视图.html">
+            
+                
+                    <a href="../../project/day02/2.11.1返回QQ登录网址的视图.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.11.1.</b>
+                        
+                        第一步:返回QQ登录网址的视图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.11.2" data-path="project/day02/2.11.2QQ登录回调处理.html">
+            
+                
+                    <a href="../../project/day02/2.11.2QQ登录回调处理.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.11.2.</b>
+                        
+                        第二步:QQ登录回调处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.11.3" data-path="project/day02/2.11.3绑定用户身份接口.html">
+            
+                
+                    <a href="../../project/day02/2.11.3绑定用户身份接口.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.11.3.</b>
+                        
+                        第三步:绑定用户身份接口
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.12" data-path="project/day02/2.12用户中心个人信息.html">
+            
+                
+                    <a href="../../project/day02/2.12用户中心个人信息.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.12.</b>
+                        
+                        用户中心个人信息
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" >
+            
+            <span><b>11.</b> 邮件与验证</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="project/day03/1.0邮件与验证.html">
+            
+                
+                    <a href="../../project/day03/1.0邮件与验证.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        邮件与验证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="project/day03/1.1使用Django发送邮件.html">
+            
+                
+                    <a href="../../project/day03/1.1使用Django发送邮件.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        使用Django发送邮件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="project/day03/1.2保存邮箱并发送验证邮件.html">
+            
+                
+                    <a href="../../project/day03/1.2保存邮箱并发送验证邮件.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        保存邮箱并发送验证邮件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="project/day03/1.3验证邮箱链接.html">
+            
+                
+                    <a href="../../project/day03/1.3验证邮箱链接.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.4.</b>
+                        
+                        验证邮箱链接
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" >
+            
+            <span><b>12.</b> 地址部分:</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="project/day03/2.0收货地址.html">
+            
+                
+                    <a href="../../project/day03/2.0收货地址.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        收货地址
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="project/day03/2.1省市区地址查询.html">
+            
+                
+                    <a href="../../project/day03/2.1省市区地址查询.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        省市区地址查询
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="project/day03/2.2使用缓存.html">
+            
+                
+                    <a href="../../project/day03/2.2使用缓存.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        使用缓存
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="project/day03/2.3用户地址管理.html">
+            
+                
+                    <a href="../../project/day03/2.3用户地址管理.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        用户地址管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="project/day03/2.4用户地址管理代码.html">
+            
+                
+                    <a href="../../project/day03/2.4用户地址管理代码.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        用户地址管理代码
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" >
+            
+            <span><b>13.</b> 数据库表设计</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="project/day03/3.0数据库表设计.html">
+            
+                
+                    <a href="../../project/day03/3.0数据库表设计.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        数据库表设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="project/day03/3.2FastDFS分布式文件系统.html">
+            
+                
+                    <a href="../../project/day03/3.2FastDFS分布式文件系统.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        FastDFS分布式文件系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="project/day03/3.3Docker使用.html">
+            
+                
+                    <a href="../../project/day03/3.3Docker使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        Docker使用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.3.1" data-path="project/day03/3.31Docker简介.html">
+            
+                
+                    <a href="../../project/day03/3.31Docker简介.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.1.</b>
+                        
+                        Docker简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3.2" data-path="project/day03/3.32安装与操作.html">
+            
+                
+                    <a href="../../project/day03/3.32安装与操作.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.2.</b>
+                        
+                        安装与操作
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" data-path="project/day03/3.4使用Docker安装FastDFS.html">
+            
+                
+                    <a href="../../project/day03/3.4使用Docker安装FastDFS.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.4.</b>
+                        
+                        使用Docker安装FastDFS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" data-path="project/day03/3.5FastDFS客户端与自定义文件存储系统.html">
+            
+                
+                    <a href="../../project/day03/3.5FastDFS客户端与自定义文件存储系统.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.5.</b>
+                        
+                        FastDFS客户端与自定义文件存储系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.6" data-path="project/day03/3.6CKEditor富文本编辑器.html">
+            
+                
+                    <a href="../../project/day03/3.6CKEditor富文本编辑器.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.6.</b>
+                        
+                        CKEditor富文本编辑器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.7" data-path="project/day03/3.7添加测试数据.html">
+            
+                
+                    <a href="../../project/day03/3.7添加测试数据.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.7.</b>
+                        
+                        添加测试数据
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" >
+            
+            <span><b>14.</b> 页面优化</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="project/day04/01-页面静态化.html">
+            
+                
+                    <a href="../../project/day04/01-页面静态化.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        页面静态化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="project/day04/02-定时任务.html">
+            
+                
+                    <a href="../../project/day04/02-定时任务.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.2.</b>
+                        
+                        定时任务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="14.3" data-path="project/day04/03-商品详情页.html">
+            
+                
+                    <a href="../../project/day04/03-商品详情页.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.3.</b>
+                        
+                        商品详情页静态化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="project/day04/04-用户浏览历史记录.html">
+            
+                
+                    <a href="../../project/day04/04-用户浏览历史记录.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.4.</b>
+                        
+                        用户浏览历史记录
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="project/day04/05-品列表页.html">
+            
+                
+                    <a href="../../project/day04/05-品列表页.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.5.</b>
+                        
+                        商品列表页
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.6" data-path="project/day04/06-商品搜索.html">
+            
+                
+                    <a href="../../project/day04/06-商品搜索.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.6.</b>
+                        
+                        商品搜索
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="15" >
+            
+            <span><b>15.</b> 购物车部分</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1" data-path="project/day05/01-购物车数据存储设计.html">
+            
+                
+                    <a href="../../project/day05/01-购物车数据存储设计.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.1.</b>
+                        
+                        购物车数据存储设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" data-path="project/day05/02-添加到购物车.html">
+            
+                
+                    <a href="../../project/day05/02-添加到购物车.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.2.</b>
+                        
+                        添加到购物车
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.3" data-path="project/day05/03-查询购物车数据.html">
+            
+                
+                    <a href="../../project/day05/03-查询购物车数据.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.3.</b>
+                        
+                        查询购物车数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.4" data-path="project/day05/04-修改购物车数据.html">
+            
+                
+                    <a href="../../project/day05/04-修改购物车数据.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.4.</b>
+                        
+                        修改购物车数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.5" data-path="project/day05/05-删除购物车数据.html">
+            
+                
+                    <a href="../../project/day05/05-删除购物车数据.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.5.</b>
+                        
+                        删除购物车数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.6" data-path="project/day05/06-购物车全选.html">
+            
+                
+                    <a href="../../project/day05/06-购物车全选.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.6.</b>
+                        
+                        购物车全选
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.7" data-path="project/day05/07-登录合并购物车.html">
+            
+                
+                    <a href="../../project/day05/07-登录合并购物车.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.7.</b>
+                        
+                        登录合并购物车
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="project/day06/00-订单部分.html">
+            
+                
+                    <a href="../../project/day06/00-订单部分.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        订单部分
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1" data-path="project/day06/01-订单数据库设计.html">
+            
+                
+                    <a href="../../project/day06/01-订单数据库设计.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.1.</b>
+                        
+                        订单数据库设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.2" data-path="project/day06/02-订单结算.html">
+            
+                
+                    <a href="../../project/day06/02-订单结算.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.2.</b>
+                        
+                        订单结算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.3" data-path="project/day06/03-保存订单.html">
+            
+                
+                    <a href="../../project/day06/03-保存订单.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.3.</b>
+                        
+                        保存订单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.4" data-path="project/day06/04-下单成功页面.html">
+            
+                
+                    <a href="../../project/day06/04-下单成功页面.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.4.</b>
+                        
+                        下单成功页面
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="17" >
+            
+            <span><b>17.</b> 支付宝支付</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="17.1" data-path="project/day06/05-支付宝支付.html">
+            
+                
+                    <a href="../../project/day06/05-支付宝支付.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.1.</b>
+                        
+                        支付宝支付
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.2" data-path="project/day06/06-接入支付宝.html">
+            
+                
+                    <a href="../../project/day06/06-接入支付宝.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.2.</b>
+                        
+                        接入支付宝
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.3" data-path="project/day06/07-发起支付.html">
+            
+                
+                    <a href="../../project/day06/07-发起支付.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.3.</b>
+                        
+                        发起支付
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.4" data-path="project/day06/08-保存支付结果.html">
+            
+                
+                    <a href="../../project/day06/08-保存支付结果.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.4.</b>
+                        
+                        保存支付结果
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="project/day07/00-Xadmin.html">
+            
+                
+                    <a href="../../project/day07/00-Xadmin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        Xadmin
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="project/day07/01-用户权限控制.html">
+            
+                
+                    <a href="../../project/day07/01-用户权限控制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        用户权限控制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="project/day07/02-部署.html">
+            
+                
+                    <a href="../../project/day07/02-部署.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        部署
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >Introduction</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x7684;&#x9759;&#x6001;&#x5316;">&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x7684;&#x9759;&#x6001;&#x5316;:</h1>
+<blockquote>
+<p>&#x5B66;&#x4E60;&#x76EE;&#x6807;: </p>
+<ul>
+<li>&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x7684;&#x9875;&#x9762;&#x9759;&#x6001;&#x5316;&#x5B9E;&#x73B0;</li>
+<li>celery &#x5F02;&#x6B65;&#x5904;&#x7406;&#x9875;&#x9762;&#x9759;&#x6001;&#x5316;&#x5B9E;&#x73B0;</li>
+</ul>
+</blockquote>
+<p>&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x7684;&#x8BBF;&#x95EE;&#x4F9D;&#x7136;&#x5F88;&#x591A;,  &#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x540C;&#x6837;&#x8003;&#x8651;&#x91C7;&#x7528;&#x9875;&#x9762;&#x9759;&#x6001;&#x5316;&#x6280;&#x672F;</p>
+<p>&#x4F46;&#x662F;&#x548C;&#x9996;&#x9875;&#x7684;&#x9759;&#x6001;&#x5316;&#x6280;&#x672F;&#x76F8;&#x6BD4;, &#x53C8;&#x6709;&#x6240;&#x4E0D;&#x540C;:</p>
+<p><strong>&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x7684;&#x6BCF;&#x6B21;&#x9759;&#x6001;&#x5316;&#x7531;&#x8FD0;&#x8425;&#x4EBA;&#x5458;&#x5728;&#x7F16;&#x8F91;&#x5546;&#x54C1;&#x4FE1;&#x606F;&#x65F6;&#x89E6;&#x53D1;</strong></p>
+<p><img src="images/image-20190202153831594.png" alt="image-20190202153831594"></p>
+<h3 id="&#x7B2C;&#x4E00;&#x6B65;--&#x5B9E;&#x73B0;&#x516C;&#x5171;&#x65B9;&#x6CD5;-&#x83B7;&#x53D6;&#x5546;&#x54C1;&#x7684;&#x5206;&#x7C7B;&#x83DC;&#x5355;">&#x7B2C;&#x4E00;&#x6B65;:  &#x5B9E;&#x73B0;&#x516C;&#x5171;&#x65B9;&#x6CD5;, &#x83B7;&#x53D6;&#x5546;&#x54C1;&#x7684;&#x5206;&#x7C7B;&#x83DC;&#x5355;:</h3>
+<blockquote>
+<p>&#x5C06;&#x5F62;&#x6210;&#x5546;&#x54C1;&#x7C7B;&#x522B;&#x90E8;&#x5206;&#x7684;&#x6570;&#x636E;&#x5C01;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x516C;&#x5171;&#x51FD;&#x6570;</p>
+<p>&#x653E;&#x5728; goods / utils.py &#x4E2D;</p>
+</blockquote>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x5BFC;&#x5165;: </span>
+<span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> OrderedDict
+<span class="hljs-keyword">from</span> goods.models <span class="hljs-keyword">import</span> GoodsChannel
+
+<span class="hljs-comment"># &#x5C06;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5199;&#x7684;&#x83B7;&#x53D6;&#x5546;&#x54C1;&#x5206;&#x7C7B;&#x7684;&#x4EE3;&#x7801;,&#x63D0;&#x53D6;&#x51FA;&#x6765;&#x4E00;&#x90E8;&#x5206;, &#x5C01;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x51FD;&#x6570;: </span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_categories</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x83B7;&#x53D6;&#x5546;&#x57CE;&#x5546;&#x54C1;&#x5206;&#x7C7B;&#x83DC;&#x5355;
+    :return &#x83DC;&#x5355;&#x5B57;&#x5178;
+    &quot;&quot;&quot;</span>
+    <span class="hljs-comment"># &#x5546;&#x54C1;&#x9891;&#x9053;&#x53CA;&#x5206;&#x7C7B;&#x83DC;&#x5355;</span>
+    <span class="hljs-comment"># &#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x751F;&#x6210;&#x7684;&#x6A21;&#x677F;:</span>
+    <span class="hljs-comment"># categories = {</span>
+    <span class="hljs-comment">#  (1,  # &#x7EC4;1</span>
+    <span class="hljs-comment">#       {&apos;channels&apos;: [{&apos;id&apos;: 1, &apos;name&apos;: &apos;&#x624B;&#x673A;&apos;,&apos;url&apos;:&apos;http://shouji.jd.com&apos;},</span>
+    <span class="hljs-comment">#                     {&apos;id&apos;: 2, &apos;name&apos;: &apos;&#x76F8;&#x673A;&apos;,&apos;url&apos;:&apos;http://www.itcast.cn&apos;},</span>
+    <span class="hljs-comment">#                     {&apos;id&apos;: 3, &apos;name&apos;: &apos;&#x6570;&#x7801;&apos;,&apos;url&apos;:&apos;http://www.itcast.cn&apos;}],</span>
+    <span class="hljs-comment">#        &apos;sub_cats&apos;: [ &lt; GoodsCategory: &#x624B;&#x673A;&#x901A;&#x8BAF; &gt;,</span>
+    <span class="hljs-comment">#                      &lt; GoodsCategory: &#x624B;&#x673A;&#x914D;&#x4EF6; &gt;,</span>
+    <span class="hljs-comment">#                      &lt; GoodsCategory: &#x6444;&#x5F71;&#x6444;&#x50CF; &gt;,</span>
+    <span class="hljs-comment">#                      &lt; GoodsCategory: &#x6570;&#x7801;&#x914D;&#x4EF6; &gt;,</span>
+    <span class="hljs-comment">#                      &lt; GoodsCategory: &#x5F71;&#x97F3;&#x5A31;&#x4E50; &gt;,</span>
+    <span class="hljs-comment">#                      &lt; GoodsCategory: &#x667A;&#x80FD;&#x8BBE;&#x5907; &gt;,</span>
+    <span class="hljs-comment">#                      &lt; GoodsCategory: &#x7535;&#x5B50;&#x6559;&#x80B2; &gt;</span>
+    <span class="hljs-comment">#                    ]</span>
+    <span class="hljs-comment">#       }</span>
+    <span class="hljs-comment">#   ),(2, # &#x7EC4;2</span>
+    <span class="hljs-comment">#        {</span>
+    <span class="hljs-comment">#       </span>
+    <span class="hljs-comment">#   })</span>
+    <span class="hljs-comment"># }</span>
+
+    <span class="hljs-comment"># &#x7B2C;&#x4E00;&#x90E8;&#x5206;: &#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x53D6;&#x6570;&#x636E;:</span>
+    <span class="hljs-comment"># &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6709;&#x5E8F;&#x5B57;&#x5178;&#x5BF9;&#x8C61; </span>
+    categories = OrderedDict()
+    <span class="hljs-comment"># &#x5BF9; GoodsChannel &#x8FDB;&#x884C; group_id &#x548C; sequence &#x6392;&#x5E8F;, &#x83B7;&#x53D6;&#x6392;&#x5E8F;&#x540E;&#x7684;&#x7ED3;&#x679C;:</span>
+    channels = GoodsChannel.objects.order_by(<span class="hljs-string">&apos;group_id&apos;</span>, <span class="hljs-string">&apos;sequence&apos;</span>)
+    <span class="hljs-comment"># &#x904D;&#x5386;&#x6392;&#x5E8F;&#x540E;&#x7684;&#x7ED3;&#x679C;: &#x5F97;&#x5230;&#x6240;&#x6709;&#x7684;&#x4E00;&#x7EA7;&#x83DC;&#x5355;( &#x5373;,&#x9891;&#x9053; )</span>
+    <span class="hljs-keyword">for</span> channel <span class="hljs-keyword">in</span> channels: 
+        <span class="hljs-comment"># &#x4ECE;&#x9891;&#x9053;&#x4E2D;&#x5F97;&#x5230;&#x5F53;&#x524D;&#x7684; &#x7EC4;id</span>
+        group_id = channel.group_id  
+
+        <span class="hljs-comment"># &#x5224;&#x65AD;: &#x5982;&#x679C;&#x5F53;&#x524D; &#x7EC4;id &#x4E0D;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x6709;&#x5E8F;&#x5B57;&#x5178;&#x4E2D;:</span>
+        <span class="hljs-keyword">if</span> group_id <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> categories:
+            <span class="hljs-comment"># &#x6211;&#x4EEC;&#x5C31;&#x628A; &#x7EC4;id &#x6DFB;&#x52A0;&#x5230; &#x6709;&#x5E8F;&#x5B57;&#x5178;&#x4E2D;</span>
+            <span class="hljs-comment"># &#x5E76;&#x4E14;&#x4F5C;&#x4E3A; key&#x503C;, value&#x503C; &#x662F; {&apos;channels&apos;: [], &apos;sub_cats&apos;: []}</span>
+            categories[group_id] =  {<span class="hljs-string">&apos;channels&apos;</span>: [], <span class="hljs-string">&apos;sub_cats&apos;</span>: []}
+
+        <span class="hljs-comment"># &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x9891;&#x9053;&#x7684;&#x5206;&#x7C7B;&#x540D;&#x79F0;</span>
+        cat1 = channel.category 
+
+        <span class="hljs-comment"># &#x7ED9;&#x521A;&#x521A;&#x521B;&#x5EFA;&#x7684;&#x5B57;&#x5178;&#x4E2D;, &#x8FFD;&#x52A0;&#x5177;&#x4F53;&#x4FE1;&#x606F;: </span>
+        <span class="hljs-comment"># &#x5373;, &#x7ED9;&apos;channels&apos; &#x540E;&#x9762;&#x7684; [] &#x91CC;&#x9762;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x7684;&#x4FE1;&#x606F;:</span>
+        categories[group_id][<span class="hljs-string">&apos;channels&apos;</span>].append({
+            <span class="hljs-string">&apos;id&apos;</span>: cat1.id,
+            <span class="hljs-string">&apos;name&apos;</span>: cat1.name,
+            <span class="hljs-string">&apos;url&apos;</span>: channel.url
+        })
+
+        <span class="hljs-comment"># &#x6839;&#x636E; cat1 &#x7684;&#x5916;&#x952E;&#x53CD;&#x5411;, &#x83B7;&#x53D6;&#x4E0B;&#x4E00;&#x7EA7;(&#x4E8C;&#x7EA7;&#x83DC;&#x5355;)&#x7684;&#x6240;&#x6709;&#x5206;&#x7C7B;&#x6570;&#x636E;, &#x5E76;&#x904D;&#x5386;:</span>
+        <span class="hljs-keyword">for</span> cat2 <span class="hljs-keyword">in</span> cat1.goodscategory_set.all():
+            <span class="hljs-comment"># &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5217;&#x8868;: </span>
+            cat2.sub_cats = []
+            <span class="hljs-comment"># &#x6839;&#x636E; cat2 &#x7684;&#x5916;&#x952E;&#x53CD;&#x5411;, &#x83B7;&#x53D6;&#x4E0B;&#x4E00;&#x7EA7;(&#x4E09;&#x7EA7;&#x83DC;&#x5355;)&#x7684;&#x6240;&#x6709;&#x5206;&#x7C7B;&#x6570;&#x636E;, &#x5E76;&#x904D;&#x5386;:</span>
+            <span class="hljs-keyword">for</span> cat3 <span class="hljs-keyword">in</span> cat2.goodscategory_set.all():
+                <span class="hljs-comment"># &#x62FC;&#x63A5;&#x65B0;&#x7684;&#x5217;&#x8868;: key: &#x4E8C;&#x7EA7;&#x83DC;&#x5355;&#x540D;&#x79F0;, value: &#x4E09;&#x7EA7;&#x83DC;&#x5355;&#x7EC4;&#x6210;&#x7684;&#x5217;&#x8868;</span>
+                cat2.sub_cats.append(cat3)
+            <span class="hljs-comment"># &#x6240;&#x6709;&#x5185;&#x5BB9;&#x5728;&#x589E;&#x52A0;&#x5230; &#x4E00;&#x7EA7;&#x83DC;&#x5355;&#x751F;&#x6210;&#x7684; &#x6709;&#x5E8F;&#x5B57;&#x5178;&#x4E2D;&#x53BB;:</span>
+            categories[group_id][<span class="hljs-string">&apos;sub_cats&apos;</span>].append(cat2)
+
+    <span class="hljs-keyword">return</span> categories
+</code></pre>
+<h3 id="&#x7B2C;&#x4E8C;&#x6B65;---&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;-&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x6765;&#x8FDB;&#x884C;">&#x7B2C;&#x4E8C;&#x6B65;:   &#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;, &#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x6765;&#x8FDB;&#x884C;:</h3>
+<blockquote>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5728; celery_tasks &#x4E2D;, &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;, &#x8D77;&#x540D;&#x4E3A; html:</p>
+</blockquote>
+<p><img src="images/image-20190202114941707.png" alt="image-20190202114941707"></p>
+<h3 id="&#x7B2C;&#x4E09;&#x6B65;---&#x5B9E;&#x73B0;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x51FD;&#x6570;">&#x7B2C;&#x4E09;&#x6B65;:   &#x5B9E;&#x73B0;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x51FD;&#x6570;:</h3>
+<blockquote>
+<p>&#x5B9E;&#x73B0;&#x9759;&#x6001;&#x5316;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#xFF0C;&#x5728; celery_tasks &#x4E2D;&#x65B0;&#x5EFA; html / tasks.py &#x4EFB;&#x52A1;</p>
+</blockquote>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> celery_tasks.main <span class="hljs-keyword">import</span> celery_app
+<span class="hljs-keyword">from</span> django.template <span class="hljs-keyword">import</span> loader
+<span class="hljs-keyword">from</span> django.conf <span class="hljs-keyword">import</span> settings
+<span class="hljs-keyword">import</span> os
+
+<span class="hljs-keyword">from</span> goods.utils <span class="hljs-keyword">import</span> get_categories
+<span class="hljs-keyword">from</span> goods.models <span class="hljs-keyword">import</span> SKU
+
+<span class="hljs-comment"># &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x751F;&#x6210;&#x9759;&#x6001;&#x5316;&#x9875;&#x9762;&#x7684;&#x51FD;&#x6570;, &#x8BE5;&#x51FD;&#x6570;&#x9700;&#x8981;&#x7528;&#x88C5;&#x9970;&#x5668;&#x88C5;&#x9970;:</span>
+<span class="hljs-decorator">@celery_app.task(name=&apos;generate_static_sku_detail_html&apos;)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate_static_sku_detail_html</span><span class="hljs-params">(sku_id)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x751F;&#x6210;&#x9759;&#x6001;&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x9762;
+    :param sku_id: &#x5546;&#x54C1;id&#x503C;
+    &quot;&quot;&quot;</span>
+
+    <span class="hljs-comment"># &#x8C03;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x51FD;&#x6570;, &#x83B7;&#x53D6;&#x6240;&#x6709;&#x5546;&#x54C1;&#x5206;&#x7C7B;&#x83DC;&#x5355;</span>
+    categories = get_categories()
+
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x5F53;&#x524D; sku &#x7684;&#x4FE1;&#x606F;</span>
+    <span class="hljs-comment"># &#x4ECE; SKU &#x7684;&#x6A21;&#x578B;&#x7C7B;&#x4E2D;,&#x6839;&#x636E; sku_id, &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x5546;&#x54C1;</span>
+    sku = SKU.objects.get(id=sku_id)
+    <span class="hljs-comment"># &#x6839;&#x636E;&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684; &#x5916;&#x952E;&#x53CD;&#x5411; &#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;&#x6240;&#x6709;&#x56FE;&#x7247;</span>
+    sku.images = sku.skuimage_set.all()
+
+    <span class="hljs-comment"># &#x9762;&#x5305;&#x5C51;&#x5BFC;&#x822A;&#x4FE1;&#x606F;&#x4E2D;&#x7684;&#x9891;&#x9053;</span>
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#x5546;&#x54C1;</span>
+    goods = sku.goods
+    <span class="hljs-comment"># &#x6839;&#x636E;&#x83B7;&#x5F97;&#x7684;&#x5546;&#x54C1;,&#x83B7;&#x53D6;&#x9891;&#x9053;&#x4FE1;&#x606F;</span>
+    goods.channel = goods.category1.goodschannel_set.all()[<span class="hljs-number">0</span>]
+
+    <span class="hljs-comment"># &#x6784;&#x5EFA;&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x89C4;&#x683C;&#x4FE1;&#x606F;</span>
+    <span class="hljs-comment"># sku_key = [&#x89C4;&#x683C;1&#x53C2;&#x6570;id&#xFF0C; &#x89C4;&#x683C;2&#x53C2;&#x6570;id&#xFF0C; &#x89C4;&#x683C;3&#x53C2;&#x6570;id, ...]</span>
+    sku_specs = sku.skuspecification_set.order_by(<span class="hljs-string">&apos;spec_id&apos;</span>)
+    sku_key = []
+    <span class="hljs-comment"># &#x5C06;&#x83B7;&#x53D6;&#x5230;&#x7684;&#x89C4;&#x683C;&#x8FDB;&#x884C;&#x904D;&#x5386;,&#x62FF;&#x53D6;&#x6BCF;&#x4E00;&#x4E2A;&#x89C4;&#x683C;,&#x7136;&#x540E;&#x5B58;&#x653E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x5217;&#x8868;&#x4E2D;.</span>
+    <span class="hljs-keyword">for</span> spec <span class="hljs-keyword">in</span> sku_specs:
+        sku_key.append(spec.option.id)
+
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x6240;&#x6709;SKU</span>
+    skus = goods.sku_set.all()
+
+    <span class="hljs-comment"># &#x6784;&#x5EFA;&#x4E0D;&#x540C;&#x89C4;&#x683C;&#x53C2;&#x6570;&#xFF08;&#x9009;&#x9879;&#xFF09;&#x7684;sku&#x5B57;&#x5178;</span>
+    <span class="hljs-comment"># spec_sku_map = {</span>
+    <span class="hljs-comment">#     (&#x89C4;&#x683C;1&#x53C2;&#x6570;id, &#x89C4;&#x683C;2&#x53C2;&#x6570;id, &#x89C4;&#x683C;3&#x53C2;&#x6570;id, ...): sku_id,</span>
+    <span class="hljs-comment">#     (&#x89C4;&#x683C;1&#x53C2;&#x6570;id, &#x89C4;&#x683C;2&#x53C2;&#x6570;id, &#x89C4;&#x683C;3&#x53C2;&#x6570;id, ...): sku_id,</span>
+    <span class="hljs-comment">#     ...</span>
+    <span class="hljs-comment"># }</span>
+    spec_sku_map = {}
+    <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> skus:
+        <span class="hljs-comment"># &#x83B7;&#x53D6;sku&#x7684;&#x89C4;&#x683C;&#x53C2;&#x6570;</span>
+        s_specs = s.skuspecification_set.order_by(<span class="hljs-string">&apos;spec_id&apos;</span>)
+        <span class="hljs-comment"># &#x7528;&#x4E8E;&#x5F62;&#x6210;&#x89C4;&#x683C;&#x53C2;&#x6570;-sku&#x5B57;&#x5178;&#x7684;&#x952E;</span>
+        key = []
+        <span class="hljs-keyword">for</span> spec <span class="hljs-keyword">in</span> s_specs:
+            key.append(spec.option.id)
+        <span class="hljs-comment"># &#x5411;&#x89C4;&#x683C;&#x53C2;&#x6570;-sku&#x5B57;&#x5178;&#x6DFB;&#x52A0;&#x8BB0;&#x5F55;</span>
+        spec_sku_map[tuple(key)] = s.id
+
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x89C4;&#x683C;&#x4FE1;&#x606F;</span>
+    <span class="hljs-comment">#specs = [</span>
+    <span class="hljs-comment">#    {</span>
+    <span class="hljs-comment">#        &apos;name&apos;: &apos;&#x5C4F;&#x5E55;&#x5C3A;&#x5BF8;&apos;,</span>
+    <span class="hljs-comment">#        &apos;options&apos;: [</span>
+    <span class="hljs-comment">#            {&apos;value&apos;: &apos;13.3&#x5BF8;&apos;, &apos;sku_id&apos;: xxx},</span>
+    <span class="hljs-comment">#            {&apos;value&apos;: &apos;15.4&#x5BF8;&apos;, &apos;sku_id&apos;: xxx},</span>
+    <span class="hljs-comment">#        ]</span>
+    <span class="hljs-comment">#    },</span>
+    <span class="hljs-comment">#    {</span>
+    <span class="hljs-comment">#        &apos;name&apos;: &apos;&#x989C;&#x8272;&apos;,</span>
+    <span class="hljs-comment">#        &apos;options&apos;: [</span>
+    <span class="hljs-comment">#            {&apos;value&apos;: &apos;&#x94F6;&#x8272;&apos;, &apos;sku_id&apos;: xxx},</span>
+    <span class="hljs-comment">#            {&apos;value&apos;: &apos;&#x9ED1;&#x8272;&apos;, &apos;sku_id&apos;: xxx}</span>
+    <span class="hljs-comment">#        ]</span>
+    <span class="hljs-comment">#    },</span>
+    <span class="hljs-comment">#    ...</span>
+    <span class="hljs-comment">#]</span>
+    specs = goods.goodsspecification_set.order_by(<span class="hljs-string">&apos;id&apos;</span>)
+    <span class="hljs-comment"># &#x82E5;&#x5F53;&#x524D;sku&#x7684;&#x89C4;&#x683C;&#x4FE1;&#x606F;&#x4E0D;&#x5B8C;&#x6574;&#xFF0C;&#x5219;&#x4E0D;&#x518D;&#x7EE7;&#x7EED;</span>
+    <span class="hljs-keyword">if</span> len(sku_key) &lt; len(specs):
+        <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">for</span> index, spec <span class="hljs-keyword">in</span> enumerate(specs):
+        <span class="hljs-comment"># &#x590D;&#x5236;&#x5F53;&#x524D;sku&#x7684;&#x89C4;&#x683C;&#x952E;</span>
+        key = sku_key[:]
+        <span class="hljs-comment"># &#x8BE5;&#x89C4;&#x683C;&#x7684;&#x9009;&#x9879;</span>
+        options = spec.specificationoption_set.all()
+        <span class="hljs-keyword">for</span> option <span class="hljs-keyword">in</span> options:
+            <span class="hljs-comment"># &#x5728;&#x89C4;&#x683C;&#x53C2;&#x6570;sku&#x5B57;&#x5178;&#x4E2D;&#x67E5;&#x627E;&#x7B26;&#x5408;&#x5F53;&#x524D;&#x89C4;&#x683C;&#x7684;sku</span>
+            key[index] = option.id
+            option.sku_id = spec_sku_map.get(tuple(key))
+
+        spec.options = options
+
+    <span class="hljs-comment"># &#x6E32;&#x67D3;&#x6A21;&#x677F;&#xFF0C;&#x751F;&#x6210;&#x9759;&#x6001;html&#x6587;&#x4EF6;</span>
+    context = {
+        <span class="hljs-string">&apos;categories&apos;</span>: categories,
+        <span class="hljs-string">&apos;goods&apos;</span>: goods,
+        <span class="hljs-string">&apos;specs&apos;</span>: specs,
+        <span class="hljs-string">&apos;sku&apos;</span>: sku
+    }
+
+    <span class="hljs-comment"># &#x52A0;&#x8F7D; loader &#x7684; get_template &#x51FD;&#x6570;, &#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684; detail &#x6A21;&#x677F;</span>
+    template = loader.get_template(<span class="hljs-string">&apos;detail.html&apos;</span>)
+    <span class="hljs-comment"># &#x62FF;&#x5230;&#x6A21;&#x677F;, &#x5C06;&#x4E0A;&#x9762;&#x6DFB;&#x52A0;&#x597D;&#x7684;&#x6570;&#x636E;&#x6E32;&#x67D3;&#x8FDB;&#x53BB;.</span>
+    html_text = template.render(context)
+    <span class="hljs-comment"># &#x62FC;&#x63A5;&#x6A21;&#x677F;&#x8981;&#x751F;&#x6210;&#x6587;&#x4EF6;&#x7684;&#x4F4D;&#x7F6E;:</span>
+    file_path = os.path.join(settings.GENERATED_STATIC_HTML_FILES_DIR, <span class="hljs-string">&apos;goods/&apos;</span>+str(sku_id)+<span class="hljs-string">&apos;.html&apos;</span>)
+    <span class="hljs-comment"># &#x5199;&#x5165;</span>
+    <span class="hljs-keyword">with</span> open(file_path, <span class="hljs-string">&apos;w&apos;</span>) <span class="hljs-keyword">as</span> f:
+        f.write(html_text)
+</code></pre>
+<h5 id="&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;-&#x6211;&#x4EEC;&#x6700;&#x540E;&#x8981;&#x5C06;&#x751F;&#x6210;&#x7684;&#x9759;&#x6001;&#x9875;&#x9762;&#x5168;&#x90E8;&#x4FDD;&#x5B58;&#x5230;-frontendpc-&#x4E0B;&#x9762;&#x7684;-goods-&#x76EE;&#x5F55;&#x4E0B;">&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;, &#x6211;&#x4EEC;&#x6700;&#x540E;&#x8981;&#x5C06;&#x751F;&#x6210;&#x7684;&#x9759;&#x6001;&#x9875;&#x9762;&#x5168;&#x90E8;&#x4FDD;&#x5B58;&#x5230; front_end_pc &#x4E0B;&#x9762;&#x7684; goods &#x76EE;&#x5F55;&#x4E0B;</h5>
+<h5 id="&#x5E76;&#x4E14;&#x662F;&#x4EE5;-skuid--&#x5546;&#x54C1;-id--&#x4E3A;&#x540D;&#x79F0;&#x7684;&#x6587;&#x4EF6;">&#x5E76;&#x4E14;&#x662F;&#x4EE5; sku_id ( &#x5546;&#x54C1; id ) &#x4E3A;&#x540D;&#x79F0;&#x7684;&#x6587;&#x4EF6;.</h5>
+<p>&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5728; front_end_pc &#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; goods &#x76EE;&#x5F55;:</p>
+<p><img src="images/image-20190202161517821.png" alt="image-20190202161517821"></p>
+<h4 id="&#x8BA9;-celery-&#x4E2D;&#x95F4;&#x4EBA;&#x81EA;&#x52A8;&#x6355;&#x83B7;&#x6211;&#x4EEC;&#x6DFB;&#x52A0;&#x7684;&#x4EFB;&#x52A1;">&#x8BA9; celery &#x4E2D;&#x95F4;&#x4EBA;&#x81EA;&#x52A8;&#x6355;&#x83B7;&#x6211;&#x4EEC;&#x6DFB;&#x52A0;&#x7684;&#x4EFB;&#x52A1;:</h4>
+<blockquote>
+<p>&#x5728; celery_tasks.main &#x4E2D;: </p>
+</blockquote>
+<pre><code class="lang-python">celery_apps.autodiscover_tasks([<span class="hljs-string">&apos;celery_tasks.sms&apos;</span>, <span class="hljs-string">&apos;celery_tasks.email&apos;</span>,
+                                <span class="hljs-string">&apos;celery_tasks.html&apos;</span>])
+</code></pre>
+<h4 id="&#x9875;&#x9762;&#x6A21;&#x677F;">&#x9875;&#x9762;&#x6A21;&#x677F;</h4>
+<blockquote>
+<p>&#x8FD9;&#x91CC;&#x7684;&#x9875;&#x9762;&#x6A21;&#x677F;&#x6709;&#x5355;&#x72EC;&#x63D0;&#x4F9B;, &#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x7D20;&#x6750;</p>
+<p>&#x5C06;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6DFB;&#x52A0;&#x5728; detail.html &#x6587;&#x4EF6;&#x4E2D;, &#x7136;&#x540E;&#x653E;&#x5728; templates &#x76EE;&#x5F55;&#x4E0B;, &#x4F5C;&#x4E3A;&#x8BE6;&#x60C5;&#x9875;&#x6A21;&#x677F;</p>
+</blockquote>
+<pre><code class="lang-html"><span class="hljs-doctype">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="hljs-attribute">xml:lang</span>=<span class="hljs-value">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">http-equiv</span>=<span class="hljs-value">&quot;Content-Type&quot;</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">&quot;text/html;charset=UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>&#x7F8E;&#x591A;&#x5546;&#x57CE;-&#x5546;&#x54C1;&#x8BE6;&#x60C5;<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;/css/reset.css&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;/css/main.css&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;/js/host.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;/js/vue-2.5.16.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;/js/axios-0.18.0.min.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;app&quot;</span> <span class="hljs-attribute">v-cloak</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;header_con&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;header&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;welcome fl&quot;</span>&gt;</span>&#x6B22;&#x8FCE;&#x6765;&#x5230;&#x7F8E;&#x591A;&#x5546;&#x57CE;!<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;fr&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">v-if</span>=<span class="hljs-value">&quot;username&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;login_btn fl&quot;</span>&gt;</span>
+                    &#x6B22;&#x8FCE;&#x60A8;&#xFF1A;<span class="hljs-tag">&lt;<span class="hljs-title">em</span>&gt;</span>[[ username ]]<span class="hljs-tag">&lt;/<span class="hljs-title">em</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>|<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">a</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;logout&quot;</span>&gt;</span>&#x9000;&#x51FA;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">v-else</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;login_btn fl&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;/login.html&quot;</span>&gt;</span>&#x767B;&#x5F55;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>|<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;/register.html&quot;</span>&gt;</span>&#x6CE8;&#x518C;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;user_link fl&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>|<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;/user_center_info.html&quot;</span>&gt;</span>&#x7528;&#x6237;&#x4E2D;&#x5FC3;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>|<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;/cart.html&quot;</span>&gt;</span>&#x6211;&#x7684;&#x8D2D;&#x7269;&#x8F66;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>|<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;/user_center_order.html&quot;</span>&gt;</span>&#x6211;&#x7684;&#x8BA2;&#x5355;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;search_bar clearfix&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;/index.html&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;logo fl&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;/images/logo.png&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;search_wrap fl&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">method</span>=<span class="hljs-value">&quot;get&quot;</span> <span class="hljs-attribute">action</span>=<span class="hljs-value">&quot;/search.html&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;search_con&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input_text fl&quot;</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;q&quot;</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">&quot;&#x641C;&#x7D22;&#x5546;&#x54C1;&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;submit&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;input_btn fr&quot;</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;&#x641C;&#x7D22;&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;search_suggest fl&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;#&quot;</span>&gt;</span>&#x7D22;&#x5C3C;&#x5FAE;&#x5355;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;#&quot;</span>&gt;</span>&#x4F18;&#x60E0;15&#x5143;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;#&quot;</span>&gt;</span>&#x7F8E;&#x5986;&#x4E2A;&#x62A4;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;#&quot;</span>&gt;</span>&#x4E70;2&#x514D;1<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;guest_cart fr&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;#&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;cart_name fl&quot;</span>&gt;</span>&#x6211;&#x7684;&#x8D2D;&#x7269;&#x8F66;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;goods_count fl&quot;</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;show_count&quot;</span>&gt;</span>15<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;cart_goods_show&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;#&quot;</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">&quot;&#x5546;&#x54C1;&#x56FE;&#x7247;&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span>&#x5546;&#x54C1;&#x540D;&#x79F0;&#x624B;&#x673A;<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;#&quot;</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">&quot;&#x5546;&#x54C1;&#x56FE;&#x7247;&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span>&#x5546;&#x54C1;&#x540D;&#x79F0;&#x624B;&#x673A;<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;#&quot;</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">&quot;&#x5546;&#x54C1;&#x56FE;&#x7247;&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span>&#x5546;&#x54C1;&#x540D;&#x79F0;&#x624B;&#x673A;<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>6<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;#&quot;</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">&quot;&#x5546;&#x54C1;&#x56FE;&#x7247;&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span>&#x5546;&#x54C1;&#x540D;&#x79F0;&#x624B;&#x673A;<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>6<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>            
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;navbar_con&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;navbar&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;sub_menu_con fl&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;fl&quot;</span>&gt;</span>&#x5546;&#x54C1;&#x5206;&#x7C7B;<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;sub_menu&quot;</span>&gt;</span>
+                            {% for group in categories.values %}
+                            <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;level1&quot;</span>&gt;</span>
+                                    {% for channel in group.channels %}
+                                    <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;{{ channel.url }}&quot;</span>&gt;</span>{{ channel.name }}<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                                    {% endfor %}
+                                <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;level2&quot;</span>&gt;</span>
+                                    {% for cat2 in group.sub_cats %}
+                                    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;list_group&quot;</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;group_name fl&quot;</span>&gt;</span>{{cat2.name}} &amp;gt;<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;group_detail fl&quot;</span>&gt;</span>
+                                            {% for cat3 in cat2.sub_cats %}
+                                            <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;/list.html?cat={{cat3.id}}&quot;</span>&gt;</span>{{cat3.name}}<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                                            {% endfor %}
+                                        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                                    {% endfor %}
+                                <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                            {% endfor %}
+                        <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;navlist fl&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;&quot;</span>&gt;</span>&#x9996;&#x9875;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;interval&quot;</span>&gt;</span>|<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;&quot;</span>&gt;</span>&#x771F;&#x5212;&#x7B97;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;interval&quot;</span>&gt;</span>|<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;&quot;</span>&gt;</span>&#x62BD;&#x5956;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;breadcrumb&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;{{ goods.channel.url }}&quot;</span>&gt;</span>{{ goods.category1.name }}<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>&gt;<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>{{ goods.category2.name }}<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>&gt;<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;/list.html?cat={{ goods.category3.id }}&quot;</span>&gt;</span>{{goods.category3.name }}<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;goods_detail_con clearfix&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;goods_detail_pic fl&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;{{ sku.default_image_url }}&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;goods_detail_list fr&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>{{ sku.name }}<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>{{ sku.caption }}<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;prize_bar&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;show_pirze&quot;</span>&gt;</span>&#xA5;<span class="hljs-tag">&lt;<span class="hljs-title">em</span>&gt;</span>{{ sku.price }}<span class="hljs-tag">&lt;/<span class="hljs-title">em</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span> &#x5E02;&#x573A;&#x4EF7;&#xFFE5;{{sku.market_price}}<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;javascript:;&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;goods_judge&quot;</span>&gt;</span>{{ sku.comments }}&#x4EBA;&#x8BC4;&#x4EF7;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;goods_num clearfix&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;num_name fl&quot;</span>&gt;</span>&#x6570; &#x91CF;&#xFF1A;<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;num_add fl&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">v-model</span>=<span class="hljs-value">&quot;sku_count&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;num_show fl&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">a</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;sku_count++&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;add fr&quot;</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">a</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;on_minus()&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;minus fr&quot;</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            {% for spec in specs %}
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;type_select&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>{{ spec.name }}:<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                {% for option in spec.options %}
+                {% if option.sku_id == sku.id %}
+                <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;javascript:;&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;select&quot;</span>&gt;</span>{{ option.value }}<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                {% elif option.sku_id %}
+                <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;/goods/{{option.sku_id}}.html&quot;</span>&gt;</span>{{ option.value }}<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                {% else %}
+                <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;javascript:;&quot;</span>&gt;</span>{{ option.value }}<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                {% endif %}
+                {% endfor %}
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            {% endfor %}
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;total&quot;</span>&gt;</span>&#x603B;&#x4EF7;&#xFF1A;<span class="hljs-tag">&lt;<span class="hljs-title">em</span>&gt;</span>[[sku_amount]]&#x5143;<span class="hljs-tag">&lt;/<span class="hljs-title">em</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;operate_btn&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">a</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;add_cart&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;add_cart&quot;</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;add_cart&quot;</span>&gt;</span>&#x52A0;&#x5165;&#x8D2D;&#x7269;&#x8F66;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;main_wrap clearfix&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;l_wrap fl clearfix&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;new_goods&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>&#x70ED;&#x9500;&#x6392;&#x884C;<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">v-for</span>=<span class="hljs-value">&quot;sku in hots&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">:href</span>=<span class="hljs-value">&quot;sku.url&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">:src</span>=<span class="hljs-value">&quot;sku.default_image_url&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">:href</span>=<span class="hljs-value">&quot;sku.url&quot;</span>&gt;</span>[[sku.name]]<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;prize&quot;</span>&gt;</span>&#xFFE5;[[sku.price]]<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;r_wrap fr clearfix&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;detail_tab clearfix&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;on_tab_content(&apos;detail&apos;)&quot;</span> <span class="hljs-attribute">:class</span>=<span class="hljs-value">&quot;tab_content.detail?&apos;active&apos;:&apos;&apos;&quot;</span>&gt;</span>&#x5546;&#x54C1;&#x8BE6;&#x60C5;<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;on_tab_content(&apos;pack&apos;)&quot;</span> <span class="hljs-attribute">:class</span>=<span class="hljs-value">&quot;tab_content.pack?&apos;active&apos;:&apos;&apos;&quot;</span>&gt;</span>&#x89C4;&#x683C;&#x4E0E;&#x5305;&#x88C5;<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;on_tab_content(&apos;comment&apos;)&quot;</span> <span class="hljs-attribute">:class</span>=<span class="hljs-value">&quot;tab_content.comment?&apos;active&apos;:&apos;&apos;&quot;</span>&gt;</span>&#x5546;&#x54C1;&#x8BC4;&#x4EF7;([[comments.length]])<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;on_tab_content(&apos;service&apos;)&quot;</span> <span class="hljs-attribute">:class</span>=<span class="hljs-value">&quot;tab_content.service?&apos;active&apos;:&apos;&apos;&quot;</span>&gt;</span>&#x552E;&#x540E;&#x670D;&#x52A1;<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;on_tab_content(&apos;detail&apos;)&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;tab_content&quot;</span> <span class="hljs-attribute">:class</span>=<span class="hljs-value">&quot;tab_content.detail?&apos;current&apos;:&apos;&apos;&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">dl</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">dt</span>&gt;</span>&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#xFF1A;<span class="hljs-tag">&lt;/<span class="hljs-title">dt</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">dd</span>&gt;</span>{{ goods.desc_detail|safe }}<span class="hljs-tag">&lt;/<span class="hljs-title">dd</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">dl</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;on_tab_content(&apos;pack&apos;)&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;tab_content&quot;</span> <span class="hljs-attribute">:class</span>=<span class="hljs-value">&quot;tab_content.pack?&apos;current&apos;:&apos;&apos;&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">dl</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">dt</span>&gt;</span>&#x89C4;&#x683C;&#x4E0E;&#x5305;&#x88C5;&#xFF1A;<span class="hljs-tag">&lt;/<span class="hljs-title">dt</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">dd</span>&gt;</span>{{ goods.desc_pack|safe }}<span class="hljs-tag">&lt;/<span class="hljs-title">dd</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">dl</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;on_tab_content(&apos;comment&apos;)&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;tab_content&quot;</span> <span class="hljs-attribute">:class</span>=<span class="hljs-value">&quot;tab_content.comment?&apos;current&apos;:&apos;&apos;&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;judge_list_con&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;judge_list fl&quot;</span> <span class="hljs-attribute">v-for</span>=<span class="hljs-value">&quot;comment in comments&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;user_info fl&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-title">b</span>&gt;</span>[[comment.username]]<span class="hljs-tag">&lt;/<span class="hljs-title">b</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;judge_info fl&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">:class</span>=<span class="hljs-value">&quot;comment.score_class&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;judge_detail&quot;</span>&gt;</span>[[comment.comment]]<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> @<span class="hljs-attribute">click</span>=<span class="hljs-value">&quot;on_tab_content(&apos;service&apos;)&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;tab_content&quot;</span> <span class="hljs-attribute">:class</span>=<span class="hljs-value">&quot;tab_content.service?&apos;current&apos;:&apos;&apos;&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">dl</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">dt</span>&gt;</span>&#x552E;&#x540E;&#x670D;&#x52A1;&#xFF1A;<span class="hljs-tag">&lt;/<span class="hljs-title">dt</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-title">dd</span>&gt;</span>{{ goods.desc_service|safe }}<span class="hljs-tag">&lt;/<span class="hljs-title">dd</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-title">dl</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;footer&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;foot_link&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;#&quot;</span>&gt;</span>&#x5173;&#x4E8E;&#x6211;&#x4EEC;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>|<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;#&quot;</span>&gt;</span>&#x8054;&#x7CFB;&#x6211;&#x4EEC;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>|<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;#&quot;</span>&gt;</span>&#x62DB;&#x8058;&#x4EBA;&#x624D;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>|<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;#&quot;</span>&gt;</span>&#x53CB;&#x60C5;&#x94FE;&#x63A5;<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>CopyRight &#xA9; 2016 &#x5317;&#x4EAC;&#x7F8E;&#x591A;&#x5546;&#x4E1A;&#x80A1;&#x4EFD;&#x6709;&#x9650;&#x516C;&#x53F8; All Rights Reserved<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>&#x7535;&#x8BDD;&#xFF1A;010-****888    &#x4EAC;ICP&#x5907;*******8&#x53F7;<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="handlebars"><span class="xml">
+        var price = </span><span class="hljs-expression">{{<span class="hljs-variable">sku.price</span>}}</span><span class="xml">;
+        var cat = </span><span class="hljs-expression">{{ <span class="hljs-variable">goods.category</span>3<span class="hljs-variable">.id</span> }}</span><span class="xml">;
+    </span></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;/js/detail.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<h4 id="&#x6548;&#x679C;&#x6F14;&#x793A;">&#x6548;&#x679C;&#x6F14;&#x793A;:</h4>
+<p>&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5728; celery &#x4E2D;&#x914D;&#x7F6E;&#x4E86;&#x5F53;&#x524D;&#x7684;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;, &#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x7740;&#x8C03;&#x7528;&#x4E00;&#x4E0B;, &#x67E5;&#x770B;&#x662F;&#x5426;&#x80FD;&#x591F;&#x751F;&#x6210; detail &#x9875;&#x9762;&#x7684;&#x9759;&#x6001;&#x6587;&#x4EF6;: </p>
+<h5 id="&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x884C;">&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x884C;:</h5>
+<pre><code class="lang-shell"># &#x7B2C;&#x4E00;&#x6B65;, &#x8FDB;&#x5165; shell:
+python manage.py shell
+
+# &#x7B2C;&#x4E8C;&#x6B65;, &#x5BFC;&#x5165; celery &#x4EFB;&#x52A1;&#x4E2D;&#x7684;&#x51FD;&#x6570;:
+from celery_tasks.html.tasks import generate_static_sku_detail_html
+
+# &#x7B2C;&#x4E09;&#x6B65;, &#x5C06;&#x8BE5;&#x51FD;&#x6570;&#x6DFB;&#x52A0;&#x5230; celery &#x961F;&#x5217;&#x4E2D;: 
+generate_static_sku_detail_html.delay(1)
+</code></pre>
+<p>&#x5982;&#x56FE;&#x6240;&#x793A;: </p>
+<p><img src="images/image-20190202155922802.png" alt="image-20190202155922802"></p>
+<h5 id="&#x6253;&#x5F00;&#x53E6;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x884C;">&#x6253;&#x5F00;&#x53E6;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x884C;:</h5>
+<p>&#x8C03;&#x7528; celery &#x7684;&#x6267;&#x884C;&#x8005;( worker ) : </p>
+<pre><code class="lang-python">celery -A celery_tasks.main worker -l info
+</code></pre>
+<p><img src="images/image-20190202160334470.png" alt="image-20190202160334470"></p>
+<p>&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;, &#x5F53;&#x524D;&#x7684;&#x6267;&#x884C;&#x8005;, &#x6267;&#x884C;&#x4E86;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;: &#x5E76;&#x4E14;&#x8FD8;&#x5728;&#x524D;&#x7AEF;&#x7684; goods &#x76EE;&#x5F55;&#x4E2D;&#x751F;&#x6210;&#x4E86;&#x4E00;&#x4E2A; 1.html &#x7684;&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x9759;&#x6001;&#x6587;&#x4EF6;. </p>
+<p>&#x5982;&#x4E0B;&#x6240;&#x793A;: </p>
+<p><img src="images/image-20190202161625209.png" alt="image-20190202161625209"></p>
+<p>&#x8FD9;&#x65F6;, &#x901A;&#x8FC7;&#x6D4F;&#x89C8;&#x5668;&#x67E5;&#x770B;&#x751F;&#x6210;&#x7684;&#x9875;&#x9762;:</p>
+<pre><code>http://127.0.0.1:8080/goods/1.html
+</code></pre><p>&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;, &#x53EF;&#x80FD;&#x8BBF;&#x95EE;&#x4E0D;&#x5230;, &#x539F;&#x56E0;&#x662F;&#x65B0;&#x751F;&#x6210;&#x7684;&#x9875;&#x9762;&#x4E2D;, &#x8C03;&#x7528;&#x4E86; js &#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x4E00;&#x4E2A; detail.js &#x6587;&#x4EF6;.</p>
+<p>&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728; js&#x76EE;&#x5F55; &#x4E2D;&#x65B0;&#x589E; detail.js &#x540E;. ( &#x4E0B;&#x9762;&#x6709;&#x4EE3;&#x7801; )</p>
+<p>&#x5C31;&#x80FD;&#x591F;&#x6B63;&#x5E38;&#x8BBF;&#x95EE;&#x5230;: </p>
+<p><img src="images/image-20190202161929468.png" alt="image-20190202161929468"></p>
+<h5 id="&#x9700;&#x8981;&#x5728;-js-&#x76EE;&#x5F55;&#x4E2D;-&#x65B0;&#x589E;&#x7684;-detailjs-&#x6587;&#x4EF6;">&#x9700;&#x8981;&#x5728; js &#x76EE;&#x5F55;&#x4E2D; &#x65B0;&#x589E;&#x7684; detail.js &#x6587;&#x4EF6;:</h5>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue({
+    el: <span class="hljs-string">&apos;#app&apos;</span>,
+    delimiters: [<span class="hljs-string">&apos;[[&apos;</span>, <span class="hljs-string">&apos;]]&apos;</span>],
+    data: {
+        host,
+        username: sessionStorage.username || localStorage.username,
+        user_id: sessionStorage.user_id || localStorage.user_id,
+        token: sessionStorage.token || localStorage.token,
+        tab_content: {
+            detail: <span class="hljs-literal">true</span>,
+            pack: <span class="hljs-literal">false</span>,
+            comment: <span class="hljs-literal">false</span>,
+            service: <span class="hljs-literal">false</span>
+        },
+        sku_id: <span class="hljs-string">&apos;&apos;</span>,
+        sku_count: <span class="hljs-number">1</span>,
+        sku_price: price,
+        cart_total_count: <span class="hljs-number">0</span>, <span class="hljs-comment">// &#x8D2D;&#x7269;&#x8F66;&#x603B;&#x6570;&#x91CF;</span>
+        cart: [], <span class="hljs-comment">// &#x8D2D;&#x7269;&#x8F66;&#x6570;&#x636E;</span>
+        hots: [], <span class="hljs-comment">// &#x70ED;&#x9500;&#x5546;&#x54C1;</span>
+        cat: cat, <span class="hljs-comment">// &#x5546;&#x54C1;&#x7C7B;&#x522B;</span>
+        comments: [], <span class="hljs-comment">// &#x8BC4;&#x8BBA;&#x4FE1;&#x606F;</span>
+        score_classes: {
+            <span class="hljs-number">1</span>: <span class="hljs-string">&apos;stars_one&apos;</span>,
+            <span class="hljs-number">2</span>: <span class="hljs-string">&apos;stars_two&apos;</span>,
+            <span class="hljs-number">3</span>: <span class="hljs-string">&apos;stars_three&apos;</span>,
+            <span class="hljs-number">4</span>: <span class="hljs-string">&apos;stars_four&apos;</span>,
+            <span class="hljs-number">5</span>: <span class="hljs-string">&apos;stars_five&apos;</span>,
+        }
+    },
+    computed: {
+        sku_amount: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-keyword">return</span> (<span class="hljs-keyword">this</span>.sku_price * <span class="hljs-keyword">this</span>.sku_count).toFixed(<span class="hljs-number">2</span>);
+        }
+    },
+    mounted: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x7528;&#x6237;&#x6D4F;&#x89C8;&#x5386;&#x53F2;&#x8BB0;&#x5F55;</span>
+        <span class="hljs-keyword">this</span>.get_sku_id();
+
+        <span class="hljs-keyword">this</span>.get_cart();
+        <span class="hljs-keyword">this</span>.get_hot_goods();
+        <span class="hljs-keyword">this</span>.get_comments();
+    },
+    methods: {
+        <span class="hljs-comment">// &#x9000;&#x51FA;</span>
+        logout: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            sessionStorage.clear();
+            localStorage.clear();
+            location.href = <span class="hljs-string">&apos;/login.html&apos;</span>;
+        },
+        <span class="hljs-comment">// &#x63A7;&#x5236;&#x9875;&#x9762;&#x6807;&#x7B7E;&#x9875;&#x5C55;&#x793A;</span>
+        on_tab_content: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>{
+            <span class="hljs-keyword">this</span>.tab_content = {
+                detail: <span class="hljs-literal">false</span>,
+                pack: <span class="hljs-literal">false</span>,
+                comment: <span class="hljs-literal">false</span>,
+                service: <span class="hljs-literal">false</span>
+            };
+            <span class="hljs-keyword">this</span>.tab_content[name] = <span class="hljs-literal">true</span>;
+        },
+        <span class="hljs-comment">// &#x4ECE;&#x8DEF;&#x5F84;&#x4E2D;&#x63D0;&#x53D6;sku_id</span>
+        get_sku_id: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-keyword">var</span> re = <span class="hljs-regexp">/^\/goods\/(\d+).html$/</span>;
+            <span class="hljs-keyword">this</span>.sku_id = <span class="hljs-built_in">document</span>.location.pathname.match(re)[<span class="hljs-number">1</span>];
+        },
+        <span class="hljs-comment">// &#x51CF;&#x5C0F;&#x6570;&#x503C;</span>
+        on_minus: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.sku_count &gt; <span class="hljs-number">1</span>) {
+                <span class="hljs-keyword">this</span>.sku_count--;
+            }
+        },
+        <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x8D2D;&#x7269;&#x8F66;</span>
+        add_cart: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+        },
+        <span class="hljs-comment">// &#x83B7;&#x53D6;&#x8D2D;&#x7269;&#x8F66;&#x6570;&#x636E;</span>
+        get_cart: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+        },
+        <span class="hljs-comment">// &#x83B7;&#x53D6;&#x70ED;&#x9500;&#x5546;&#x54C1;&#x6570;&#x636E;</span>
+        get_hot_goods: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+        },
+        <span class="hljs-comment">// &#x83B7;&#x53D6;&#x5546;&#x54C1;&#x8BC4;&#x4EF7;&#x4FE1;&#x606F;</span>
+        get_comments: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+        }
+    }
+});
+</code></pre>
+<h3 id="&#x81EA;&#x52A8;&#x89E6;&#x53D1;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x6267;&#x884C;">&#x81EA;&#x52A8;&#x89E6;&#x53D1;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x6267;&#x884C;</h3>
+<blockquote>
+<p>&#x6211;&#x4EEC;&#x751F;&#x6210; detail.html &#x6587;&#x4EF6;&#x7684;&#x51FD;&#x6570;&#x662F;&#x5199;&#x5728; celery_tasks &#x91CC;&#x9762;&#x7684;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x8981;&#x51B3;&#x5B9A;&#x4EC0;&#x4E48;&#x65F6;&#x5019;, &#x89E6;&#x53D1; celery &#x7684;&#x5F02;&#x6B65;&#x6267;&#x884C;</p>
+<p>&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x89E6;&#x53D1;&#x5462;?</p>
+<p><strong>&#x8FD0;&#x8425;&#x4EBA;&#x5458;&#x5728; Admin&#x7AD9;&#x70B9; &#x4FEE;&#x6539;&#x5E76;&#x4FDD;&#x5B58;&#x4E86;&#x5546;&#x54C1;&#x4FE1;&#x606F;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x89E6;&#x53D1;&#x751F;&#x6210;&#x5546;&#x54C1;&#x9759;&#x6001;&#x9875;&#x7684;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;,&#x4F7F;&#x5176;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684; detail.html &#x6587;&#x4EF6;</strong></p>
+</blockquote>
+<p>&#x5728; Admin&#x7AD9;&#x70B9; &#x4FDD;&#x5B58;&#x6216;&#x5220;&#x9664;&#x6570;&#x636E;&#x65F6;&#xFF0C;Django &#x662F;&#x8C03;&#x7528;&#x7684; Admin&#x7AD9;&#x70B9; &#x7BA1;&#x7406;&#x5668;&#x7C7B;&#x7684; <strong>save_model( )</strong> &#x65B9;&#x6CD5;&#x548C; <strong>delete_model( )</strong> &#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x91CD;&#x65B0;&#x5B9E;&#x73B0;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x8C03;&#x7528;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x5373;&#x53EF;&#x3002;</p>
+<p>&#x7F16;&#x8F91; goods / admin.py</p>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin
+<span class="hljs-keyword">from</span> goods <span class="hljs-keyword">import</span> models
+
+<span class="hljs-comment"># &#x5728; admin.py &#x6587;&#x4EF6;&#x4E2D;, &#x5B9A;&#x4E49;&#x4E00;&#x4E2A; admin &#x7BA1;&#x7406;&#x7C7B;, &#x7EE7;&#x627F;&#x81EA; admin.ModelAdmin</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SKUAdmin</span><span class="hljs-params">(admin.ModelAdmin)</span>:</span>
+    <span class="hljs-comment"># &#x5728;&#x7BA1;&#x7406;&#x7C7B;&#x4E2D;, &#x91CD;&#x5199; save_model &#x51FD;&#x6570;</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">save_model</span><span class="hljs-params">(self, request, obj, form, change)</span>:</span>
+        <span class="hljs-comment"># &#x5C06;&#x7528;&#x6237;&#x5728; admin&#x7AD9;&#x70B9; &#x7684;&#x64CD;&#x4F5C;&#x4FDD;&#x5B58;.</span>
+        obj.save()
+
+        <span class="hljs-comment"># &#x8C03;&#x7528;&#x6211;&#x4EEC;&#x7684; celery &#x4EE3;&#x7801;, &#x89E6;&#x53D1;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;</span>
+        <span class="hljs-comment"># &#x5BFC;&#x5165; html &#x4EFB;&#x52A1;&#x4E2D;&#x7684;&#x51FD;&#x6570;</span>
+        <span class="hljs-keyword">from</span> celery_tasks.html.tasks <span class="hljs-keyword">import</span> generate_static_sku_detail_html
+        <span class="hljs-comment"># &#x5C06;&#x51FD;&#x6570;&#x52A0;&#x5165;&#x5230;&#x4E2D;&#x95F4;&#x4EBA;&#x961F;&#x5217;&#x4E2D;, &#x8FDB;&#x884C;&#x6267;&#x884C;.</span>
+        generate_static_sku_detail_html.delay(obj.id)
+
+<span class="hljs-comment"># &#x4E0B;&#x9762;&#x7684;&#x64CD;&#x4F5C;&#x7C7B;&#x4F3C;&#x4E0A;&#x9762;&#x7684;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SKUSpecificationAdmin</span><span class="hljs-params">(admin.ModelAdmin)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">save_model</span><span class="hljs-params">(self, request, obj, form, change)</span>:</span>
+        obj.save()
+        <span class="hljs-keyword">from</span> celery_tasks.html.tasks <span class="hljs-keyword">import</span> generate_static_sku_detail_html
+        generate_static_sku_detail_html.delay(obj.sku.id)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete_model</span><span class="hljs-params">(self, request, obj)</span>:</span>
+        sku_id = obj.sku.id
+        obj.delete()
+        <span class="hljs-keyword">from</span> celery_tasks.html.tasks <span class="hljs-keyword">import</span> generate_static_sku_detail_html
+        generate_static_sku_detail_html.delay(sku_id)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SKUImageAdmin</span><span class="hljs-params">(admin.ModelAdmin)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">save_model</span><span class="hljs-params">(self, request, obj, form, change)</span>:</span>
+        obj.save()
+        <span class="hljs-keyword">from</span> celery_tasks.html.tasks <span class="hljs-keyword">import</span> generate_static_sku_detail_html
+        generate_static_sku_detail_html.delay(obj.sku.id)
+
+        <span class="hljs-comment"># &#x8BBE;&#x7F6E;SKU&#x9ED8;&#x8BA4;&#x56FE;&#x7247;</span>
+        sku = obj.sku
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> sku.default_image_url:
+            sku.default_image_url = obj.image.url
+            sku.save()
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete_model</span><span class="hljs-params">(self, request, obj)</span>:</span>
+        sku_id = obj.sku.id
+        obj.delete()
+        <span class="hljs-keyword">from</span> celery_tasks.html.tasks <span class="hljs-keyword">import</span> generate_static_sku_detail_html
+        generate_static_sku_detail_html.delay(sku_id)
+
+
+admin.site.register(models.GoodsCategory)
+admin.site.register(models.GoodsChannel)
+admin.site.register(models.Goods)
+admin.site.register(models.Brand)
+admin.site.register(models.GoodsSpecification)
+admin.site.register(models.SpecificationOption)
+admin.site.register(models.SKU, SKUAdmin)
+admin.site.register(models.SKUSpecification, SKUSpecificationAdmin)
+admin.site.register(models.SKUImage, SKUImageAdmin)
+</code></pre>
+<h3 id="&#x6848;&#x4F8B;&#x6F14;&#x793A;">&#x6848;&#x4F8B;&#x6F14;&#x793A;:</h3>
+<p>&#x6211;&#x4EEC;&#x4E00;&#x65E6;&#x8FD9;&#x6837;&#x4FEE;&#x6539;&#x6210;&#x529F;&#x4EE5;&#x540E;, &#x518D;&#x6B21;&#x8FDB;&#x5165;&#x5230; admin &#x540E;&#x53F0;&#x7BA1;&#x7406;&#x7AD9;&#x70B9;&#x4E2D;:</p>
+<p><img src="images/image-20190202164020839.png" alt="image-20190202164020839"></p>
+<blockquote>
+<p>&#x4FEE;&#x6539;&#x8FD9;&#x91CC;&#x7684;&#x9875;&#x9762;&#x5143;&#x7D20;: </p>
+</blockquote>
+<p><img src="images/image-20190202164129887.png" alt="image-20190202164129887"></p>
+<p>&#x4F1A;&#x53D1;&#x73B0;, celery &#x7684;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x8005;&#x88AB;&#x8C03;&#x7528;&#x4E86; : </p>
+<p><img src="images/image-20190202164209272.png" alt="image-20190202164209272"></p>
+<p>&#x800C;&#x4E14;, goods &#x76EE;&#x5F55;&#x4E2D;, &#x4E5F;&#x6709;&#x65B0;&#x7684;&#x9759;&#x6001;&#x9875;&#x9762;&#x751F;&#x6210;: </p>
+<p><img src="images/image-20190202164310159.png" alt="image-20190202164310159"></p>
+<p>&#x8FD9;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x6700;&#x65E9;&#x8BF4;&#x7684;: </p>
+<p><img src="images/image-20190202153831594.png" alt="image-20190202153831594"></p>
+<h2 id="&#x4E00;&#x6B21;&#x6027;&#x751F;&#x6210;&#x6240;&#x6709;&#x9875;&#x9762;">&#x4E00;&#x6B21;&#x6027;&#x751F;&#x6210;&#x6240;&#x6709;&#x9875;&#x9762;</h2>
+<blockquote>
+<p>&#x9664;&#x4E86;&#x4E0A;&#x9762;&#x7684;&#x751F;&#x6210;&#x65B9;&#x5F0F;&#x4EE5;&#x5916;, &#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4E00;&#x6B21;&#x6027;&#x7684;&#x5C06;&#x6240;&#x6709;&#x7684;&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x5168;&#x90E8;&#x751F;&#x6210;&#x51FA;&#x6765;. </p>
+<p>&#x6240;&#x6709;&#x7684;&#x5546;&#x54C1;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x4F9D;&#x6B21;&#x751F;&#x6210;&#x9759;&#x6001;&#x9875;&#x9762;,&#x975E;&#x5E38;&#x8D39;&#x65F6;, &#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA9;&#x5176;&#x4E00;&#x6B21;&#x6027;&#x7684;&#x5168;&#x90E8;&#x751F;&#x6210;&#x51FA;&#x6765;.</p>
+</blockquote>
+<h5 id="&#x5229;&#x7528;&#x811A;&#x672C;&#x5DE5;&#x5177;">&#x5229;&#x7528;&#x811A;&#x672C;&#x5DE5;&#x5177;</h5>
+<blockquote>
+<p>&#x6211;&#x4EEC;&#x5728; scripts &#x76EE;&#x5F55;&#x4E2D; &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x811A;&#x672C;&#x6587;&#x4EF6;, &#x540D;&#x79F0;&#x53EB;&#x505A;:  regenerate_detail_html.py</p>
+<p>&#x8BE5;&#x811A;&#x672C;&#x4E00;&#x65E6;&#x6267;&#x884C;, &#x5C31;&#x4F1A;&#x5C06;&#x6240;&#x6709;&#x7684;&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x90FD;&#x751F;&#x6210;&#x51FA;&#x6765;. </p>
+</blockquote>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x5BFC;&#x5165;&#x6240;&#x9700;&#x8981;&#x7684;&#x4F9D;&#x8D56;&#x5305;</span>
+<span class="hljs-keyword">from</span> django.template <span class="hljs-keyword">import</span> loader
+<span class="hljs-keyword">from</span> django.conf <span class="hljs-keyword">import</span> settings
+<span class="hljs-keyword">from</span> goods.utils <span class="hljs-keyword">import</span> get_categories
+<span class="hljs-keyword">from</span> goods.models <span class="hljs-keyword">import</span> SKU
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#x5546;&#x54C1;&#x4FE1;&#x606F;</span>
+    skus = SKU.objects.all()
+    <span class="hljs-comment"># &#x904D;&#x5386;&#x62FF;&#x51FA;&#x6240;&#x6709;&#x7684;&#x5546;&#x54C1;: </span>
+    <span class="hljs-keyword">for</span> sku <span class="hljs-keyword">in</span> skus:
+        print(sku.id)
+        <span class="hljs-comment"># &#x8C03;&#x7528;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5728; celery_tasks.html.tasks &#x4E2D;&#x5199;&#x7684;&#x751F;&#x6210;&#x5546;&#x54C1;&#x9759;&#x6001;&#x9875;&#x9762;&#x7684;&#x65B9;&#x6CD5;:</span>
+        <span class="hljs-comment"># &#x6211;&#x4EEC;&#x6700;&#x597D;&#x628A;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5355;&#x72EC;&#x590D;&#x5236;&#x8FC7;&#x6765;, &#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x4E0D;&#x4F9D;&#x9760; celery, &#x5426;&#x5219;&#x5FC5;&#x987B;&#x8981;&#x5F00;&#x542F;celery</span>
+        generate_static_sku_detail_html(sku.id)
+</code></pre>
+<p>&#x6DFB;&#x52A0;&#x751F;&#x6210;&#x9759;&#x6001;&#x9875;&#x9762;&#x7684;&#x4EE3;&#x7801;. &#x8FD9;&#x4E2A;&#x4EE3;&#x7801;&#x548C; celery_tasks.html.tasks &#x91CC;&#x9762;&#x7684;&#x4E00;&#x6837;:</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x590D;&#x5236; celery_tasks.html.tasks &#x4E2D;&#x751F;&#x6210;&#x5546;&#x54C1;&#x9759;&#x6001;&#x9875;&#x9762;&#x7684;&#x51FD;&#x6570;:</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate_static_sku_detail_html</span><span class="hljs-params">(sku_id)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x751F;&#x6210;&#x9759;&#x6001;&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x9762;
+    :param sku_id: &#x5546;&#x54C1;sku id
+    &quot;&quot;&quot;</span>
+    <span class="hljs-comment"># &#x5546;&#x54C1;&#x5206;&#x7C7B;&#x83DC;&#x5355;</span>
+    categories = get_categories()
+
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x5F53;&#x524D;sku&#x7684;&#x4FE1;&#x606F;</span>
+    sku = SKU.objects.get(id=sku_id)
+    sku.images = sku.skuimage_set.all()
+
+    <span class="hljs-comment"># &#x9762;&#x5305;&#x5C51;&#x5BFC;&#x822A;&#x4FE1;&#x606F;&#x4E2D;&#x7684;&#x9891;&#x9053;</span>
+    goods = sku.goods
+    goods.channel = goods.category1.goodschannel_set.all()[<span class="hljs-number">0</span>]
+
+    <span class="hljs-comment"># &#x6784;&#x5EFA;&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x89C4;&#x683C;&#x952E;</span>
+    sku_specs = sku.skuspecification_set.order_by(<span class="hljs-string">&apos;spec_id&apos;</span>)
+    sku_key = []
+    <span class="hljs-keyword">for</span> spec <span class="hljs-keyword">in</span> sku_specs:
+        sku_key.append(spec.option.id)
+
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x6240;&#x6709;SKU</span>
+    skus = goods.sku_set.all()
+
+    <span class="hljs-comment"># &#x6784;&#x5EFA;&#x4E0D;&#x540C;&#x89C4;&#x683C;&#x53C2;&#x6570;&#xFF08;&#x9009;&#x9879;&#xFF09;&#x7684;sku&#x5B57;&#x5178;</span>
+    <span class="hljs-comment"># spec_sku_map = {</span>
+    <span class="hljs-comment">#     (&#x89C4;&#x683C;1&#x53C2;&#x6570;id, &#x89C4;&#x683C;2&#x53C2;&#x6570;id, &#x89C4;&#x683C;3&#x53C2;&#x6570;id, ...): sku_id,</span>
+    <span class="hljs-comment">#     (&#x89C4;&#x683C;1&#x53C2;&#x6570;id, &#x89C4;&#x683C;2&#x53C2;&#x6570;id, &#x89C4;&#x683C;3&#x53C2;&#x6570;id, ...): sku_id,</span>
+    <span class="hljs-comment">#     ...</span>
+    <span class="hljs-comment"># }</span>
+    spec_sku_map = {}
+    <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> skus:
+        <span class="hljs-comment"># &#x83B7;&#x53D6;sku&#x7684;&#x89C4;&#x683C;&#x53C2;&#x6570;</span>
+        s_specs = s.skuspecification_set.order_by(<span class="hljs-string">&apos;spec_id&apos;</span>)
+        <span class="hljs-comment"># &#x7528;&#x4E8E;&#x5F62;&#x6210;&#x89C4;&#x683C;&#x53C2;&#x6570;-sku&#x5B57;&#x5178;&#x7684;&#x952E;</span>
+        key = []
+        <span class="hljs-keyword">for</span> spec <span class="hljs-keyword">in</span> s_specs:
+            key.append(spec.option.id)
+        <span class="hljs-comment"># &#x5411;&#x89C4;&#x683C;&#x53C2;&#x6570;-sku&#x5B57;&#x5178;&#x6DFB;&#x52A0;&#x8BB0;&#x5F55;</span>
+        spec_sku_map[tuple(key)] = s.id
+
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x89C4;&#x683C;&#x4FE1;&#x606F;</span>
+    specs = goods.goodsspecification_set.order_by(<span class="hljs-string">&apos;id&apos;</span>)
+    <span class="hljs-comment"># &#x82E5;&#x5F53;&#x524D;sku&#x7684;&#x89C4;&#x683C;&#x4FE1;&#x606F;&#x4E0D;&#x5B8C;&#x6574;&#xFF0C;&#x5219;&#x4E0D;&#x518D;&#x7EE7;&#x7EED;</span>
+    <span class="hljs-keyword">if</span> len(sku_key) &lt; len(specs):
+        <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">for</span> index, spec <span class="hljs-keyword">in</span> enumerate(specs):
+        <span class="hljs-comment"># &#x590D;&#x5236;&#x5F53;&#x524D;sku&#x7684;&#x89C4;&#x683C;&#x952E;</span>
+        key = sku_key[:]
+        <span class="hljs-comment"># &#x8BE5;&#x89C4;&#x683C;&#x7684;&#x9009;&#x9879;</span>
+        options = spec.specificationoption_set.all()
+        <span class="hljs-keyword">for</span> option <span class="hljs-keyword">in</span> options:
+            <span class="hljs-comment"># &#x5728;&#x89C4;&#x683C;&#x53C2;&#x6570;sku&#x5B57;&#x5178;&#x4E2D;&#x67E5;&#x627E;&#x7B26;&#x5408;&#x5F53;&#x524D;&#x89C4;&#x683C;&#x7684;sku</span>
+            key[index] = option.id
+            option.sku_id = spec_sku_map.get(tuple(key))
+
+        spec.options = options
+
+    <span class="hljs-comment"># &#x6E32;&#x67D3;&#x6A21;&#x677F;&#xFF0C;&#x751F;&#x6210;&#x9759;&#x6001;html&#x6587;&#x4EF6;</span>
+    context = {
+        <span class="hljs-string">&apos;categories&apos;</span>: categories,
+        <span class="hljs-string">&apos;goods&apos;</span>: goods,
+        <span class="hljs-string">&apos;specs&apos;</span>: specs,
+        <span class="hljs-string">&apos;sku&apos;</span>: sku
+    }
+
+    template = loader.get_template(<span class="hljs-string">&apos;detail.html&apos;</span>)
+    html_text = template.render(context)
+    file_path = os.path.join(settings.GENERATED_STATIC_HTML_FILES_DIR, <span class="hljs-string">&apos;goods/&apos;</span>+str(sku_id)+<span class="hljs-string">&apos;.html&apos;</span>)
+    <span class="hljs-keyword">with</span> open(file_path, <span class="hljs-string">&apos;w&apos;</span>) <span class="hljs-keyword">as</span> f:
+        f.write(html_text)
+</code></pre>
+<p>&#x7ED9;&#x6587;&#x4EF6;&#x589E;&#x52A0;&#x6743;&#x9650;: </p>
+<pre><code class="lang-python">chmod  +x  regenerate_detail_html.py
+</code></pre>
+<p>&#x7136;&#x540E;&#x8FD0;&#x884C;&#x6587;&#x4EF6;: </p>
+<pre><code class="lang-python">./regenerate_detail_html.py
+</code></pre>
+<p>&#x7ED9;&#x6587;&#x4EF6;&#x589E;&#x52A0;&#x89E3;&#x91CA;&#x5668;, &#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x7684;&#x662F;  .py &#x6587;&#x4EF6;, &#x6240;&#x4EE5;&#x9700;&#x8981;&#x6709; python &#x89E3;&#x91CA;&#x5668;&#x624D;&#x80FD;&#x591F;&#x6267;&#x884C;&#x8BE5;&#x6587;&#x4EF6;:</p>
+<p>&#x5728;&#x6587;&#x4EF6;&#x7684;&#x6700;&#x4E0A;&#x65B9;&#x589E;&#x52A0;: </p>
+<pre><code>#!/usr/bin/env python
+</code></pre><p>&#x90FD;&#x8BBE;&#x7F6E;&#x597D;&#x4E86;&#x4E4B;&#x540E;, &#x6211;&#x4EEC;&#x8FD0;&#x884C;&#x8FD8;&#x662F;&#x4F1A;&#x51FA;&#x9519;. </p>
+<blockquote>
+<p><img src="images/image-20190202203400584.png" alt="image-20190202203400584"></p>
+</blockquote>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x4E86; django &#x9879;&#x76EE;&#x4E2D;&#x7684;&#x5185;&#x5BB9;, &#x6240;&#x4EE5;&#x9700;&#x8981;&#x8BA9; django &#x521D;&#x59CB;&#x5316;&#x4E00;&#x6B21;&#x624D;&#x53EF;&#x4EE5;: </p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> django
+django.setup()
+</code></pre>
+<p>&#x6DFB;&#x52A0;&#x4E4B;&#x540E;, &#x53D1;&#x73B0;&#x8FD8;&#x662F;&#x4E0D;&#x884C;, &#x8FD9;&#x6B21;&#x62A5;&#x7684;&#x9519;&#x8BEF;&#x5982;&#x4E0B;&#x6240;&#x793A;: </p>
+<p><img src="images/image-20190202204117759.png" alt="image-20190202204117759"></p>
+<p><img src="images/image-20190202204153009.png" alt="image-20190202204153009"></p>
+<p>&#x8FD9;&#x6B21;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x662F;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x914D;&#x7F6E;&#x9879;&#x76EE;&#x7684;&#x5168;&#x5C40;&#x73AF;&#x5883;&#x53D8;&#x91CF;: </p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> os
+<span class="hljs-comment"># &#x5224;&#x65AD;: &#x5982;&#x679C;&#x6CA1;&#x6709;&#x914D;&#x7F6E;&#x5168;&#x5C40;&#x73AF;&#x5883;&#x53D8;&#x91CF;, &#x5219;&#x5BFC;&#x5165;&#x7CFB;&#x7EDF;&#x73AF;&#x5883;&#x53D8;&#x91CF;: </span>
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.getenv(<span class="hljs-string">&apos;DJANGO_SETTINGS_MODULE&apos;</span>):
+    os.environ[<span class="hljs-string">&apos;DJANGO_SETTINGS_MODULE&apos;</span>] = <span class="hljs-string">&apos;meiduo_mall.settings.dev&apos;</span>
+</code></pre>
+<p>&#x8FD9;&#x6B21;&#x6DFB;&#x52A0;&#x5B8C;&#x6210;&#x540E;, &#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x8FD8;&#x662F;&#x4F1A;&#x6709;&#x95EE;&#x9898;, &#x8FD9;&#x6B21;&#x7684;&#x95EE;&#x9898;&#x662F;&#x4E0A;&#x9762;&#x5BFC;&#x5165;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x5F15;&#x8D77;&#x7684;: </p>
+<p><img src="images/image-20190202204504930.png" alt="image-20190202204504930"></p>
+<blockquote>
+<p>&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;, &#x8FD9;&#x91CC;&#x7684; meiduo_mall.settings &#x627E;&#x4E0D;&#x5230;&#x4E86;. </p>
+</blockquote>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x628A; scripts &#x7684;&#x4E0A;&#x7EA7;&#x6DFB;&#x52A0;&#x5230;&#x641C;&#x7D22;&#x5305;&#x91CC;&#x53BB;: </p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> sys
+sys.path.insert(<span class="hljs-number">0</span>, <span class="hljs-string">&apos;../&apos;</span>)
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x4E86;:</p>
+<p><img src="images/image-20190202205622250.png" alt="image-20190202205622250"></p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x6700;&#x7EC8;&#x7684;&#x4EE3;&#x7801;&#x662F;: </p>
+<pre><code class="lang-python"><span class="hljs-comment">#!/usr/bin/env python</span>
+
+<span class="hljs-string">&quot;&quot;&quot;
+&#x6700;&#x4E0A;&#x9762;&#x7684;&#x6CE8;&#x91CA;&#x610F;&#x601D;&#x662F;: &#x4F7F;&#x7528; python &#x73AF;&#x5883;&#x6765;&#x6267;&#x884C;&#x5F53;&#x524D;&#x7684;&#x4EE3;&#x7801;
+&#x529F;&#x80FD;&#xFF1A;&#x624B;&#x52A8;&#x751F;&#x6210;&#x6240;&#x6709;SKU&#x7684;&#x9759;&#x6001;detail html&#x6587;&#x4EF6;
+&#x4F7F;&#x7528;&#x65B9;&#x6CD5;:   ./regenerate_detail_html.py
+&quot;&quot;&quot;</span>
+<span class="hljs-keyword">import</span> sys
+sys.path.insert(<span class="hljs-number">0</span>, <span class="hljs-string">&apos;../&apos;</span>)
+
+<span class="hljs-comment"># &#x8BBE;&#x7F6E;Django&#x8FD0;&#x884C;&#x6240;&#x4F9D;&#x8D56;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;</span>
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.getenv(<span class="hljs-string">&apos;DJANGO_SETTINGS_MODULE&apos;</span>):
+    os.environ[<span class="hljs-string">&apos;DJANGO_SETTINGS_MODULE&apos;</span>] = <span class="hljs-string">&apos;meiduo_mall.settings.dev&apos;</span>
+
+<span class="hljs-comment"># &#x8BA9;Django&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x521D;&#x59CB;&#x5316;</span>
+<span class="hljs-keyword">import</span> django
+django.setup()
+
+<span class="hljs-comment"># &#x5BFC;&#x5165;&#x6240;&#x9700;&#x8981;&#x7684;&#x4F9D;&#x8D56;&#x5305;</span>
+<span class="hljs-keyword">from</span> django.template <span class="hljs-keyword">import</span> loader
+<span class="hljs-keyword">from</span> django.conf <span class="hljs-keyword">import</span> settings
+<span class="hljs-keyword">from</span> goods.utils <span class="hljs-keyword">import</span> get_categories
+<span class="hljs-keyword">from</span> goods.models <span class="hljs-keyword">import</span> SKU
+
+<span class="hljs-comment"># &#x590D;&#x5236; celery_tasks.html.tasks &#x4E2D;&#x751F;&#x6210;&#x5546;&#x54C1;&#x9759;&#x6001;&#x9875;&#x9762;&#x7684;&#x51FD;&#x6570;:</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate_static_sku_detail_html</span><span class="hljs-params">(sku_id)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x751F;&#x6210;&#x9759;&#x6001;&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x9762;
+    :param sku_id: &#x5546;&#x54C1;sku id
+    &quot;&quot;&quot;</span>
+    <span class="hljs-comment"># &#x5546;&#x54C1;&#x5206;&#x7C7B;&#x83DC;&#x5355;</span>
+    categories = get_categories()
+
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x5F53;&#x524D;sku&#x7684;&#x4FE1;&#x606F;</span>
+    sku = SKU.objects.get(id=sku_id)
+    sku.images = sku.skuimage_set.all()
+
+    <span class="hljs-comment"># &#x9762;&#x5305;&#x5C51;&#x5BFC;&#x822A;&#x4FE1;&#x606F;&#x4E2D;&#x7684;&#x9891;&#x9053;</span>
+    goods = sku.goods
+    goods.channel = goods.category1.goodschannel_set.all()[<span class="hljs-number">0</span>]
+
+    <span class="hljs-comment"># &#x6784;&#x5EFA;&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x89C4;&#x683C;&#x952E;</span>
+    sku_specs = sku.skuspecification_set.order_by(<span class="hljs-string">&apos;spec_id&apos;</span>)
+    sku_key = []
+    <span class="hljs-keyword">for</span> spec <span class="hljs-keyword">in</span> sku_specs:
+        sku_key.append(spec.option.id)
+
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x6240;&#x6709;SKU</span>
+    skus = goods.sku_set.all()
+
+    <span class="hljs-comment"># &#x6784;&#x5EFA;&#x4E0D;&#x540C;&#x89C4;&#x683C;&#x53C2;&#x6570;&#xFF08;&#x9009;&#x9879;&#xFF09;&#x7684;sku&#x5B57;&#x5178;</span>
+    <span class="hljs-comment"># spec_sku_map = {</span>
+    <span class="hljs-comment">#     (&#x89C4;&#x683C;1&#x53C2;&#x6570;id, &#x89C4;&#x683C;2&#x53C2;&#x6570;id, &#x89C4;&#x683C;3&#x53C2;&#x6570;id, ...): sku_id,</span>
+    <span class="hljs-comment">#     (&#x89C4;&#x683C;1&#x53C2;&#x6570;id, &#x89C4;&#x683C;2&#x53C2;&#x6570;id, &#x89C4;&#x683C;3&#x53C2;&#x6570;id, ...): sku_id,</span>
+    <span class="hljs-comment">#     ...</span>
+    <span class="hljs-comment"># }</span>
+    spec_sku_map = {}
+    <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> skus:
+        <span class="hljs-comment"># &#x83B7;&#x53D6;sku&#x7684;&#x89C4;&#x683C;&#x53C2;&#x6570;</span>
+        s_specs = s.skuspecification_set.order_by(<span class="hljs-string">&apos;spec_id&apos;</span>)
+        <span class="hljs-comment"># &#x7528;&#x4E8E;&#x5F62;&#x6210;&#x89C4;&#x683C;&#x53C2;&#x6570;-sku&#x5B57;&#x5178;&#x7684;&#x952E;</span>
+        key = []
+        <span class="hljs-keyword">for</span> spec <span class="hljs-keyword">in</span> s_specs:
+            key.append(spec.option.id)
+        <span class="hljs-comment"># &#x5411;&#x89C4;&#x683C;&#x53C2;&#x6570;-sku&#x5B57;&#x5178;&#x6DFB;&#x52A0;&#x8BB0;&#x5F55;</span>
+        spec_sku_map[tuple(key)] = s.id
+
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x89C4;&#x683C;&#x4FE1;&#x606F;</span>
+    specs = goods.goodsspecification_set.order_by(<span class="hljs-string">&apos;id&apos;</span>)
+    <span class="hljs-comment"># &#x82E5;&#x5F53;&#x524D;sku&#x7684;&#x89C4;&#x683C;&#x4FE1;&#x606F;&#x4E0D;&#x5B8C;&#x6574;&#xFF0C;&#x5219;&#x4E0D;&#x518D;&#x7EE7;&#x7EED;</span>
+    <span class="hljs-keyword">if</span> len(sku_key) &lt; len(specs):
+        <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">for</span> index, spec <span class="hljs-keyword">in</span> enumerate(specs):
+        <span class="hljs-comment"># &#x590D;&#x5236;&#x5F53;&#x524D;sku&#x7684;&#x89C4;&#x683C;&#x952E;</span>
+        key = sku_key[:]
+        <span class="hljs-comment"># &#x8BE5;&#x89C4;&#x683C;&#x7684;&#x9009;&#x9879;</span>
+        options = spec.specificationoption_set.all()
+        <span class="hljs-keyword">for</span> option <span class="hljs-keyword">in</span> options:
+            <span class="hljs-comment"># &#x5728;&#x89C4;&#x683C;&#x53C2;&#x6570;sku&#x5B57;&#x5178;&#x4E2D;&#x67E5;&#x627E;&#x7B26;&#x5408;&#x5F53;&#x524D;&#x89C4;&#x683C;&#x7684;sku</span>
+            key[index] = option.id
+            option.sku_id = spec_sku_map.get(tuple(key))
+
+        spec.options = options
+
+    <span class="hljs-comment"># &#x6E32;&#x67D3;&#x6A21;&#x677F;&#xFF0C;&#x751F;&#x6210;&#x9759;&#x6001;html&#x6587;&#x4EF6;</span>
+    context = {
+        <span class="hljs-string">&apos;categories&apos;</span>: categories,
+        <span class="hljs-string">&apos;goods&apos;</span>: goods,
+        <span class="hljs-string">&apos;specs&apos;</span>: specs,
+        <span class="hljs-string">&apos;sku&apos;</span>: sku
+    }
+
+    template = loader.get_template(<span class="hljs-string">&apos;detail.html&apos;</span>)
+    html_text = template.render(context)
+    file_path = os.path.join(settings.GENERATED_STATIC_HTML_FILES_DIR, <span class="hljs-string">&apos;goods/&apos;</span>+str(sku_id)+<span class="hljs-string">&apos;.html&apos;</span>)
+    <span class="hljs-keyword">with</span> open(file_path, <span class="hljs-string">&apos;w&apos;</span>) <span class="hljs-keyword">as</span> f:
+        f.write(html_text)
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#x5546;&#x54C1;&#x4FE1;&#x606F;</span>
+    skus = SKU.objects.all()
+    <span class="hljs-comment"># &#x904D;&#x5386;&#x62FF;&#x51FA;&#x6240;&#x6709;&#x7684;&#x5546;&#x54C1;: </span>
+    <span class="hljs-keyword">for</span> sku <span class="hljs-keyword">in</span> skus:
+        print(sku.id)
+        <span class="hljs-comment"># &#x8C03;&#x7528;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5728; celery_tasks.html.tasks &#x4E2D;&#x5199;&#x7684;&#x751F;&#x6210;&#x5546;&#x54C1;&#x9759;&#x6001;&#x9875;&#x9762;&#x7684;&#x65B9;&#x6CD5;:</span>
+        <span class="hljs-comment"># &#x6211;&#x4EEC;&#x6700;&#x597D;&#x628A;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5355;&#x72EC;&#x590D;&#x5236;&#x8FC7;&#x6765;, &#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x4E0D;&#x4F9D;&#x9760; celery, &#x5426;&#x5219;&#x5FC5;&#x987B;&#x8981;&#x5F00;&#x542F;celery</span>
+        generate_static_sku_detail_html(sku.id)
+</code></pre>
+<p>&#x6548;&#x679C;&#x4E3A;: </p>
+<p><img src="images/image-20190202205653395.png" alt="image-20190202205653395"></p>
+<h3 id="&#x8865;&#x5145;">&#x8865;&#x5145;:</h3>
+<blockquote>
+<p>&#x4E0A;&#x4F20;&#x6587;&#x4EF6;&#x5230; FDFS&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x63D0;&#x793A;&#x7A7A;&#x95F4;&#x4E0D;&#x8DB3;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;:</p>
+</blockquote>
+<p><img src="images/image-20190202210933299.png" alt="image-20190202210933299"></p>
+<p><img src="images/image-20190202210953594.png" alt="image-20190202210953594"></p>
+<p><img src="images/image-20190202211015061.png" alt="image-20190202211015061"></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../project/day04/02-定时任务.html" class="navigation navigation-prev " aria-label="Previous page: 定时任务"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../project/day04/04-用户浏览历史记录.html" class="navigation navigation-next " aria-label="Next page: 用户浏览历史记录"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
