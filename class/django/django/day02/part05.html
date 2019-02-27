@@ -1,0 +1,2807 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>类视图和中间件 | Introduction</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../day03/part08.html" />
+    
+    
+    <link rel="prev" href="../day02/part04.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="2.5"
+        data-chapter-title="类视图和中间件"
+        data-filepath="day02/part05.md"
+        data-basepath=".."
+        data-revision="Sun Feb 17 2019 19:01:21 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="day01/part00.html">
+            
+                
+                    <a href="../day01/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        第一部分
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="day01/part01.html">
+            
+                
+                    <a href="../day01/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        web框架介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="day01/part02.html">
+            
+                
+                    <a href="../day01/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Django框架介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="day01/part03.html">
+            
+                
+                    <a href="../day01/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        环境搭建
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="day01/part04.html">
+            
+                
+                    <a href="../day01/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        创建Django项目工程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="day01/part05.html">
+            
+                
+                    <a href="../day01/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        Pycharm启动项目
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="day01/part06.html">
+            
+                
+                    <a href="../day01/part06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        创建子应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="day01/part07.html">
+            
+                
+                    <a href="../day01/part07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        创建视图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="day01/part08.html">
+            
+                
+                    <a href="../day01/part08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                        项目配置, 静态文件和路由
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="day01/part09.html">
+            
+                
+                    <a href="../day01/part09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.9.</b>
+                        
+                        路由说明
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="day01/part10.html">
+            
+                
+                    <a href="../day01/part10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.10.</b>
+                        
+                        App应用配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="day02/part00.html">
+            
+                
+                    <a href="../day02/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        第二部分
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="day02/part01.html">
+            
+                
+                    <a href="../day02/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        请求
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="day02/part02.html">
+            
+                
+                    <a href="../day02/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        响应
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="day02/part03.html">
+            
+                
+                    <a href="../day02/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Cookie
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="day02/part04.html">
+            
+                
+                    <a href="../day02/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        Session
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.5" data-path="day02/part05.html">
+            
+                
+                    <a href="../day02/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        类视图和中间件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="day03/part08.html">
+            
+                
+                    <a href="../day03/part08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        模板
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="day03/part00.html">
+            
+                
+                    <a href="../day03/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第三部分
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="day03/part01.html">
+            
+                
+                    <a href="../day03/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        数据库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="day03/part02.html">
+            
+                
+                    <a href="../day03/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="day03/part03.html">
+            
+                
+                    <a href="../day03/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        定义模型类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="day03/part04.html">
+            
+                
+                    <a href="../day03/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        演示工具使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="day03/part05.html">
+            
+                
+                    <a href="../day03/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        数据库操作: 增删改查
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="day03/part06.html">
+            
+                
+                    <a href="../day03/part06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        查询集
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="day03/part10.html">
+            
+                
+                    <a href="../day03/part10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        Admin
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="day03/part11.html">
+            
+                
+                    <a href="../day03/part11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        调整列表页展示
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="day03/part12.html">
+            
+                
+                    <a href="../day03/part12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        调整编辑页展示
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="day03/part13.html">
+            
+                
+                    <a href="../day03/part13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                        调整站点信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="day03/part14.html">
+            
+                
+                    <a href="../day03/part14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.11.</b>
+                        
+                        上传图片
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="day04/part00.html">
+            
+                
+                    <a href="../day04/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        引入Django REST framework
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="day04/part01.html">
+            
+                
+                    <a href="../day04/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Web应用模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="day04/part02.html">
+            
+                
+                    <a href="../day04/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        RESTful设计方法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="day04/part03.html">
+            
+                
+                    <a href="../day04/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        使用Django开发REST 接口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="day04/part04.html">
+            
+                
+                    <a href="../day04/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        明确REST接口开发的核心任务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="day04/part05.html">
+            
+                
+                    <a href="../day04/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        Django REST framework 简介
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="day05/part00.html">
+            
+                
+                    <a href="../day05/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        DRF工程搭建
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="day05/part01.html">
+            
+                
+                    <a href="../day05/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        环境安装与配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="day05/part02.html">
+            
+                
+                    <a href="../day05/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        见识DRF的魅力
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="day06/part00.html">
+            
+                
+                    <a href="../day06/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Serializer序列化器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="day06/part01.html">
+            
+                
+                    <a href="../day06/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        定义Serializer
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="day06/part02.html">
+            
+                
+                    <a href="../day06/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        序列化使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="day06/part03.html">
+            
+                
+                    <a href="../day06/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        反序列化使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="day06/part04.html">
+            
+                
+                    <a href="../day06/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        模型类序列化器ModelSerializer
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="day07/part00.html">
+            
+                
+                    <a href="../day07/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        视图
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="day07/part01.html">
+            
+                
+                    <a href="../day07/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        Request 与 Response
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="day07/part02.html">
+            
+                
+                    <a href="../day07/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        视图概览
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="day07/part03.html">
+            
+                
+                    <a href="../day07/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        视图说明
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="day07/part04.html">
+            
+                
+                    <a href="../day07/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        视图集ViewSet
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="day07/part05.html">
+            
+                
+                    <a href="../day07/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        路由Routers
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="day08/part00.html">
+            
+                
+                    <a href="../day08/part00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        其他功能
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="day08/part01.html">
+            
+                
+                    <a href="../day08/part01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        认证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="day08/part02.html">
+            
+                
+                    <a href="../day08/part02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        权限
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="day08/part03.html">
+            
+                
+                    <a href="../day08/part03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        限流
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="day08/part04.html">
+            
+                
+                    <a href="../day08/part04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        过滤
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="day08/part05.html">
+            
+                
+                    <a href="../day08/part05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="day08/part06.html">
+            
+                
+                    <a href="../day08/part06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        分页
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="day08/part07.html">
+            
+                
+                    <a href="../day08/part07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        异常处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.8" data-path="day08/part08.html">
+            
+                
+                    <a href="../day08/part08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.8.</b>
+                        
+                        自动生成接口文档
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" >
+            
+            <span><b>9.</b> 美多商城</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="project/day01/1.1商业模式介绍.html">
+            
+                
+                    <a href="../project/day01/1.1商业模式介绍.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        商业模式介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="project/day01/1.2开发流程.html">
+            
+                
+                    <a href="../project/day01/1.2开发流程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        开发流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="project/day01/1.3需求分析.html">
+            
+                
+                    <a href="../project/day01/1.3需求分析.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        需求分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="project/day01/1.4项目架构.html">
+            
+                
+                    <a href="../project/day01/1.4项目架构.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        项目架构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="project/day01/1.5创建工程.html">
+            
+                
+                    <a href="../project/day01/1.5创建工程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        创建工程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="project/day01/1.6配置.html">
+            
+                
+                    <a href="../project/day01/1.6配置.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" >
+            
+            <span><b>10.</b> 用户部分</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="project/day02/2.1用户模型类.html">
+            
+                
+                    <a href="../project/day02/2.1用户模型类.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        用户模型类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="project/day02/2.2注册.html">
+            
+                
+                    <a href="../project/day02/2.2注册.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        注册业务接口分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="project/day02/2.3短信验证码.html">
+            
+                
+                    <a href="../project/day02/2.3短信验证码.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        短信验证码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="project/day02/2.4跨域CORS.html">
+            
+                
+                    <a href="../project/day02/2.4跨域CORS.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        跨域CORS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="project/day02/2.5使用Celery完成发送短信.html">
+            
+                
+                    <a href="../project/day02/2.5使用Celery完成发送短信.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        使用Celery完成发送短信
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="project/day02/2.6判断帐号是否存在.html">
+            
+                
+                    <a href="../project/day02/2.6判断帐号是否存在.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        判断帐号是否存在
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="project/day02/2.7注册.html">
+            
+                
+                    <a href="../project/day02/2.7注册.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        注册
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="project/day02/2.8JWT.html">
+            
+                
+                    <a href="../project/day02/2.8JWT.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.8.</b>
+                        
+                        JWT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.9" data-path="project/day02/2.9Django REST framework JWT.html">
+            
+                
+                    <a href="../project/day02/2.9Django REST framework JWT.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.9.</b>
+                        
+                        Django REST framework JWT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.10" data-path="project/day02/2.10登录.html">
+            
+                
+                    <a href="../project/day02/2.10登录.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.10.</b>
+                        
+                        登录
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.11" data-path="project/day02/2.11.0QQ登录.html">
+            
+                
+                    <a href="../project/day02/2.11.0QQ登录.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.11.</b>
+                        
+                        QQ登录
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.11.1" data-path="project/day02/2.11.1返回QQ登录网址的视图.html">
+            
+                
+                    <a href="../project/day02/2.11.1返回QQ登录网址的视图.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.11.1.</b>
+                        
+                        第一步:返回QQ登录网址的视图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.11.2" data-path="project/day02/2.11.2QQ登录回调处理.html">
+            
+                
+                    <a href="../project/day02/2.11.2QQ登录回调处理.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.11.2.</b>
+                        
+                        第二步:QQ登录回调处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.11.3" data-path="project/day02/2.11.3绑定用户身份接口.html">
+            
+                
+                    <a href="../project/day02/2.11.3绑定用户身份接口.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.11.3.</b>
+                        
+                        第三步:绑定用户身份接口
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.12" data-path="project/day02/2.12用户中心个人信息.html">
+            
+                
+                    <a href="../project/day02/2.12用户中心个人信息.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.12.</b>
+                        
+                        用户中心个人信息
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" >
+            
+            <span><b>11.</b> 邮件与验证</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="project/day03/1.0邮件与验证.html">
+            
+                
+                    <a href="../project/day03/1.0邮件与验证.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        邮件与验证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="project/day03/1.1使用Django发送邮件.html">
+            
+                
+                    <a href="../project/day03/1.1使用Django发送邮件.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        使用Django发送邮件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="project/day03/1.2保存邮箱并发送验证邮件.html">
+            
+                
+                    <a href="../project/day03/1.2保存邮箱并发送验证邮件.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        保存邮箱并发送验证邮件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="project/day03/1.3验证邮箱链接.html">
+            
+                
+                    <a href="../project/day03/1.3验证邮箱链接.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.4.</b>
+                        
+                        验证邮箱链接
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" >
+            
+            <span><b>12.</b> 地址部分:</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="project/day03/2.0收货地址.html">
+            
+                
+                    <a href="../project/day03/2.0收货地址.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        收货地址
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="project/day03/2.1省市区地址查询.html">
+            
+                
+                    <a href="../project/day03/2.1省市区地址查询.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        省市区地址查询
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="project/day03/2.2使用缓存.html">
+            
+                
+                    <a href="../project/day03/2.2使用缓存.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        使用缓存
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="project/day03/2.3用户地址管理.html">
+            
+                
+                    <a href="../project/day03/2.3用户地址管理.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        用户地址管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="project/day03/2.4用户地址管理代码.html">
+            
+                
+                    <a href="../project/day03/2.4用户地址管理代码.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        用户地址管理代码
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" >
+            
+            <span><b>13.</b> 数据库表设计</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="project/day03/3.0数据库表设计.html">
+            
+                
+                    <a href="../project/day03/3.0数据库表设计.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        数据库表设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="project/day03/3.2FastDFS分布式文件系统.html">
+            
+                
+                    <a href="../project/day03/3.2FastDFS分布式文件系统.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        FastDFS分布式文件系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="project/day03/3.3Docker使用.html">
+            
+                
+                    <a href="../project/day03/3.3Docker使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        Docker使用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.3.1" data-path="project/day03/3.31Docker简介.html">
+            
+                
+                    <a href="../project/day03/3.31Docker简介.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.1.</b>
+                        
+                        Docker简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3.2" data-path="project/day03/3.32安装与操作.html">
+            
+                
+                    <a href="../project/day03/3.32安装与操作.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.2.</b>
+                        
+                        安装与操作
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" data-path="project/day03/3.4使用Docker安装FastDFS.html">
+            
+                
+                    <a href="../project/day03/3.4使用Docker安装FastDFS.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.4.</b>
+                        
+                        使用Docker安装FastDFS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" data-path="project/day03/3.5FastDFS客户端与自定义文件存储系统.html">
+            
+                
+                    <a href="../project/day03/3.5FastDFS客户端与自定义文件存储系统.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.5.</b>
+                        
+                        FastDFS客户端与自定义文件存储系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.6" data-path="project/day03/3.6CKEditor富文本编辑器.html">
+            
+                
+                    <a href="../project/day03/3.6CKEditor富文本编辑器.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.6.</b>
+                        
+                        CKEditor富文本编辑器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.7" data-path="project/day03/3.7添加测试数据.html">
+            
+                
+                    <a href="../project/day03/3.7添加测试数据.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.7.</b>
+                        
+                        添加测试数据
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" >
+            
+            <span><b>14.</b> 页面优化</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="project/day04/01-页面静态化.html">
+            
+                
+                    <a href="../project/day04/01-页面静态化.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        页面静态化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="project/day04/02-定时任务.html">
+            
+                
+                    <a href="../project/day04/02-定时任务.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.2.</b>
+                        
+                        定时任务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.3" data-path="project/day04/03-商品详情页.html">
+            
+                
+                    <a href="../project/day04/03-商品详情页.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.3.</b>
+                        
+                        商品详情页静态化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="project/day04/04-用户浏览历史记录.html">
+            
+                
+                    <a href="../project/day04/04-用户浏览历史记录.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.4.</b>
+                        
+                        用户浏览历史记录
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="project/day04/05-品列表页.html">
+            
+                
+                    <a href="../project/day04/05-品列表页.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.5.</b>
+                        
+                        商品列表页
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.6" data-path="project/day04/06-商品搜索.html">
+            
+                
+                    <a href="../project/day04/06-商品搜索.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.6.</b>
+                        
+                        商品搜索
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="15" >
+            
+            <span><b>15.</b> 购物车部分</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1" data-path="project/day05/01-购物车数据存储设计.html">
+            
+                
+                    <a href="../project/day05/01-购物车数据存储设计.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.1.</b>
+                        
+                        购物车数据存储设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" data-path="project/day05/02-添加到购物车.html">
+            
+                
+                    <a href="../project/day05/02-添加到购物车.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.2.</b>
+                        
+                        添加到购物车
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.3" data-path="project/day05/03-查询购物车数据.html">
+            
+                
+                    <a href="../project/day05/03-查询购物车数据.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.3.</b>
+                        
+                        查询购物车数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.4" data-path="project/day05/04-修改购物车数据.html">
+            
+                
+                    <a href="../project/day05/04-修改购物车数据.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.4.</b>
+                        
+                        修改购物车数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.5" data-path="project/day05/05-删除购物车数据.html">
+            
+                
+                    <a href="../project/day05/05-删除购物车数据.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.5.</b>
+                        
+                        删除购物车数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.6" data-path="project/day05/06-购物车全选.html">
+            
+                
+                    <a href="../project/day05/06-购物车全选.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.6.</b>
+                        
+                        购物车全选
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.7" data-path="project/day05/07-登录合并购物车.html">
+            
+                
+                    <a href="../project/day05/07-登录合并购物车.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.7.</b>
+                        
+                        登录合并购物车
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="project/day06/00-订单部分.html">
+            
+                
+                    <a href="../project/day06/00-订单部分.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        订单部分
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1" data-path="project/day06/01-订单数据库设计.html">
+            
+                
+                    <a href="../project/day06/01-订单数据库设计.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.1.</b>
+                        
+                        订单数据库设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.2" data-path="project/day06/02-订单结算.html">
+            
+                
+                    <a href="../project/day06/02-订单结算.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.2.</b>
+                        
+                        订单结算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.3" data-path="project/day06/03-保存订单.html">
+            
+                
+                    <a href="../project/day06/03-保存订单.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.3.</b>
+                        
+                        保存订单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.4" data-path="project/day06/04-下单成功页面.html">
+            
+                
+                    <a href="../project/day06/04-下单成功页面.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.4.</b>
+                        
+                        下单成功页面
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="17" >
+            
+            <span><b>17.</b> 支付宝支付</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="17.1" data-path="project/day06/05-支付宝支付.html">
+            
+                
+                    <a href="../project/day06/05-支付宝支付.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.1.</b>
+                        
+                        支付宝支付
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.2" data-path="project/day06/06-接入支付宝.html">
+            
+                
+                    <a href="../project/day06/06-接入支付宝.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.2.</b>
+                        
+                        接入支付宝
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.3" data-path="project/day06/07-发起支付.html">
+            
+                
+                    <a href="../project/day06/07-发起支付.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.3.</b>
+                        
+                        发起支付
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.4" data-path="project/day06/08-保存支付结果.html">
+            
+                
+                    <a href="../project/day06/08-保存支付结果.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.4.</b>
+                        
+                        保存支付结果
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="project/day07/00-Xadmin.html">
+            
+                
+                    <a href="../project/day07/00-Xadmin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        Xadmin
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="project/day07/01-用户权限控制.html">
+            
+                
+                    <a href="../project/day07/01-用户权限控制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        用户权限控制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="project/day07/02-部署.html">
+            
+                
+                    <a href="../project/day07/02-部署.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        部署
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Introduction</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x7C7B;&#x89C6;&#x56FE;&#x4E0E;&#x4E2D;&#x95F4;&#x4EF6;">&#x7C7B;&#x89C6;&#x56FE;&#x4E0E;&#x4E2D;&#x95F4;&#x4EF6;</h1>
+<h2 id="&#x7C7B;&#x89C6;&#x56FE;">&#x7C7B;&#x89C6;&#x56FE;</h2>
+<blockquote>
+<p> &#x7C7B;&#x89C6;&#x56FE;&#x5F15;&#x5165;:</p>
+<p>&#x4EE5;&#x51FD;&#x6570;&#x7684;&#x65B9;&#x5F0F;&#x5B9A;&#x4E49;&#x7684;&#x89C6;&#x56FE;&#x79F0;&#x4E3A;&#x51FD;&#x6570;&#x89C6;&#x56FE;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x5E38;&#x8BF4;&#x7684;<strong>&#x89C6;&#x56FE;&#x51FD;&#x6570;</strong></p>
+<p><strong>&#x4F46;&#x662F;:</strong></p>
+<p>&#x89C6;&#x56FE;&#x51FD;&#x6570;&#x906D;&#x9047;&#x4E0D;&#x540C;&#x65B9;&#x5F0F;&#x5206;&#x522B;&#x8BF7;&#x6C42;( &#x4F8B;&#x5982; get &#x548C; post ),&#x5E76;&#x4E14;&#x9700;&#x8981;&#x505A;&#x4E0D;&#x540C;&#x5904;&#x7406;&#x65F6;, &#x6211;&#x4EEC;&#x5982;&#x679C;&#x5728;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#x7F16;&#x5199;&#x4E0D;&#x540C;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;, &#x4EE3;&#x7801;&#x53EF;&#x8BFB;&#x6027;&#x548C;&#x590D;&#x7528;&#x6027;&#x90FD;&#x4E0D;&#x597D;. </p>
+</blockquote>
+<p>&#x4F8B;&#x5982;:</p>
+<blockquote>
+<p>&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5B50;&#x5E94;&#x7528;: demoview</p>
+</blockquote>
+<pre><code>python manage.py startapp demoview
+</code></pre><p>&#x5728;demoview&#x4E2D;&#x914D;&#x7F6E;&#x8DEF;&#x7531;&#x90E8;&#x5206;( urls.py ):    </p>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> django.conf.urls <span class="hljs-keyword">import</span> url
+
+<span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views
+
+urlpatterns = [
+    <span class="hljs-comment"># &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#x51FD;&#x6570;&#x7684;&#x8DEF;&#x7531;</span>
+    url(<span class="hljs-string">r&apos;^indexview&apos;</span>, views.indexview)
+]
+</code></pre>
+<p>&#x5728;demoview&#x4E2D;&#x914D;&#x7F6E;&#x89C6;&#x56FE;&#x51FD;&#x6570;&#x90E8;&#x5206;( views.py ):    </p>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> django.http <span class="hljs-keyword">import</span> HttpResponse
+
+<span class="hljs-comment"># &#x521B;&#x5EFA;&#x89C6;&#x56FE;&#x51FD;&#x6570;indexview</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">indexview</span><span class="hljs-params">(request)</span>:</span>
+    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF0C;&#x5224;&#x65AD;&#x662F;GET/POST&#x8BF7;&#x6C42;</span>
+    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&apos;GET&apos;</span>:
+        <span class="hljs-comment"># &#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;,&#x505A;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x5904;&#x7406;:</span>
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;indexview get func&apos;</span>)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-comment"># &#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;,&#x505A;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x5904;&#x7406;:</span>
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;indexview post func&apos;</span>)
+</code></pre>
+<p><strong>&#x603B;&#x7ED3;&#x53D1;&#x73B0;:</strong> </p>
+<ul>
+<li>&#x4E0A;&#x4F8B;&#x867D;&#x7136;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x4E0D;&#x540C;&#x5904;&#x7406;&#x7684;&#x76EE;&#x7684;, &#x4F46;&#x662F;&#x6211;&#x4EEC;&#x8FD9;&#x6837;&#x6CA1;&#x6709;&#x505A;&#x5230;&#x5206;&#x79BB;&#x5904;&#x7406;, get&#x548C;post&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x8FD8;&#x662F;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x7684;, &#x800C;&#x4E14;&#x4E5F;&#x4E0D;&#x5229;&#x4E8E;&#x6211;&#x4EEC;&#x540E;&#x9762;&#x5185;&#x5BB9;&#x7684;&#x6269;&#x5C55;.&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4F1A;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x6539;&#x9020;: <ul>
+<li>&#x5728;Django&#x4E2D;&#x7ED9;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x7C7B;&#x89C6;&#x56FE;&#x7684;&#x6982;&#x5FF5;.</li>
+<li>&#x5373;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7C7B;&#x6765;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#xFF0C;&#x89E3;&#x51B3;&#x4E0A;&#x9762;&#x7684;&#x95EE;&#x9898;.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>&#x603B;&#x7ED3;:  &#x4F7F;&#x7528;&#x7C7B;&#x6765;&#x5B9A;&#x4E49;&#x7684;&#x89C6;&#x56FE;, &#x79F0;&#x4E3A;&#x7C7B;&#x89C6;&#x56FE;.</p>
+</blockquote>
+<h3 id="2-&#x7C7B;&#x89C6;&#x56FE;&#x4F7F;&#x7528;">2 &#x7C7B;&#x89C6;&#x56FE;&#x4F7F;&#x7528;</h3>
+<blockquote>
+<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x4F7F;&#x7528;&#x7C7B;&#x89C6;&#x56FE;&#x9700;&#x8981;&#x5982;&#x4E0B;&#x51E0;&#x6B65;: </p>
+<ul>
+<li><p>&#x5B9A;&#x4E49;&#x7C7B;&#x89C6;&#x56FE;, &#x4E14;&#x7C7B;&#x89C6;&#x56FE;&#x7EE7;&#x627F;&#x81EA;View</p>
+<ul>
+<li>&#x4F7F;&#x7528;:      <code>from django.views.generic import View</code> </li>
+<li>&#x6216;&#x8005;&#x662F;:  <code>from django.views.generic.base import View</code></li>
+</ul>
+</li>
+<li><p>&#x5B9A;&#x4E49;&#x8DEF;&#x7531;, &#x8DEF;&#x7531;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x9700;&#x8981;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;, &#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4F1A;&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x7684; as_view() &#x65B9;&#x6CD5;: </p>
+<blockquote>
+<pre><code class="lang-python">urlpatterns = [
+    <span class="hljs-comment"># &#x7C7B;&#x89C6;&#x56FE;&#xFF1A;&#x6CE8;&#x518C;</span>
+    url(<span class="hljs-string">r&apos;^register/$&apos;</span>,views.RegisterView.as_view()),
+]
+</code></pre>
+</blockquote>
+</li>
+<li><p>&#x4F7F;&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x8BBF;&#x95EE;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x8DEF;&#x7531;, &#x67E5;&#x770B;&#x7ED3;&#x679C;: </p>
+</li>
+</ul>
+</blockquote>
+<p>&#x4F7F;&#x7528;&#x7C7B;&#x89C6;&#x56FE;&#x53EF;&#x4EE5;&#x5C06;&#x89C6;&#x56FE;&#x5BF9;&#x5E94;&#x7684;&#x4E0D;&#x540C;&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#x4EE5;&#x7C7B;&#x4E2D;&#x7684;&#x4E0D;&#x540C;&#x65B9;&#x6CD5;&#x6765;&#x533A;&#x522B;&#x5B9A;&#x4E49;&#x3002;</p>
+<blockquote>
+<p>&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+</blockquote>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x5BFC;&#x5165;&#x7C7B;&#x89C6;&#x56FE;&#x7684;&#x7236;&#x7C7B;View</span>
+<span class="hljs-keyword">from</span> django.views.generic <span class="hljs-keyword">import</span> View
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RegisterView</span><span class="hljs-params">(View)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;&#x7C7B;&#x89C6;&#x56FE;&#xFF1A;&#x5904;&#x7406;&#x6CE8;&#x518C;&quot;&quot;&quot;</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self, request)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;&#x5904;&#x7406;GET&#x8BF7;&#x6C42;&#xFF0C;&#x8FD4;&#x56DE;&#x6CE8;&#x518C;&#x9875;&#x9762;&quot;&quot;&quot;</span>
+        <span class="hljs-keyword">return</span> render(request, <span class="hljs-string">&apos;register.html&apos;</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self, request)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;&#x5904;&#x7406;POST&#x8BF7;&#x6C42;&#xFF0C;&#x5B9E;&#x73B0;&#x6CE8;&#x518C;&#x903B;&#x8F91;&quot;&quot;&quot;</span>
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;&#x8FD9;&#x91CC;&#x5B9E;&#x73B0;&#x6CE8;&#x518C;&#x903B;&#x8F91;&apos;</span>)
+</code></pre>
+<p>&#x7C7B;&#x89C6;&#x56FE;&#x7684;&#x597D;&#x5904;&#xFF1A;</p>
+<ul>
+<li><strong>&#x4EE3;&#x7801;&#x53EF;&#x8BFB;&#x6027;&#x597D;</strong></li>
+<li><strong>&#x7C7B;&#x89C6;&#x56FE;&#x76F8;&#x5BF9;&#x4E8E;&#x51FD;&#x6570;&#x89C6;&#x56FE;&#x6709;&#x66F4;&#x9AD8;&#x7684;&#x590D;&#x7528;&#x6027;</strong><ul>
+<li>&#x5982;&#x679C;&#x5176;&#x4ED6;&#x5730;&#x65B9;&#x9700;&#x8981;&#x7528;&#x5230;&#x67D0;&#x4E2A;&#x7C7B;&#x89C6;&#x56FE;&#x7684;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x903B;&#x8F91;&#xFF0C;&#x76F4;&#x63A5;&#x7EE7;&#x627F;&#x8BE5;&#x7C7B;&#x89C6;&#x56FE;&#x5373;&#x53EF;</li>
+</ul>
+</li>
+</ul>
+<p>&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x5199;&#x5B8C;&#x8FD8;&#x4E0D;&#x884C;, &#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x8DEF;&#x7531;&#x90E8;&#x5206;: </p>
+<pre><code class="lang-python">urlpatterns = [
+    <span class="hljs-comment"># &#x6CE8;&#x610F;: </span>
+    <span class="hljs-comment"># url(&#x8DEF;&#x5F84;, &#x6267;&#x884C;&#x7684;&#x51FD;&#x6570;)</span>
+    <span class="hljs-comment"># url&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x9700;&#x8981;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</span>
+    <span class="hljs-comment"># &#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x5982;&#x679C;&#x4F20;&#x5165;: views.RegisterView &#x4F1A;&#x53D1;&#x73B0;&#x8FD9;&#x4E2A;&#x662F;&#x4E00;&#x4E2A;&#x7C7B;, &#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;,</span>
+    <span class="hljs-comment"># &#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x7ED9;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x7684; as_view() &#x65B9;&#x6CD5;</span>
+    url(<span class="hljs-string">r&apos;^registerview/$&apos;</span>, views.RegisterView.as_view())
+]
+</code></pre>
+<p><strong>&#x6CE8;&#x610F;: </strong></p>
+<ul>
+<li>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x7C7B;&#x89C6;&#x56FE;&#x51FD;&#x6570;&#x4E2D;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;, &#x4F46;&#x662F;&#x6211;&#x4EEC;&#x8BF7;&#x6C42;&#x4E86;. &#x4F1A;&#x62A5;405&#x627E;&#x4E0D;&#x5230;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x7684;&#x9519;&#x8BEF;.<ul>
+<li>&#x4F8B;&#x5982;:  &#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;Get&#x65B9;&#x6CD5;, &#x4F46;&#x662F;&#x6211;&#x4EEC;&#x4F7F;&#x7528;Get&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E86;&#x8BF7;&#x6C42;, &#x90A3;&#x4E48;&#x4F1A;&#x62A5;405&#x7684;&#x9519;&#x8BEF;: &#x627E;&#x4E0D;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;. </li>
+</ul>
+</li>
+<li>&#x5728;&#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x5B9A;&#x4E49;&#x7684; Get &#x6216;&#x8005;&#x662F; POST &#x90FD;&#x662F;&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;, &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x90FD;&#x662F;self.</li>
+<li>&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x90FD;&#x662F; request&#x5BF9;&#x8C61;. &#x5176;&#x4ED6;&#x7684;&#x53C2;&#x6570;&#x4F9D;&#x6B21;&#x5F80;&#x540E;&#x9762;&#x5199;&#x5C31;&#x53EF;&#x4EE5;.</li>
+<li>&#x6211;&#x4EEC;&#x5728;&#x4F7F;&#x7528;&#x7C7B;&#x89C6;&#x56FE;&#x7684;&#x65F6;&#x5019;, &#x9700;&#x8981;&#x5728;&#x8DEF;&#x7531;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;, &#x8BBE;&#x7F6E;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x9700;&#x8981;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;, &#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x8C03;&#x7528;&#x4E86;&#x7C7B;&#x4EE5;&#x540E;, &#x540E;&#x9762;&#x9700;&#x8981;&#x8C03;&#x7528; as_view( ) &#x51FD;&#x6570;. </li>
+</ul>
+<p>&#x6F14;&#x793A;&#x6548;&#x679C;: </p>
+<p><img src="../images/Snip20180808_5.png" alt="Snip20180808_5"></p>
+<p><img src="../images/Snip20180808_6.png" alt="Snip20180808_6"></p>
+<h3 id="3-&#x7C7B;&#x89C6;&#x56FE;&#x539F;&#x7406;">3 &#x7C7B;&#x89C6;&#x56FE;&#x539F;&#x7406;</h3>
+<blockquote>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;url&#x7684;&#x65F6;&#x5019;, &#x8C03;&#x7528; as_view() &#x51FD;&#x6570;,&#x5C31;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x7ED3;&#x679C;, &#x5982;&#x679C;&#x4E0D;&#x8C03;&#x7528;&#x5C31;&#x4F1A;&#x62A5;&#x9519;.</p>
+<p>&#x5230;&#x5E95; as_view() &#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5E72;&#x4E86;&#x4EC0;&#x4E48;&#x4E86;? </p>
+<p>&#x6211;&#x4EEC;&#x4E0B;&#x9762;&#x6765;&#x7814;&#x7A76;&#x4E00;&#x4E0B;: </p>
+</blockquote>
+<pre><code class="lang-python"><span class="hljs-decorator">    @classonlymethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">as_view</span><span class="hljs-params">(cls, **initkwargs)</span>:</span>
+
+        ...&#x7701;&#x7565;&#x4EE3;&#x7801;...
+
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">view</span><span class="hljs-params">(request, *args, **kwargs)</span>:</span>
+            <span class="hljs-comment"># &#x8FD9;&#x91CC;&#x7684;cls&#x662F;as_view&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x63A5;&#x6536;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;,&#x4E5F;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x5F53;&#x524D;&#x51FD;&#x6570;&#x7684;&#x7C7B;.</span>
+            <span class="hljs-comment"># &#x5F97;&#x5230;&#x8C03;&#x7528;&#x7684;&#x7C7B;&#x4E86;&#x4E4B;&#x540E;, &#x521B;&#x5EFA;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;: self</span>
+            self = cls(**initkwargs)
+            <span class="hljs-keyword">if</span> hasattr(self, <span class="hljs-string">&apos;get&apos;</span>) <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> hasattr(self, <span class="hljs-string">&apos;head&apos;</span>):
+                self.head = self.get
+            <span class="hljs-comment"># &#x7ED9;&#x5F53;&#x524D;&#x8FD9;&#x4E2A;&#x7C7B;,&#x6DFB;&#x52A0;&#x5BF9;&#x5E94;&#x7684;&#x5C5E;&#x6027;, &#x5982;&#x4E0B;&#x6240;&#x793A;: </span>
+            self.request = request
+            self.args = args
+            self.kwargs = kwargs
+            <span class="hljs-comment"># &#x8C03;&#x7528;dispatch&#x65B9;&#x6CD5;&#xFF0C;&#x6309;&#x7167;&#x4E0D;&#x540C;&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#x8C03;&#x7528;&#x4E0D;&#x540C;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;</span>
+            <span class="hljs-keyword">return</span> self.dispatch(request, *args, **kwargs)
+
+        ...&#x7701;&#x7565;&#x4EE3;&#x7801;...
+
+        <span class="hljs-comment"># &#x8FD4;&#x56DE;&#x771F;&#x6B63;&#x7684;&#x51FD;&#x6570;&#x89C6;&#x56FE;</span>
+        <span class="hljs-keyword">return</span> view
+
+    <span class="hljs-comment"># dispatch&#x672C;&#x8EAB;&#x662F;&#x5206;&#x53D1;&#x7684;&#x610F;&#x601D;,&#x8FD9;&#x91CC;&#x6307;&#x7684;&#x662F;&#x51FD;&#x6570;&#x7684;&#x540D;&#x5B57;.</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dispatch</span><span class="hljs-params">(self, request, *args, **kwargs)</span>:</span>
+        <span class="hljs-comment"># self.http_method_names&#x6307;&#x7684;&#x662F;&#x6211;&#x4EEC;&#x7684;&#x7C7B;&#x89C6;&#x56FE;&#x4E2D;,&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;&#x7684;&#x540D;&#x5B57;</span>
+        <span class="hljs-comment"># &#x8FD9;&#x91CC;&#x628A;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x7684;&#x540D;&#x5B57;&#x90FD;&#x5B58;&#x653E;&#x5728;&#x4E86;http_methods_names&#x4E2D;</span>
+        <span class="hljs-comment"># &#x6211;&#x4EEC;&#x4F1A;&#x628A;&#x5F53;&#x524D;&#x8BF7;&#x6C42;&#x7684;&#x65B9;&#x5F0F;&#x8F6C;&#x4E3A;&#x5C0F;&#x5199;,&#x7136;&#x540E;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5728;&#x5217;&#x8868;&#x4E2D;&#x5B58;&#x5728;.</span>
+        <span class="hljs-keyword">if</span> request.method.lower() <span class="hljs-keyword">in</span> self.http_method_names:
+            <span class="hljs-comment"># &#x5982;&#x679C;&#x5728;&#x91CC;&#x9762;, &#x5219;&#x8FDB;&#x5165;&#x8FD9;&#x91CC;</span>
+            <span class="hljs-comment"># &#x8FD9;&#x91CC;&#x7684;getattr&#x4F5C;&#x7528;&#x662F;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;.</span>
+            <span class="hljs-comment"># &#x4E0B;&#x9762;&#x7684;&#x53C2;&#x6570;&#x4E3A;: </span>
+            <span class="hljs-comment"># self :  &#x7C7B;&#x89C6;&#x56FE;&#x5BF9;&#x8C61;</span>
+            <span class="hljs-comment"># request.method.lower() : &#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x7684;&#x5C0F;&#x5199;. &#x4F8B;&#x5982;: &apos;get&apos; &#x6216; &apos;post&apos;</span>
+            <span class="hljs-comment"># http_method_not_allowed : &#x540E;&#x7EED;&#x5904;&#x7406;&#x65B9;&#x5F0F;(&#x4E0D;&#x5141;&#x8BB8;&#x8BF7;&#x6C42;)</span>
+            <span class="hljs-comment"># &#x4E0B;&#x9762;&#x4EE3;&#x7801;&#x6574;&#x4F53;&#x7684;&#x610F;&#x601D;: &#x6839;&#x636E;&#x7C7B;&#x89C6;&#x56FE;&#x5BF9;&#x8C61;, &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x5BF9;&#x5E94;&#x540D;&#x79F0;&#x7684;&#x65B9;&#x6CD5;</span>
+            <span class="hljs-comment"># &#x5982;&#x679C;&#x83B7;&#x53D6;&#x5230;, &#x5219;&#x628A;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7ED9;handle, &#x5426;&#x5219;&#x4E0D;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;.</span>
+            handler = getattr(self, request.method.lower(), self.http_method_not_allowed)
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># &#x5982;&#x679C;&#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x7684;&#x8BDD;, &#x5219;&#x8FDB;&#x5165;&#x8FD9;&#x91CC;, &#x8868;&#x660E;&#x4E0D;&#x5141;&#x8BB8;&#x8FDB;&#x884C;&#x8BF7;&#x6C42;.</span>
+            <span class="hljs-comment"># &#x6211;&#x4EEC;&#x4F1A;&#x628A;&#x4E0D;&#x5141;&#x8BB8;&#x8BF7;&#x6C42;&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x8FD4;&#x56DE;&#x7ED9;handle.</span>
+            handler = self.http_method_not_allowed
+        <span class="hljs-comment"># &#x6700;&#x7EC8;&#x8FD4;&#x56DE;handle(handle&#x91CC;&#x9762;&#x8981;&#x4E48;&#x5305;&#x542B;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7684;&#x65B9;&#x6CD5;, &#x8981;&#x4E48;&#x5C31;&#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x7684;&#x5B57;&#x6BB5;)</span>
+        <span class="hljs-keyword">return</span> handler(request, *args, **kwargs)
+</code></pre>
+<h3 id="4-&#x7C7B;&#x89C6;&#x56FE;&#x4F7F;&#x7528;&#x88C5;&#x9970;&#x5668;">4 &#x7C7B;&#x89C6;&#x56FE;&#x4F7F;&#x7528;&#x88C5;&#x9970;&#x5668;</h3>
+<blockquote>
+<p>&#x65E5;&#x5E38;&#x751F;&#x6D3B;&#x4E2D;, &#x6211;&#x4EEC;&#x5F88;&#x591A;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x4F7F;&#x7528;&#x88C5;&#x9970;&#x5668;&#x4FEE;&#x9970;&#x89C6;&#x56FE;. &#x90A3;&#x4E48;, &#x5982;&#x679C;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x7C7B;&#x89C6;&#x56FE;, &#x5B83;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x88C5;&#x9970;&#x5668;&#x8FDB;&#x884C;&#x4FEE;&#x9970;&#x5462;?</p>
+<p>&#x4E3A;&#x4E86;&#x7406;&#x89E3;&#x65B9;&#x4FBF;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;<strong>&#x4E3A;&#x51FD;&#x6570;&#x89C6;&#x56FE;&#x51C6;&#x5907;&#x7684;&#x88C5;&#x9970;&#x5668;</strong>&#xFF08;&#x5728;&#x8BBE;&#x8BA1;&#x88C5;&#x9970;&#x5668;&#x65F6;&#x57FA;&#x672C;&#x90FD;&#x4EE5;&#x51FD;&#x6570;&#x89C6;&#x56FE;&#x4F5C;&#x4E3A;&#x8003;&#x8651;&#x7684;&#x88AB;&#x88C5;&#x9970;&#x5BF9;&#x8C61;)&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;&#x8981;&#x88AB;&#x88C5;&#x9970;&#x7684;&#x7C7B;&#x89C6;&#x56FE;,  &#x6765;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x8981;&#x70B9;.</p>
+</blockquote>
+<p>&#x4F8B;&#x5982;: </p>
+<pre><code class="lang-python"><span class="hljs-comment">#  &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;</span>
+<span class="hljs-comment">#  func = my_decorator(func) </span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_decorator</span><span class="hljs-params">(func)</span>:</span>
+    <span class="hljs-comment"># wrapper&#x51FD;&#x6570;&#x5FC5;&#x7136;&#x4F1A;&#x63A5;&#x6536;&#x4E00;&#x4E2A;request&#x5BF9;&#x8C61;,&#x56E0;&#x4E3A;&#x4F20;&#x5165;&#x8FDB;&#x6765;&#x7684;func&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x80AF;&#x5B9A;&#x4F1A;&#x5E26;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span><span class="hljs-params">(request, *args, **kwargs)</span>:</span>
+        print(<span class="hljs-string">&apos;&#x81EA;&#x5B9A;&#x4E49;&#x88C5;&#x9970;&#x5668;&#x88AB;&#x8C03;&#x7528;&#x4E86;&apos;</span>)
+        print(<span class="hljs-string">&apos;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;%s&apos;</span> % request.path)
+        <span class="hljs-keyword">return</span> func(request, *args, **kwargs)
+    <span class="hljs-keyword">return</span> wrapper
+
+<span class="hljs-comment"># &#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x89C6;&#x56FE;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoView</span><span class="hljs-params">(View)</span>:</span>
+    <span class="hljs-comment"># &#x6211;&#x4EEC;&#x7ED9;get&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x4E0A;&#x88C5;&#x9970;&#x5668;, &#x7136;&#x540E;&#x6267;&#x884C;.</span>
+<span class="hljs-decorator">    @my_decorator</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;get&#x65B9;&#x6CD5;&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;ok&apos;</span>)
+
+    <span class="hljs-comment"># &#x7C7B;&#x89C6;&#x56FE;&#x91CC;&#x9762;&#x7684;&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;: post&#x65B9;&#x6CD5;</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;post&#x65B9;&#x6CD5;&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;ok&apos;</span>)
+</code></pre>
+<p>&#x6F14;&#x793A;&#x6548;&#x679C;: </p>
+<p><img src="../images/Snip20180808_7.png" alt="Snip20180808_7"></p>
+<p><strong>&#x7ED3;&#x8BBA;:</strong></p>
+<blockquote>
+<p>&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x4E0A;&#x9762;&#x5199;&#x7684;&#x4EE3;&#x7801;&#x51FA;&#x9519;&#x4E86;, &#x9519;&#x8BEF;&#x539F;&#x56E0;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x88C5;&#x9970;&#x5668;&#x662F;&#x4FEE;&#x9970;&#x89C6;&#x56FE;&#x51FD;&#x6570;&#x7684;, &#x800C;&#x4E0D;&#x662F;&#x4FEE;&#x9970;&#x7C7B;&#x89C6;&#x56FE;&#x7684;, &#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x88C5;&#x9970;&#x5668;&#x6765;&#x5F3A;&#x884C;&#x4FEE;&#x9970;, &#x4F1A;&#x6709;&#x95EE;&#x9898;.</p>
+<p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x600E;&#x6837;&#x624D;&#x80FD;&#x628A;&#x4E00;&#x4E2A;&#x4FEE;&#x9970;&#x51FD;&#x6570;&#x7684;&#x88C5;&#x9970;&#x5668;&#x4F5C;&#x7528;&#x5728;&#x7C7B;&#x4E0A;&#x5462;?</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x601D;&#x8003;&#x4E00;&#x4E0B;&#x5F97;&#x5230;: url&#x90E8;&#x5206;&#x6211;&#x4EEC;&#x5176;&#x5B9E;&#x662F;&#x6709;&#x4F7F;&#x7528; as_view( ) &#x51FD;&#x6570;&#x7684;, &#x800C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6700;&#x7EC8;&#x4F1A;&#x7ED9;&#x6211;&#x4EEC;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;view( ) &#x51FD;&#x6570;, &#x6362;&#x53E5;&#x8BDD;&#x8BF4;:  &#x6211;&#x4EEC;&#x5728;&#x8C03;&#x7528;&#x7C7B;&#x89C6;&#x56FE;&#x4E4B;&#x524D;,&#x5FC5;&#x7136;&#x4F1A;&#x8C03;&#x7528; view( ) &#x8FD9;&#x4E2A;&#x51FD;&#x6570;, &#x90A3;&#x6211;&#x4EEC;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x628A;&#x88C5;&#x9970;&#x5668;&#x4F5C;&#x7528;&#x5230; view( ) &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E0A;&#x53BB;&#x5462;.</p>
+</blockquote>
+<h4 id="41-&#x5728;url&#x914D;&#x7F6E;&#x4E2D;&#x88C5;&#x9970;">4.1 &#x5728;URL&#x914D;&#x7F6E;&#x4E2D;&#x88C5;&#x9970;</h4>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x5BFC;&#x5165;views.py&#x89C6;&#x56FE;&#x6587;&#x4EF6;</span>
+<span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views
+
+urlpatterns = [
+    <span class="hljs-comment"># &#x6211;&#x4EEC;&#x5728;&#x8DEF;&#x7531;&#x90E8;&#x5206;, &#x628A;&#x5B9A;&#x4E49;&#x597D;&#x7684;&#x88C5;&#x9970;&#x5668;&#x6DFB;&#x52A0;&#x5230;&#x5F53;&#x524D;&#x7684;&#x51FD;&#x6570;&#x4E0A;</span>
+    <span class="hljs-comment"># &#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6CE8;&#x610F;: as_view() &#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; view() &#x51FD;&#x6570;</span>
+    <span class="hljs-comment"># &#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x628A;&#x88C5;&#x9970;&#x5668;&#x6DFB;&#x52A0;&#x5230;view()&#x51FD;&#x6570;&#x4E0A;.</span>
+    url(<span class="hljs-string">r&apos;^demo/$&apos;</span>, views.my_decorate(views.DemoView.as_view()))
+]
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x4E4B;&#x540E;, &#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;, &#x8FD9;&#x6837;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7684;: </p>
+<p><img src="../images/Snip20180808_9.png" alt="Snip20180808_9"></p>
+<blockquote>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x7684;&#x5F0A;&#x7AEF;: </p>
+<ol>
+<li>&#x6B64;&#x79CD;&#x65B9;&#x5F0F;&#x6700;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x56E0;&#x88C5;&#x9970;&#x884C;&#x4E3A;&#x88AB;&#x653E;&#x7F6E;&#x5230;&#x4E86;url&#x914D;&#x7F6E;&#x4E2D;&#xFF0C;&#x5355;&#x770B;&#x89C6;&#x56FE;&#x7684;&#x65F6;&#x5019;&#x65E0;&#x6CD5;&#x77E5;&#x9053;&#x6B64;&#x89C6;&#x56FE;&#x8FD8;&#x88AB;&#x6DFB;&#x52A0;&#x4E86;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x4E0D;&#x5229;&#x4E8E;&#x4EE3;&#x7801;&#x7684;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x3002;</li>
+<li><strong>&#x6B64;&#x79CD;&#x65B9;&#x5F0F;&#x4F1A;&#x4E3A;&#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x90FD;&#x52A0;&#x4E0A;&#x88C5;&#x9970;&#x5668;&#x884C;&#x4E3A;</strong>&#xFF08;&#x56E0;&#x4E3A;&#x662F;&#x5728;&#x89C6;&#x56FE;&#x5165;&#x53E3;&#x5904;&#xFF0C;&#x5206;&#x53D1;&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#x524D;&#xFF09;&#x3002;</li>
+</ol>
+</blockquote>
+<h3 id="42-methoddecorator-&#x51FD;&#x6570;&#x7684;&#x4F7F;&#x7528;">4.2 method_decorator &#x51FD;&#x6570;&#x7684;&#x4F7F;&#x7528;:</h3>
+<blockquote>
+<p>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x4EE5;&#x4E0A;&#x95EE;&#x9898;, &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x7ED9;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x7684; method_decorator &#x51FD;&#x6570;</p>
+<p>&#x5728;&#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x4F7F;&#x7528;&#x4E3A;&#x51FD;&#x6570;&#x89C6;&#x56FE;&#x51C6;&#x5907;&#x7684;&#x88C5;&#x9970;&#x5668;&#x65F6;&#xFF0C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;</p>
+<p>&#x9700;&#x8981;&#x4F7F;&#x7528;<strong>method_decorator</strong>&#x5C06;&#x5176;&#x8F6C;&#x6362;&#x4E3A;&#x9002;&#x7528;&#x4E8E;&#x7C7B;&#x89C6;&#x56FE;&#x65B9;&#x6CD5;&#x7684;&#x88C5;&#x9970;&#x5668;&#x3002;</p>
+</blockquote>
+<h3 id="&#x76F4;&#x63A5;&#x4FEE;&#x9970;&#x88C5;&#x9970;&#x5668;&#x51FD;&#x6570;-&#x5B9E;&#x73B0;&#x5355;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x88C5;&#x9970;">&#x76F4;&#x63A5;&#x4FEE;&#x9970;&#x88C5;&#x9970;&#x5668;&#x51FD;&#x6570;, &#x5B9E;&#x73B0;&#x5355;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x88C5;&#x9970;:</h3>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> django.views.generic <span class="hljs-keyword">import</span> View
+<span class="hljs-comment"># &#x5BFC;&#x5165;&#x8F6C;&#x6362;&#x7684;&#x88C5;&#x9970;&#x5668;&#x65B9;&#x6CD5;: </span>
+<span class="hljs-keyword">from</span> django.utils.decorators <span class="hljs-keyword">import</span> method_decorator
+
+<span class="hljs-comment"># &#x4E3A;&#x7279;&#x5B9A;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoView</span><span class="hljs-params">(View)</span>:</span>
+    <span class="hljs-comment"># &#x4F7F;&#x7528;&#x8F6C;&#x6362;&#x7684;&#x65B9;&#x6CD5;&#x5C06;&#x88C5;&#x9970;&#x5668;&#x8F6C;&#x5316;:</span>
+<span class="hljs-decorator">    @method_decorator(my_decorator)</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;get&#x65B9;&#x6CD5;&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;ok&apos;</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;post&#x65B9;&#x6CD5;&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;ok&apos;</span>)
+</code></pre>
+<p>&#x663E;&#x793A;&#x6548;&#x679C;: </p>
+<p><img src="../images/Snip20180806_31.png" alt="Snip20180806_31"></p>
+<p>&#x4F7F;&#x7528;post&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;: </p>
+<p><img src="../images/Snip20180808_10.png" alt="Snip20180808_10"></p>
+<p><strong>&#x95EE;&#x9898;:</strong></p>
+<ul>
+<li>&#x867D;&#x7136;&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x7C7B;&#x89C6;&#x56FE;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;&#x95EE;&#x9898;,  &#x4F46;&#x662F;&#x6211;&#x4EEC;&#x8FD9;&#x79CD;&#x662F;&#x7ED9;&#x5355;&#x4E2A;&#x51FD;&#x6570;&#x6DFB;&#x52A0;&#x7684;, &#x800C;&#x4E0D;&#x662F;&#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x51FD;&#x6570;, &#x90A3;&#x4E48;&#x6709;&#x6CA1;&#x6709;&#x7ED9;&#x6240;&#x6709;&#x51FD;&#x6570;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;&#x7684;&#x65B9;&#x5F0F;&#x5462;?</li>
+<li>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x4E0A;&#x9762;&#x7684;&#x88C5;&#x9970;&#x5668;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x518D;&#x6B21;&#x6539;&#x9020;: </li>
+</ul>
+<h3 id="&#x4FEE;&#x9970;dispatch&#x51FD;&#x6570;-&#x5B9E;&#x73B0;&#x591A;&#x4E2A;&#x51FD;&#x6570;&#x88C5;&#x9970;">&#x4FEE;&#x9970;dispatch&#x51FD;&#x6570;, &#x5B9E;&#x73B0;&#x591A;&#x4E2A;&#x51FD;&#x6570;&#x88C5;&#x9970;</h3>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> django.views.generic <span class="hljs-keyword">import</span> View
+<span class="hljs-keyword">from</span> django.http <span class="hljs-keyword">import</span> HttpResponse
+<span class="hljs-keyword">from</span> django.utils.decorators <span class="hljs-keyword">import</span> method_decorator
+
+<span class="hljs-comment"># &#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x88C5;&#x9970;&#x5668;&#x65B9;&#x6CD5;</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_decorator</span><span class="hljs-params">(func)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span><span class="hljs-params">(request, *args, **kwargs)</span>:</span>
+        print(<span class="hljs-string">&apos;&#x81EA;&#x5B9A;&#x4E49;&#x88C5;&#x9970;&#x5668;&#x88AB;&#x8C03;&#x7528;&#x4E86;&apos;</span>)
+        print(<span class="hljs-string">&apos;&#x8BF7;&#x6C42;&#x7684;&#x8DEF;&#x5F84;:%s&apos;</span> % request.path)
+        <span class="hljs-keyword">return</span> func(request, *args, **kwargs)
+    <span class="hljs-keyword">return</span> wrapper
+
+<span class="hljs-comment"># &#x7C7B;&#x89C6;&#x56FE;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoView</span><span class="hljs-params">(View)</span>:</span>
+    <span class="hljs-comment"># &#x91CD;&#x5199;&#x7236;&#x7C7B;&#x7684;dispatch&#x65B9;&#x6CD5;, &#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x88AB; as_view() &#x4E2D;&#x7684; view() &#x8C03;&#x7528;</span>
+    <span class="hljs-comment"># &#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5BF9;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;, &#x4E5F;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x5BF9;&#x6574;&#x4E2A;&#x7C7B;&#x89C6;&#x56FE;&#x7684;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;.</span>
+<span class="hljs-decorator">    @method_decorator(my_decorator)</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dispatch</span><span class="hljs-params">(self, request, *args, **kwargs)</span>:</span>
+        <span class="hljs-comment"># &#x91CD;&#x5199;&#x7236;&#x7C7B;&#x7684;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6211;&#x4EEC;&#x4E0D;&#x4F1A;&#x4FEE;&#x6539;&#x5B83;&#x7684;&#x4EFB;&#x4F55;&#x53C2;&#x6570;, &#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5373;&#x53EF;</span>
+        <span class="hljs-comment"># &#x5B83;&#x91CC;&#x9762;&#x7684;&#x53C2;&#x6570;&#x6211;&#x4EEC;&#x4E5F;&#x4E0D;&#x52A8;&#x5B83;, &#x76F4;&#x63A5;&#x8FD8;&#x4F20;&#x9012;&#x8FC7;&#x53BB;.</span>
+        <span class="hljs-keyword">return</span> super().dispatch(request, *args, **kwargs)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;get&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;getfunc ok&apos;</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;post&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;postfunc ok&apos;</span>)
+</code></pre>
+<p>&#x5C55;&#x793A;&#x6548;&#x679C; :</p>
+<p><img src="../images/Snip20180806_2.png" alt="Snip20180806_2"></p>
+<p>&#x5982;&#x679C;&#x521A;&#x521A;&#x7684;&#x80FD;&#x591F;&#x63A5;&#x53D7;, &#x90A3;&#x6211;&#x4EEC;&#x518D;&#x8FDB;&#x4E00;&#x6B65;, method_decorator( ) &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5176;&#x5B9E;&#x8FD8;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x88C5;&#x9970;&#x5230;&#x7C7B;&#x4E0A;&#x53BB;. &#x4F7F;&#x5F53;&#x524D;&#x7684;&#x89C6;&#x56FE;&#x7C7B;&#x4E2D;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;&#x65B9;&#x6CD5;: </p>
+<h3 id="&#x4E0A;&#x5F0F;&#x53EF;&#x4EE5;&#x53D8;&#x5F62;&#x4E3A;-&#x6269;&#x5C55;&#x4E86;&#x89E3;&#x90E8;&#x5206;">&#x4E0A;&#x5F0F;&#x53EF;&#x4EE5;&#x53D8;&#x5F62;&#x4E3A;: (&#x6269;&#x5C55;&#x4E86;&#x89E3;&#x90E8;&#x5206;)</h3>
+<blockquote>
+<p>&#x7B49;&#x540C;&#x4E8E;&#x4E0A;&#x9762;&#x7684;&#x7528;&#x6CD5;.</p>
+</blockquote>
+<p><strong>&#x4F8B;&#x5982;:</strong> </p>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> django.views.generic <span class="hljs-keyword">import</span> View
+<span class="hljs-keyword">from</span> django.http <span class="hljs-keyword">import</span> HttpResponse
+<span class="hljs-keyword">from</span> django.utils.decorators <span class="hljs-keyword">import</span> method_decorator
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_decorator</span><span class="hljs-params">(func)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span><span class="hljs-params">(request, *args, **kwargs)</span>:</span>
+        print(<span class="hljs-string">&apos;&#x81EA;&#x5B9A;&#x4E49;&#x88C5;&#x9970;&#x5668;&#x88AB;&#x8C03;&#x7528;&#x4E86;&apos;</span>)
+        print(<span class="hljs-string">&apos;&#x8BF7;&#x6C42;&#x7684;&#x8DEF;&#x5F84;:%s&apos;</span> % request.path)
+        <span class="hljs-keyword">return</span> func(request, *args, **kwargs)
+    <span class="hljs-keyword">return</span> wrapper
+
+<span class="hljs-comment"># &#x7C7B;&#x89C6;&#x56FE;</span>
+<span class="hljs-comment"># &#x7ED9;&#x7C7B;&#x89C6;&#x56FE;&#x589E;&#x52A0;&#x4E0A;@method_decorator&#x65B9;&#x6CD5;</span>
+<span class="hljs-comment"># &#x589E;&#x52A0;&#x4E0A;&#x4E4B;&#x540E;,&#x9700;&#x8981;&#x914D;&#x7F6E;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;, &#x5426;&#x5219;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x88C5;&#x9970;&#x884C;&#x4E3A;</span>
+<span class="hljs-comment"># &#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7ED9;method_decator&#x914D;&#x7F6E;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;</span>
+<span class="hljs-comment"># &#x6307;&#x5B9A;&#x628A;&#x88C5;&#x9970;&#x5668;&#x6DFB;&#x52A0;&#x5230;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#x4E0A;. </span>
+<span class="hljs-decorator">@method_decorator(my_decorator, name=&apos;dispatch&apos;)</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoView</span><span class="hljs-params">(View)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;get&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;getfunc ok&apos;</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;post&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;postfunc ok&apos;</span>)
+</code></pre>
+<p>&#x6F14;&#x793A;&#x6548;&#x679C;: </p>
+<p><img src="../images/Snip20180806_5.png" alt="Snip20180806_3"></p>
+<h3 id="&#x6269;&#x5C55;&#x4E86;&#x89E3;&#x90E8;&#x5206;">&#x6269;&#x5C55;&#x4E86;&#x89E3;&#x90E8;&#x5206;:</h3>
+<p><strong>&#x4F7F;&#x7528;<code>method_decorator</code>&#x7684;&#x539F;&#x56E0;:</strong></p>
+<p>&#x4E3A;&#x51FD;&#x6570;&#x89C6;&#x56FE;&#x51C6;&#x5907;&#x7684;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x5176;&#x88AB;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x63A5;&#x6536;request&#x5BF9;&#x8C61;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_decorate</span><span class="hljs-params">(func)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span><span class="hljs-params">(request, *args, **kwargs)</span>:</span>  <span class="hljs-comment"># &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;request&#x5BF9;&#x8C61;</span>
+        ...&#x4EE3;&#x7801;&#x7701;&#x7565;...
+        <span class="hljs-keyword">return</span> func(request, *args, **kwargs)
+    <span class="hljs-keyword">return</span> wrapper
+</code></pre>
+<p>&#x800C;&#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x4F20;&#x5165;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4E0D;&#x662F;request&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x662F;self &#x89C6;&#x56FE;&#x5BF9;&#x8C61;&#x672C;&#x8EAB;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x624D;&#x662F;request&#x5BF9;&#x8C61;</p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoView</span><span class="hljs-params">(View)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dispatch</span><span class="hljs-params">(self, request, *args, **kwargs)</span>:</span>
+        ...&#x4EE3;&#x7801;&#x7701;&#x7565;...
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self, request)</span>:</span>
+        ...&#x4EE3;&#x7801;&#x7701;&#x7565;...
+</code></pre>
+<p>&#x6240;&#x4EE5;&#x5982;&#x679C;&#x76F4;&#x63A5;&#x5C06;&#x7528;&#x4E8E;&#x51FD;&#x6570;&#x89C6;&#x56FE;&#x7684;&#x88C5;&#x9970;&#x5668;&#x88C5;&#x9970;&#x7C7B;&#x89C6;&#x56FE;&#x65B9;&#x6CD5;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x3002;</p>
+<p><strong>method_decorator&#x7684;&#x4F5C;&#x7528;&#x662F;&#x4E3A;&#x51FD;&#x6570;&#x89C6;&#x56FE;&#x88C5;&#x9970;&#x5668;&#x8865;&#x5145;&#x7B2C;&#x4E00;&#x4E2A;self&#x53C2;&#x6570;&#xFF0C;&#x4EE5;&#x9002;&#x914D;&#x7C7B;&#x89C6;&#x56FE;&#x65B9;&#x6CD5;&#x3002;</strong></p>
+<p>&#x5982;&#x679C;&#x5C06;&#x88C5;&#x9970;&#x5668;&#x672C;&#x8EAB;&#x6539;&#x4E3A;&#x53EF;&#x4EE5;&#x9002;&#x914D;&#x7C7B;&#x89C6;&#x56FE;&#x65B9;&#x6CD5;&#x7684;&#xFF0C;&#x7C7B;&#x4F3C;&#x5982;&#x4E0B;&#xFF0C;&#x5219;&#x65E0;&#x9700;&#x518D;&#x4F7F;&#x7528;method_decorator&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_decorator</span><span class="hljs-params">(func)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span><span class="hljs-params">(self, request, *args, **kwargs)</span>:</span>  <span class="hljs-comment"># &#x6B64;&#x5904;&#x589E;&#x52A0;&#x4E86;self</span>
+        print(<span class="hljs-string">&apos;&#x81EA;&#x5B9A;&#x4E49;&#x88C5;&#x9970;&#x5668;&#x88AB;&#x8C03;&#x7528;&#x4E86;&apos;</span>)
+        print(<span class="hljs-string">&apos;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;%s&apos;</span> % request.path)
+        <span class="hljs-keyword">return</span> func(self, request, *args, **kwargs)  <span class="hljs-comment"># &#x6B64;&#x5904;&#x589E;&#x52A0;&#x4E86;self</span>
+    <span class="hljs-keyword">return</span> wrapper
+</code></pre>
+<h2 id="43-&#x6784;&#x9020;mixin&#x6269;&#x5C55;&#x7C7B;">4.3 &#x6784;&#x9020;Mixin&#x6269;&#x5C55;&#x7C7B;</h2>
+<blockquote>
+<p>&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7ED9;&#x7C7B;&#x89C6;&#x56FE;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;&#x7684;&#x529F;&#x80FD;&#x4E86;, &#x90A3;&#x4E48;&#x8FD8;&#x6709;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x7ED9;&#x5F53;&#x524D;&#x7684;&#x89C6;&#x56FE;&#x7C7B;&#x6DFB;&#x52A0;&#x7C7B;&#x4F3C;&#x7684;&#x529F;&#x80FD;&#x5462;? </p>
+<p>&#x7B54;&#x6848;&#x662F;&#x80AF;&#x5B9A;&#x7684;, &#x6211;&#x4EEC;&#x73B0;&#x5728;&#x6765;&#x770B;&#x4E00;&#x79CD;&#x5168;&#x65B0;&#x7684;&#x6DFB;&#x52A0;&#x65B9;&#x5F0F;: </p>
+<p>&#x4F7F;&#x7528;&#x7C7B;&#x6269;&#x5C55;&#x7684;&#x5F62;&#x5F0F;, &#x7ED9;&#x5F53;&#x524D;&#x7684;&#x7C7B;&#x89C6;&#x56FE;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;. </p>
+</blockquote>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;, &#x7ED9;&#x7C7B;&#x89C6;&#x56FE;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;&#x6709;&#x4E24;&#x79CD;: </p>
+<ul>
+<li>&#x4FEE;&#x6539;&#x88C5;&#x9970;&#x5668;&#x63A5;&#x6536;&#x5230;&#x7684;&#x53C2;&#x6570;<ul>
+<li>&#x5373;&#x628A;&#x88C5;&#x9970;&#x5668;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4FEE;&#x6539;&#x4E3A;self. &#x4F7F;&#x7C7B;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6DFB;&#x52A0;&#x4E0A;&#x88C5;&#x9970;&#x5668;.</li>
+</ul>
+</li>
+<li>&#x4FEE;&#x6539;&#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x6240;&#x6709;&#x51FD;&#x6570;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x7684; as_view() &#x65B9;&#x6CD5;<ul>
+<li>&#x6216;&#x8005;&#x662F; dispatch&#x65B9;&#x6CD5;, &#x56E0;&#x4E3A;dispatch&#x65B9;&#x6CD5;&#x5728; as_view() &#x65B9;&#x6CD5;&#x5185;&#x90E8;,&#x6545;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x4E0D;&#x8BA8;&#x8BBA;dispatch. </li>
+</ul>
+</li>
+</ul>
+<p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x601D;&#x8003;: </p>
+<p><code>&#x7C7B;&#x89C6;&#x56FE;   &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&gt; &#x7EE7;&#x627F;&#x81EA;View&#x7C7B; (&#x5305;&#x542B;&#x6709;as_view&#x51FD;&#x6570;)</code></p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x6574;&#x4E2A;&#x7EE7;&#x627F;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x6DFB;&#x52A0;&#x4E00;&#x6B65;, &#x4F8B;&#x5982;: </p>
+<p><code>&#x7C7B;&#x89C6;&#x56FE; &#x2014;&#x2014;&#x2014;&gt; &#x7EE7;&#x627F;&#x81EA;&#x989D;&#x5916;&#x6269;&#x5C55;&#x7684;&#x7C7B; &#x2014;&#x2014;&#x2014;&gt; &#x7EE7;&#x627F;&#x81EA;View&#x7C7B;(&#x5305;&#x542B;&#x6709;as_view&#x51FD;&#x6570;)</code></p>
+<blockquote>
+<ul>
+<li>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x989D;&#x5916;&#x6269;&#x5C55;&#x7684;&#x7C7B;&#x4E2D;, &#x91CD;&#x5199; as_view( ) &#x65B9;&#x6CD5;, &#x5E76;&#x4E14;&#x5BF9; as_view( ) &#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;, &#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;, &#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x88AB;&#x88C5;&#x9970;&#x5668;&#x88C5;&#x9970;.
+  &#x6545;, &#x6211;&#x4EEC;&#x8981;&#x5B9E;&#x73B0;&#x8FD9;&#x4E00;&#x70B9;, &#x9700;&#x8981;&#x5206;&#x4E3A;&#x4E24;&#x6B65;: <ul>
+<li>&#x7B2C;&#x4E00;&#x6B65;: &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6269;&#x5C55;&#x7C7B;, &#x5E76;&#x4E14;&#x8BA9;&#x7C7B;&#x89C6;&#x56FE;&#x7EE7;&#x627F;&#x81EA;&#x8BE5;&#x7C7B;.</li>
+<li>&#x7B2C;&#x4E8C;&#x6B65;: &#x5728;&#x6269;&#x5C55;&#x7C7B;&#x4E2D;&#x91CD;&#x5199; as_view &#x65B9;&#x6CD5;,&#x5E76;&#x4E14;&#x7ED9;&#x8BE5;&#x65B9;&#x6CD5;,&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p><strong>&#x7B2C;&#x4E00;&#x6B65;&#x4EE3;&#x7801;: </strong></p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6269;&#x5C55;&#x7C7B;,&#x8BA9;&#x8BE5;&#x7C7B;&#x7EE7;&#x627F;&#x81EA;View&#x7C7B;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseView</span><span class="hljs-params">(View)</span>:</span>
+    <span class="hljs-keyword">pass</span>
+</code></pre>
+<p><strong>&#x7B2C;&#x4E8C;&#x6B65;&#x4EE3;&#x7801;:</strong></p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseView</span><span class="hljs-params">(View)</span>:</span>
+    <span class="hljs-comment"># &#x5728;&#x6269;&#x5C55;&#x7C7B;&#x4E2D;,&#x91CD;&#x5199;View&#x7C7B;&#x7684; as_view &#x65B9;&#x6CD5;, &#x5E76;&#x4E14;&#x5BF9;&#x8BE5;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;.</span>
+<span class="hljs-decorator">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">as_view</span><span class="hljs-params">(cls, *args, **kwargs)</span>:</span>
+        <span class="hljs-comment"># &#x91CD;&#x5199;&#x4E4B;&#x540E;, &#x4E0D;&#x5BF9;&#x8BE5;&#x65B9;&#x6CD5;&#x505A;&#x5176;&#x4ED6;&#x989D;&#x5916;&#x64CD;&#x4F5C;,&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x91CD;&#x65B0;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684;&#x8BE5;&#x65B9;&#x6CD5;.</span>
+        view = super().as_view(*args, **kwargs)
+        <span class="hljs-comment"># &#x5BF9;&#x7236;&#x7C7B;&#x4F20;&#x8FC7;&#x6765;&#x7684;view&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;.</span>
+        view = my_decorator(view)
+        <span class="hljs-keyword">return</span> view
+</code></pre>
+<p><strong>&#x6211;&#x4EEC;&#x539F;&#x6765;&#x7684;&#x7C7B;&#x89C6;&#x56FE;&#x4EE3;&#x7801;: </strong></p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x8BA9;&#x6211;&#x4EEC;&#x7684;&#x7C7B;&#x89C6;&#x56FE;&#x7EE7;&#x627F;&#x81EA;&#x6269;&#x5C55;&#x7C7B;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoView</span><span class="hljs-params">(BaseView)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;get&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;get func&apos;</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;post&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;post func&apos;</span>)
+</code></pre>
+<p><strong>&#x6F14;&#x793A;&#x6548;&#x679C;: </strong></p>
+<p><img src="../images/Snip20180806_7.png" alt="Snip20180806_7"></p>
+<p><strong>&#x7ED3;&#x8BBA;: </strong></p>
+<ul>
+<li>&#x6211;&#x4EEC;&#x53D1;&#x73B0;, &#x7ECF;&#x8FC7;&#x4E2D;&#x95F4;&#x4E00;&#x5C42;&#x989D;&#x5916;&#x6269;&#x5C55;&#x7C7B;&#x7684;&#x88C5;&#x9970;&#x8FC7;&#x6EE4;, &#x6211;&#x4EEC;&#x539F;&#x6765;&#x7684;DemoView&#x4E2D;&#x7684;&#x6240;&#x6709;&#x89C6;&#x56FE;&#x65B9;&#x6CD5;&#x662F;&#x80FD;&#x591F;&#x7ECF;&#x8FC7;&#x88C5;&#x9970;&#x5668;&#x7684;. </li>
+</ul>
+<p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x601D;&#x8003;: </p>
+<p><code>&#x7C7B;&#x89C6;&#x56FE;   &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&gt; &#x7EE7;&#x627F;&#x81EA;View&#x7C7B; (&#x5305;&#x542B;&#x6709;as_view&#x51FD;&#x6570;)</code></p>
+<p><code>&#x7C7B;&#x89C6;&#x56FE; &#x2014;&#x2014;&#x2014;&gt; &#x7EE7;&#x627F;&#x81EA;&#x989D;&#x5916;&#x6269;&#x5C55;&#x7684;&#x7C7B;1 ---&gt; &#x7EE7;&#x627F;&#x81EA;&#x989D;&#x5916;&#x6269;&#x5C55;&#x7684;&#x7C7B;2 &#x2014;&#x2014;&#x2014;&gt; &#x7EE7;&#x627F;&#x81EA;View&#x7C7B;(&#x5305;&#x542B;&#x6709;as_view&#x51FD;&#x6570;)</code></p>
+<p><strong>&#x5EF6;&#x4F38;:</strong></p>
+<blockquote>
+<p>&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E24;&#x4E2A;&#x6269;&#x5C55;&#x7C7B;, &#x5E76;&#x4E14;&#x91CD;&#x5199;&#x4E24;&#x6B21; as_view &#x65B9;&#x6CD5;, &#x6765;&#x770B;&#x770B;&#x4F1A;&#x53D1;&#x751F;&#x4EC0;&#x4E48; : </p>
+</blockquote>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> django.views.generic <span class="hljs-keyword">import</span> View
+<span class="hljs-keyword">from</span> django.http <span class="hljs-keyword">import</span> HttpResponse
+<span class="hljs-keyword">from</span> django.utils.decorators <span class="hljs-keyword">import</span> method_decorator
+
+<span class="hljs-comment"># &#x5B9A;&#x4E49;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;: </span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_decorator</span><span class="hljs-params">(func)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span><span class="hljs-params">(request, *args, **kwargs)</span>:</span>
+        print(<span class="hljs-string">&apos;&#x81EA;&#x5B9A;&#x4E49;&#x88C5;&#x9970;&#x5668;&#x88AB;&#x8C03;&#x7528;&#x4E86;&apos;</span>)
+        print(<span class="hljs-string">&apos;&#x8BF7;&#x6C42;&#x7684;&#x8DEF;&#x5F84;:%s&apos;</span> % request.path)
+        <span class="hljs-keyword">return</span> func(request, *args, **kwargs)
+    <span class="hljs-keyword">return</span> wrapper
+
+<span class="hljs-comment"># &#x5B9A;&#x4E49;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x88C5;&#x9970;&#x5668;: </span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_decorator2</span><span class="hljs-params">(func)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span><span class="hljs-params">(request, *args, **kwargs)</span>:</span>
+        print(<span class="hljs-string">&apos;&#x81EA;&#x5B9A;&#x4E49;&#x88C5;&#x9970;&#x5668;&#x88AB;&#x8C03;&#x7528;&#x4E86;22222&apos;</span>)
+        print(<span class="hljs-string">&apos;&#x8BF7;&#x6C42;&#x7684;&#x8DEF;&#x5F84;:%s&apos;</span> % request.path)
+        <span class="hljs-keyword">return</span> func(request, *args, **kwargs)
+    <span class="hljs-keyword">return</span> wrapper
+
+<span class="hljs-comment"># &#x989D;&#x5916;&#x589E;&#x52A0;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6269;&#x5C55;&#x7C7B;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseView</span><span class="hljs-params">(View)</span>:</span>
+    <span class="hljs-comment"># &#x7B2C;&#x4E00;&#x6B21;&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x4E2D;&#x7684;as_view&#x65B9;&#x6CD5;</span>
+<span class="hljs-decorator">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">as_view</span><span class="hljs-params">(cls, *args, **kwargs)</span>:</span>
+        view = super().as_view(*args, **kwargs)
+        <span class="hljs-comment"># &#x5BF9;&#x83B7;&#x53D6;&#x7684;view&#x7B2C;&#x4E00;&#x6B21;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;</span>
+        view = my_decorator(view)
+        <span class="hljs-keyword">return</span> view
+
+<span class="hljs-comment"># &#x989D;&#x5916;&#x589E;&#x52A0;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x6269;&#x5C55;&#x7C7B;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Base2View</span><span class="hljs-params">(View)</span>:</span>
+    <span class="hljs-comment"># &#x7B2C;&#x4E8C;&#x6B21;&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x4E2D;&#x7684;as_view&#x65B9;&#x6CD5;</span>
+<span class="hljs-decorator">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">as_view</span><span class="hljs-params">(cls, **initkwargs)</span>:</span>
+        view = super().as_view(**initkwargs)
+        <span class="hljs-comment"># &#x5BF9;&#x83B7;&#x53D6;&#x7684;view&#x8FDB;&#x884C;&#x7B2C;&#x4E8C;&#x6B21;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;</span>
+        view = my_decorator2(view)
+        <span class="hljs-keyword">return</span> view
+
+<span class="hljs-comment"># &#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x89C6;&#x56FE;, &#x7EE7;&#x627F;&#x81EA;&#x4E24;&#x4E2A;&#x989D;&#x5916;&#x589E;&#x52A0;&#x7684;&#x7C7B;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoView</span><span class="hljs-params">(BaseView, Base2View)</span>:</span>
+    <span class="hljs-comment"># &#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x7684;get&#x65B9;&#x6CD5;</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;get&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;get func&apos;</span>)
+
+    <span class="hljs-comment"># &#x7C7B;&#x89C6;&#x56FE;&#x4E2D;&#x7684;post&#x65B9;&#x6CD5;</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;post&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;post func&apos;</span>)
+</code></pre>
+<p><strong>&#x6F14;&#x793A;&#x6548;&#x679C;:</strong></p>
+<p><img src="../images/Snip20180806_9.png" alt="Snip20180806_9"></p>
+<p><strong>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x540C;&#x65F6;&#x8C03;&#x7528;&#x4E24;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x662F;&#x600E;&#x6837;&#x5B9E;&#x73B0;&#x7684;:</strong></p>
+<p>&#x8BF7;&#x770B;&#x4E0B;&#x56FE;: </p>
+<p><img src="../images/Snip20180807_14.png" alt="Snip20180807_14"></p>
+<p><strong>&#x8BF4;&#x660E;:</strong></p>
+<ul>
+<li>&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x6269;&#x5C55;&#x7C7B;&#x7684;&#x7236;&#x7C7B;&#x76F8;&#x540C;:  &#x5219;&#x4E24;&#x4E2A;&#x7236;&#x7C7B;&#x90FD;&#x4F1A;&#x8C03;&#x7528;</li>
+<li>&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x6269;&#x5C55;&#x7C7B;&#x7684;&#x7236;&#x7C7B;&#x4E0D;&#x540C;: &#x5219;&#x53EA;&#x4F1A;&#x8C03;&#x7528;&#x7B2C;&#x4E00;&#x4E2A;&#x7236;&#x7C7B;</li>
+</ul>
+<p><strong>&#x7EFC;&#x4E0A;: </strong></p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x4EE3;&#x7801;&#x53D8;&#x6210;&#x8FD9;&#x4E2A;&#x6837;&#x5B50;: </p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x7B2C;&#x4E00;&#x4E2A;&#x6269;&#x5C55;&#x7C7B;, &#x8BA9;&#x4ED6;&#x7EE7;&#x627F;&#x81EA;object</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseView</span><span class="hljs-params">(object)</span>:</span>
+<span class="hljs-decorator">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">as_view</span><span class="hljs-params">(cls, *args, **kwargs)</span>:</span>
+        view = super().as_view(*args, **kwargs)
+        view = my_decorator(view)
+        <span class="hljs-keyword">return</span> view
+
+<span class="hljs-comment"># &#x7B2C;&#x4E8C;&#x4E2A;&#x6269;&#x5C55;&#x7C7B;,&#x8BA9;&#x4ED6;&#x7EE7;&#x627F;&#x81EA;object</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Base2View</span><span class="hljs-params">(object)</span>:</span>
+<span class="hljs-decorator">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">as_view</span><span class="hljs-params">(cls, *args, **kwargs)</span>:</span>
+        view = super().as_view(*args, **kwargs)
+        view = my_decorator2(view)
+        <span class="hljs-keyword">return</span> view
+
+<span class="hljs-comment"># &#x7C7B;&#x89C6;&#x56FE;, &#x8BA9;&#x4ED6;&#x9664;&#x4E86;&#x7EE7;&#x627F;&#x81EA;&#x8FD9;&#x4E24;&#x4E2A;&#x7236;&#x7C7B;&#x5916;, &#x6700;&#x540E;&#x7EE7;&#x627F;View&#x7C7B;.</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoView</span><span class="hljs-params">(BaseView, Base2View, View)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;get&#x65B9;&#x6CD5;&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;ok&apos;</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self, request)</span>:</span>
+        print(<span class="hljs-string">&apos;post&#x65B9;&#x6CD5;&apos;</span>)
+        <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;ok&apos;</span>)
+</code></pre>
+<p><strong>&#x8BF4;&#x660E;:</strong></p>
+<ul>
+<li>&#x56E0;&#x4E3A;&#x90FD;&#x662F;&#x7EE7;&#x627F;&#x81EA;object,&#x6240;&#x4EE5;&#x6269;&#x5C55;&#x7C7B;&#x4E2D;&#x7684;super.as_view&#x90FD;&#x4F1A;&#x53BB;&#x627E;&#x5176;&#x4ED6;&#x7684;&#x7236;&#x7C7B;&#x4F9D;&#x6B21;&#x6267;&#x884C;,&#x6700;&#x7EC8;&#x90FD;&#x4F1A;&#x6267;&#x884C;&#x5230;View&#x8FD9;&#x4E2A;&#x7C7B;&#x8FD9;&#x91CC;, &#x6240;&#x4EE5;&#x80AF;&#x5B9A;&#x4F1A;&#x6267;&#x884C;View&#x4E2D;&#x7684;as_view&#x65B9;&#x6CD5;. </li>
+<li>&#x5982;&#x56FE;&#x6240;&#x793A;: </li>
+</ul>
+<p><img src="../images/Snip20180807_16.png" alt="Snip20180807_16"></p>
+<p><strong>&#x4F7F;&#x7528;Mixin&#x6269;&#x5C55;&#x7C7B;&#xFF0C;&#x4E5F;&#x4F1A;&#x4E3A;&#x7C7B;&#x89C6;&#x56FE;&#x7684;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x90FD;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x884C;&#x4E3A;&#x3002;</strong></p>
+<h2 id="&#x4E2D;&#x95F4;&#x4EF6;">&#x4E2D;&#x95F4;&#x4EF6;</h2>
+<p>Django&#x4E2D;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x662F;&#x4E00;&#x4E2A;&#x8F7B;&#x91CF;&#x7EA7;&#x3001;&#x5E95;&#x5C42;&#x7684;&#x63D2;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x53EF;&#x4EE5;&#x4ECB;&#x5165;Django&#x7684;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;&#x4FEE;&#x6539;Django&#x7684;&#x8F93;&#x5165;&#x6216;&#x8F93;&#x51FA;&#x3002;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x8BBE;&#x8BA1;&#x4E3A;&#x5F00;&#x53D1;&#x8005;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x65E0;&#x4FB5;&#x5165;&#x5F0F;&#x7684;&#x5F00;&#x53D1;&#x65B9;&#x5F0F;&#xFF0C;&#x589E;&#x5F3A;&#x4E86;Django&#x6846;&#x67B6;&#x7684;&#x5065;&#x58EE;&#x6027;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x5728;Django&#x5904;&#x7406;&#x89C6;&#x56FE;&#x7684;&#x4E0D;&#x540C;&#x9636;&#x6BB5;&#x5BF9;&#x8F93;&#x5165;&#x6216;&#x8F93;&#x51FA;&#x8FDB;&#x884C;&#x5E72;&#x9884;&#x3002;</p>
+<h3 id="1-&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;">1 &#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;</h3>
+<blockquote>
+<p>&#x5B9A;&#x4E49;&#x5206;&#x4E3A;&#x4E09;&#x6B65;: </p>
+<ol>
+<li>&#x5728;&#x4E00;&#x4E2A;&#x5B50;&#x5E94;&#x7528;&#x4E2D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x6587;&#x4EF6;.  &#x4F8B;&#x5982;: middleware(&#x522B;&#x7684;&#x540D;&#x5B57;&#x4E5F;&#x53EF;&#x4EE5;)</li>
+<li>&#x5728;setting.py&#x6587;&#x4EF6;&#x7684;MIDDLEWARE&#x90E8;&#x5206;&#x6CE8;&#x518C;&#x6DFB;&#x52A0;.</li>
+<li>&#x5728;&#x8C03;&#x7528;&#x89C6;&#x56FE;&#x65F6;,&#x4FBF;&#x4F1A;&#x8C03;&#x7528;&#x4E2D;&#x95F4;&#x4EF6;&#x4E86;.</li>
+</ol>
+</blockquote>
+<p>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x5DE5;&#x5382;&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;</p>
+<p>&#x4E2D;&#x95F4;&#x4EF6;&#x5DE5;&#x5382;&#x51FD;&#x6570;&#x9700;&#x8981;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x7684;get_response&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x8FD4;&#x56DE;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x4E14;&#x50CF;&#x89C6;&#x56FE;&#x4E00;&#x6837;&#x9700;&#x8981;&#x63A5;&#x6536;&#x4E00;&#x4E2A;request&#x5BF9;&#x8C61;&#x53C2;&#x6570;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;response&#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x4E2D;&#x95F4;&#x4EF6;&#x6A21;&#x677F;: </span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">simple_middleware</span><span class="hljs-params">(get_response)</span>:</span>
+    <span class="hljs-comment"># &#x6B64;&#x5904;&#x7F16;&#x5199;&#x7684;&#x4EE3;&#x7801;&#x4EC5;&#x5728;Django&#x7B2C;&#x4E00;&#x6B21;&#x914D;&#x7F6E;&#x548C;&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x3002;</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">middleware</span><span class="hljs-params">(request)</span>:</span>
+        <span class="hljs-comment"># &#x6B64;&#x5904;&#x7F16;&#x5199;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x5728;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x89C6;&#x56FE;&#x524D;&#x88AB;&#x8C03;&#x7528;&#x3002;</span>
+        response = get_response(request)
+        <span class="hljs-comment"># &#x6B64;&#x5904;&#x7F16;&#x5199;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x5728;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x89C6;&#x56FE;&#x4E4B;&#x540E;&#x88AB;&#x8C03;&#x7528;&#x3002;</span>
+        <span class="hljs-keyword">return</span> response
+
+    <span class="hljs-keyword">return</span> middleware
+</code></pre>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5728;users&#x5E94;&#x7528;&#x4E2D;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;middleware.py&#x6587;&#x4EF6;&#xFF0C;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_middleware</span><span class="hljs-params">(get_response)</span>:</span>
+    print(<span class="hljs-string">&apos;init &#x88AB;&#x8C03;&#x7528;&apos;</span>)
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">middleware</span><span class="hljs-params">(request)</span>:</span>
+        print(<span class="hljs-string">&apos;before request &#x88AB;&#x8C03;&#x7528;&apos;</span>)
+        response = get_response(request)
+        print(<span class="hljs-string">&apos;after response &#x88AB;&#x8C03;&#x7528;&apos;</span>)
+        <span class="hljs-keyword">return</span> response
+    <span class="hljs-keyword">return</span> middleware
+</code></pre>
+<p><strong>&#x5B9A;&#x4E49;&#x597D;&#x4E2D;&#x95F4;&#x4EF6;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x5728;settings.py &#x6587;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0;&#x6CE8;&#x518C;&#x4E2D;&#x95F4;&#x4EF6;</strong></p>
+<pre><code class="lang-python">MIDDLEWARE = [
+    <span class="hljs-string">&apos;django.middleware.security.SecurityMiddleware&apos;</span>,
+    <span class="hljs-string">&apos;django.contrib.sessions.middleware.SessionMiddleware&apos;</span>,
+    <span class="hljs-string">&apos;django.middleware.common.CommonMiddleware&apos;</span>,
+    <span class="hljs-comment"># &apos;django.middleware.csrf.CsrfViewMiddleware&apos;,</span>
+    <span class="hljs-string">&apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;</span>,
+    <span class="hljs-string">&apos;django.contrib.messages.middleware.MessageMiddleware&apos;</span>,
+    <span class="hljs-string">&apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;</span>,
+    <span class="hljs-string">&apos;users.middleware.my_middleware&apos;</span>,  <span class="hljs-comment"># &#x6DFB;&#x52A0;&#x4E2D;&#x95F4;&#x4EF6;</span>
+]
+</code></pre>
+<p>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">demo_view</span><span class="hljs-params">(request)</span>:</span>
+    print(<span class="hljs-string">&apos;view &#x89C6;&#x56FE;&#x88AB;&#x8C03;&#x7528;&apos;</span>)
+    <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">&apos;OK&apos;</span>)
+</code></pre>
+<p>&#x6267;&#x884C;&#x7ED3;&#x679C;</p>
+<p><img src="../images/middleware_demo.png" alt="middleware_demo"></p>
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;Django&#x8FD0;&#x884C;&#x5728;&#x8C03;&#x8BD5;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x4E2D;&#x95F4;&#x4EF6;init&#x90E8;&#x5206;&#x6709;&#x53EF;&#x80FD;&#x88AB;&#x8C03;&#x7528;&#x4E24;&#x6B21;&#x3002;</strong></p>
+<h3 id="2-&#x591A;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;">2 &#x591A;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;</h3>
+<ul>
+<li>&#x5728;&#x8BF7;&#x6C42;&#x89C6;&#x56FE;&#x88AB;&#x5904;&#x7406;<strong>&#x524D;</strong>&#xFF0C;&#x4E2D;&#x95F4;&#x4EF6;<strong>&#x7531;&#x4E0A;&#x81F3;&#x4E0B;</strong>&#x4F9D;&#x6B21;&#x6267;&#x884C;</li>
+<li>&#x5728;&#x8BF7;&#x6C42;&#x89C6;&#x56FE;&#x88AB;&#x5904;&#x7406;<strong>&#x540E;</strong>&#xFF0C;&#x4E2D;&#x95F4;&#x4EF6;<strong>&#x7531;&#x4E0B;&#x81F3;&#x4E0A;</strong>&#x4F9D;&#x6B21;&#x6267;&#x884C;</li>
+</ul>
+<p><img src="../images/middleware_sequence.png" alt="middleware_sequence"></p>
+<p>&#x793A;&#x4F8B;&#xFF1A;</p>
+<p>&#x5B9A;&#x4E49;&#x4E24;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_middleware</span><span class="hljs-params">(get_response)</span>:</span>
+    print(<span class="hljs-string">&apos;init &#x88AB;&#x8C03;&#x7528;&apos;</span>)
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">middleware</span><span class="hljs-params">(request)</span>:</span>
+        print(<span class="hljs-string">&apos;before request &#x88AB;&#x8C03;&#x7528;&apos;</span>)
+        response = get_response(request)
+        print(<span class="hljs-string">&apos;after response &#x88AB;&#x8C03;&#x7528;&apos;</span>)
+        <span class="hljs-keyword">return</span> response
+    <span class="hljs-keyword">return</span> middleware
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_middleware2</span><span class="hljs-params">(get_response)</span>:</span>
+    print(<span class="hljs-string">&apos;init2 &#x88AB;&#x8C03;&#x7528;&apos;</span>)
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">middleware</span><span class="hljs-params">(request)</span>:</span>
+        print(<span class="hljs-string">&apos;before request 2 &#x88AB;&#x8C03;&#x7528;&apos;</span>)
+        response = get_response(request)
+        print(<span class="hljs-string">&apos;after response 2 &#x88AB;&#x8C03;&#x7528;&apos;</span>)
+        <span class="hljs-keyword">return</span> response
+    <span class="hljs-keyword">return</span> middleware
+</code></pre>
+<p>&#x6CE8;&#x518C;&#x6DFB;&#x52A0;&#x4E24;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;</p>
+<pre><code class="lang-python">MIDDLEWARE = [
+    <span class="hljs-string">&apos;django.middleware.security.SecurityMiddleware&apos;</span>,
+    <span class="hljs-string">&apos;django.contrib.sessions.middleware.SessionMiddleware&apos;</span>,
+    <span class="hljs-string">&apos;django.middleware.common.CommonMiddleware&apos;</span>,
+    <span class="hljs-comment"># &apos;django.middleware.csrf.CsrfViewMiddleware&apos;,</span>
+    <span class="hljs-string">&apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;</span>,
+    <span class="hljs-string">&apos;django.contrib.messages.middleware.MessageMiddleware&apos;</span>,
+    <span class="hljs-string">&apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;</span>,
+    <span class="hljs-string">&apos;users.middleware.my_middleware&apos;</span>,  <span class="hljs-comment"># &#x6DFB;&#x52A0;</span>
+    <span class="hljs-string">&apos;users.middleware.my_middleware2&apos;</span>,  <span class="hljs-comment"># &#x6DFB;&#x52A0;</span>
+]
+</code></pre>
+<p>&#x6267;&#x884C;&#x7ED3;&#x679C;</p>
+<pre><code class="lang-python">init2 &#x88AB;&#x8C03;&#x7528;
+init &#x88AB;&#x8C03;&#x7528;
+before request &#x88AB;&#x8C03;&#x7528;
+before request <span class="hljs-number">2</span> &#x88AB;&#x8C03;&#x7528;
+view &#x89C6;&#x56FE;&#x88AB;&#x8C03;&#x7528;
+after response <span class="hljs-number">2</span> &#x88AB;&#x8C03;&#x7528;
+after response &#x88AB;&#x8C03;&#x7528;
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../day02/part04.html" class="navigation navigation-prev " aria-label="Previous page: Session"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../day03/part08.html" class="navigation navigation-next " aria-label="Next page: 模板"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
