@@ -75,7 +75,7 @@ class BookView(View):
 </head>
 <body>
     <form action="" method="post">
-        {% csrf_token %}
+ <!--        {% csrf_token %} -->
         {{ form }}
         <input type="submit">
     </form>
