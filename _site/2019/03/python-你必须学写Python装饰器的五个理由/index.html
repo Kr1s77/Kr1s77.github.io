@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>你必须学写Python装饰器的五个理由</title>
+  <meta name="description" content="你必须学写Python装饰器的五个理由  Python装饰器是很容易使用的。任何一个会写Python函数的人都能够学会使用装饰器，比如下面这个：">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="你必须学写Python装饰器的五个理由">
+  <meta name="twitter:description" content="你必须学写Python装饰器的五个理由  Python装饰器是很容易使用的。任何一个会写Python函数的人都能够学会使用装饰器，比如下面这个：">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="你必须学写Python装饰器的五个理由">
+  <meta property="og:description" content="你必须学写Python装饰器的五个理由  Python装饰器是很容易使用的。任何一个会写Python函数的人都能够学会使用装饰器，比如下面这个：">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/03/python-%E4%BD%A0%E5%BF%85%E9%A1%BB%E5%AD%A6%E5%86%99Python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%BA%94%E4%B8%AA%E7%90%86%E7%94%B1/">
+  <link rel="alternate" type="application/rss+xml" title="Crise-Genius" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Crise-Genius 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Crise-Genius logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Crise-Genius" class="blog-button">Crise-Genius</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">站在巨人的肩膀上 We Will Be Giants</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">嗨，我是梁英健(@Crise-LYJ)，我会成为一名出色的开发者。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="https://github.com/CriseLYJ" target="_blank">Here Is My Github</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://criselyj.github.io/" target="_blank" title="My Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/Github每日开源KYZG" title="@Github每日开源KYZG 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/CriseLYJ" title="@CriseLYJ 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/CriseLYJ" title="@CriseLYJ" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Google Plus -->
+  <li class="navigation__item">
+    <a href="https://plus.google.com/1998lyjvip@gmail.com" rel="author" title="Google+" target="_blank">
+      <i class='social fa fa-google-plus-square'></i>
+      <span class="label">Google Plus</span>
+    </a>
+  </li>
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:1148995537@qq.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-read"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-03-01 12:20:15 +0800" itemprop="datePublished" class="post-meta__date date">2019-03-01</time> &#8226; <span class="post-meta__tags tags">你必须学写Python装饰器的五个理由</span>
+    </div>
+    <h1 class="post-title">你必须学写Python装饰器的五个理由</h1>
+  </header>
+
+  <section class="post">
+    <h2 id="你必须学写python装饰器的五个理由">你必须学写Python装饰器的五个理由</h2>
+<ul>
+  <li>Python装饰器是很容易使用的。任何一个会写Python函数的人都能够学会使用装饰器，比如下面这个：</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">somedecorator</span>
+<span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"Check it out, I"</span><span class="n">m</span> <span class="n">using</span> <span class="n">decorators</span><span class="err">!</span><span class="s">")</span><span class="err">
+</span></code></pre></div></div>
+
+<ul>
+  <li>
+    <p>但是，写出一个装饰器是一个完全不一样的技能。而且这也不是，你不得不理解下面这些：</p>
+  </li>
+  <li>闭包</li>
+  <li>如何将函数作为”第一类”参数来使用</li>
+  <li>变量参数</li>
+  <li>参数解包</li>
+  <li>
+    <p>甚至是Python是如何装载源码的一些细节</p>
+  </li>
+  <li>
+    <p>所有这些都需要花很多时间去理解和掌握。而且当你已经有这么一堆事情要学的时候，这些值得你花时间吗？</p>
+  </li>
+  <li>
+    <p>对我来说，这个问题的答案已然是上千次的“肯定，是的，我会学习！”</p>
+  </li>
+  <li>写装饰器的最重要的好处是什么呢？在你每天的开发中，装饰器让你做什么做起来是很容易并且很强大的呢？</li>
+</ul>
+
+<blockquote>
+  <p>分析、日志以及指导</p>
+</blockquote>
+
+<ul>
+  <li>尤其是在大型软件中，我们通常需要专门来测试到底发生了什么，以及记录那些能量化不同行为的指标。通过在装饰器内部的函数或者方法里面封装这些重要的事件，这个装饰器能通俗易懂且容易地处理刚才这些所讲的需求。比如：</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">myapp.log</span> <span class="kn">import</span> <span class="n">logger</span>
+   <span class="k">def</span> <span class="nf">log_order_event</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+       <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+           <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Ordering: </span><span class="si">%</span><span class="s">s"</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+           <span class="n">order</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+           <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"Order result: </span><span class="si">%</span><span class="s">s"</span><span class="p">,</span> <span class="n">order</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+           <span class="k">return</span> <span class="n">order</span>
+       <span class="k">return</span> <span class="n">wrapper</span>
+
+   <span class="o">@</span><span class="n">log_order_event</span>
+   <span class="k">def</span> <span class="nf">order_pizza</span><span class="p">(</span><span class="o">*</span><span class="n">toppings</span><span class="p">):</span>
+       <span class="c1"># let"s get some pizza!
+</span></code></pre></div></div>
+
+<ul>
+  <li>同样的方式可以被用来计数或者其他指标。</li>
+</ul>
+
+<blockquote>
+  <p>验证与运行检查</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Python的类型系统是相当类型化了的，但是也是很动态的。对于它的这些所有的好处，也意味着某一些bugs能够悄悄产生，而这些bugs能够在编译的时候被更类型化的语言（比如Java）所捕获。即使更长远看，你可能需要强化更复杂的，在数据进出的时候能个性化检查。装饰器能让你易于处理所有这些，并能一次性地应用它到很多函数上。</p>
+  </li>
+  <li>
+    <p>假设：你有一堆函数，每个函数都返回一个字典，这个字典包含一个称作“summary”的字段。这个字段的值不能超过80个字符长度；如果违反了，就是不对的。这里给出一个装饰器，当条件不满足的时候它能够抛出一个值错误（ValueError），如下：</p>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">validate_summary</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+       <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+           <span class="n">data</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+           <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">"summary"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">:</span>
+               <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"Summary too long"</span><span class="p">)</span>
+           <span class="k">return</span> <span class="n">data</span>
+       <span class="k">return</span> <span class="n">wrapper</span>
+
+   <span class="o">@</span><span class="n">validate_summary</span>
+   <span class="k">def</span> <span class="nf">fetch_customer_data</span><span class="p">():</span>
+       <span class="c1"># ...
+</span>
+   <span class="o">@</span><span class="n">validate_summary</span>
+   <span class="k">def</span> <span class="nf">query_orders</span><span class="p">(</span><span class="n">criteria</span><span class="p">):</span>
+       <span class="c1"># ...
+</span>
+   <span class="o">@</span><span class="n">validate_summary</span>
+   <span class="k">def</span> <span class="nf">create_invoice</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+       <span class="c1"># ...
+</span></code></pre></div></div>
+
+<blockquote>
+  <p>创建框架</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>一旦你掌握了装饰器的编程，你将能够受益于使用装饰器的简单语法，而这让你增加语意给你的代码以便容易使用它。这就是下一个能够扩展Python自身语法的最好的工具。</p>
+  </li>
+  <li>
+    <p>实际中，很多流行的开源框架都在使用装饰器。网页应用框架Flask就使用了装饰器将URLs的路由交给那些处理HTTPS请求的函数。</p>
+  </li>
+</ul>
+
+<h3 id="for-a-restful-todo-list-api">For a RESTful todo-list API.</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="o">@</span><span class="n">app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/tasks/"</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">"GET"</span><span class="p">])</span>
+   <span class="k">def</span> <span class="nf">get_all_tasks</span><span class="p">():</span>
+       <span class="n">tasks</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">get_all_tasks</span><span class="p">()</span>
+       <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">tasks</span><span class="p">),</span> <span class="mi">200</span><span class="p">)</span>
+
+   <span class="o">@</span><span class="n">app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/tasks/"</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">"POST"</span><span class="p">])</span>
+   <span class="k">def</span> <span class="nf">create_task</span><span class="p">():</span>
+       <span class="n">payload</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+       <span class="n">task_id</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+           <span class="n">summary</span> <span class="o">=</span> <span class="n">payload</span><span class="p">[</span><span class="s">"summary"</span><span class="p">],</span>
+           <span class="n">description</span> <span class="o">=</span> <span class="n">payload</span><span class="p">[</span><span class="s">"description"</span><span class="p">],</span>
+       <span class="p">)</span>
+       <span class="n">task_info</span> <span class="o">=</span> <span class="p">{</span><span class="s">"id"</span><span class="p">:</span> <span class="n">task_id</span><span class="p">}</span>
+       <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">task_info</span><span class="p">),</span> <span class="mi">201</span><span class="p">)</span>
+
+   <span class="o">@</span><span class="n">app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/tasks/&lt;int:task_id&gt;/"</span><span class="p">)</span>
+   <span class="k">def</span> <span class="nf">task_details</span><span class="p">(</span><span class="n">task_id</span><span class="p">):</span>
+       <span class="n">task_info</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">task_details</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
+       <span class="k">if</span> <span class="n">task_info</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+           <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span>
+       <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">task_info</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>在这里，你有一个被叫做app的全局的对象，它有一个被称作route（路由）的方法并接受特定参数。这个路由方法返回一个被应用到处理函数的装饰器。在这个“面罩”下发生了一些很错综复杂的的事情，但是从Flask的使用者角度看，所有这些复杂性是完全被隐藏起来的了。</p>
+  </li>
+  <li>
+    <p>以这样的方式使用装饰器在stock Python中也有体现。举个例子，完全使用对象系统是有赖于@classmethod和@property装饰器的：</p>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">WeatherSimulation</span><span class="p">:</span>
+       <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+
+       <span class="o">@</span><span class="nb">classmethod</span>
+       <span class="k">def</span> <span class="nf">for_winter</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">other_params</span><span class="p">):</span>
+           <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"month"</span><span class="p">:</span> <span class="s">"Jan"</span><span class="p">,</span> <span class="s">"temp"</span><span class="p">:</span> <span class="s">"0"</span><span class="p">}</span>
+           <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">other_params</span><span class="p">)</span>
+           <span class="k">return</span> <span class="n">cls</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+       <span class="o">@</span><span class="nb">property</span>
+       <span class="k">def</span> <span class="nf">progress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+           <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">completed_iterations</span><span class="p">()</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_iterations</span><span class="p">()</span>
+</code></pre></div></div>
+
+<ul>
+  <li>这个类有3个不同的定义声明。但是，他们的语意是各不相同的。</li>
+</ul>
+
+<ol>
+  <li>
+    <p>：constructor是一个正常方法</p>
+  </li>
+  <li>
+    <p>：for_winter是一个类方法且提供一种类似于“车间”的东西</p>
+  </li>
+  <li>
+    <p>：progess是只读、动态属性</p>
+  </li>
+</ol>
+
+<ul>
+  <li>对于日常来说，@classmethod和@property两个装饰器如此简单以致可以很容易扩展Python的对象语意</li>
+</ul>
+
+<blockquote>
+  <p>复用那些不可能复用的代码</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Python提供给你一些很强大的工具用以封装代码为一个易用的形式，并带有充分的函数表示语法，支持函数式编程以及全面的对象系统。但是，装饰器也有它所不能捕获的某些形式的代码复用。</p>
+  </li>
+  <li>
+    <p>比如使用一个不可靠的API。你给那些通过HTTP对话的JSON发出一些请求的时候，API可以99.9%的时候工作正常。但是，有一小部分请求将使得服务器返回一个内部错误，然后你需要重试这些请求。在这个情况下，你将写一个重试逻辑，比如：</p>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">resp</span> <span class="o">=</span> <span class="bp">None</span>
+   <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+       <span class="n">resp</span> <span class="o">=</span> <span class="n">make_api_call</span><span class="p">()</span>
+       <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">500</span> <span class="ow">and</span> <span class="n">tries</span> <span class="o">&lt;</span> <span class="n">MAX_TRIES</span><span class="p">:</span>
+           <span class="n">tries</span> <span class="o">+=</span> <span class="mi">1</span>
+           <span class="k">continue</span>
+       <span class="k">break</span>
+   <span class="n">process_response</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>现在，假设你有十多个类似于make_api_call的函数，并且他们被所有代码调用。那么你是想要每次调用它们的时候写一个while循环呢？还是每次增加一个API调用函数的时候都把这段代码再写一遍？无论哪种选择都会产生大量的重复代码，除非你用装饰器。用了装饰器事情就简单了。</li>
+</ul>
+
+<h3 id="加了装饰器的函数会返回一个response对象">加了装饰器的函数会返回一个Response对象，</h3>
+<h3 id="这个对象有个一二status_code的属性">这个对象有个一二status_code的属性，</h3>
+<h3 id="200表示成功500表示服务器错误">200表示成功；500表示服务器错误。</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">retry</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+   <span class="k">def</span> <span class="nf">retried_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+       <span class="n">MAX_TRIES</span> <span class="o">=</span> <span class="mi">3</span>
+       <span class="n">tries</span> <span class="o">=</span> <span class="mi">0</span>
+       <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+           <span class="n">resp</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+           <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">500</span> <span class="ow">and</span> <span class="n">tries</span> <span class="o">&lt;</span> <span class="n">MAX_TRIES</span><span class="p">:</span>
+               <span class="n">tries</span> <span class="o">+=</span> <span class="mi">1</span>
+               <span class="k">continue</span>
+           <span class="k">break</span>
+       <span class="k">return</span> <span class="n">resp</span>
+   <span class="k">return</span> <span class="n">retried_func</span>
+
+
+<span class="err">上述例子可以让你方便使用装饰器</span><span class="o">@</span><span class="n">retry</span>
+
+
+
+<span class="o">@</span><span class="n">retry</span>
+   <span class="k">def</span> <span class="nf">make_api_call</span><span class="p">():</span>
+       <span class="c1"># ....
+</span></code></pre></div></div>
+
+<blockquote>
+  <p>提升你的职业生涯</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>编写装饰器在一开始并不容易。它虽然不像火箭科学但是也需要你花很多努力去学习，去排除一些细微差异。很多开发者也从来不会通过这些麻烦而学习掌握装饰器编写。但是学习装饰器的确会给你优势。当你是你的团队里面学习如何写好装饰器的那个人的时候，并且你写的装饰器能解决一些实际问题的时候，其他开发者将会使用你的装饰器。因为，一旦这些装饰器编写的困难的部分被完成了，装饰器就会很容易使用。这就对你所写的代码产生极大的正面作用。这也会让你成为一个重要角色。</p>
+  </li>
+  <li>
+    <p>不论你如何编写装饰器，你会对下面你所要做的事情而感到兴奋，比如你即将能使用装饰器来做一些事情，以及装饰器是如何能永远改变你写Python代码的方式。</p>
+  </li>
+</ul>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/02/Pipenv-%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%92%8C%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" title="link to Pipenv-最好用的python虚拟环境和包管理工具">Pipenv-最好用的python虚拟环境和包管理工具</a></h2>
+       <p class="excerpt">Pipenv-最好用的python虚拟环境和包管理工具  作为一个希望把所有的事情都准备好的死理性派，我对python的开发环境非常重视，不过python常常面临生产环境和开发环境不一致；或者在A处开发一阵子，又放到B处开发的问题，之前的pip以及requirement有诸多问题，pipenv解决了这些问题，并给出了最佳实践方案。pipenv所解决的问题requirements.txt依赖管理的局限      如果我要使用 flask, 我会在requirements.txt里面写上   ...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-02-05 09:40:15 +0800" class="post-list__meta--date date">2019-02-05</time> &#8226; <span class="post-list__meta--tags tags">Pipenv 最好用的python虚拟环境和包管理工具</span><a class="btn-border-small" href=/2019/02/Pipenv-%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%92%8C%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://localhost:4000/2019/03/python-%E4%BD%A0%E5%BF%85%E9%A1%BB%E5%AD%A6%E5%86%99Python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%BA%94%E4%B8%AA%E7%90%86%E7%94%B1/";
+        this.page.identifier = "/2019/03/python-%E4%BD%A0%E5%BF%85%E9%A1%BB%E5%AD%A6%E5%86%99Python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%BA%94%E4%B8%AA%E7%90%86%E7%94%B1/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-03-02 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/CriseLYJ">@Crise-LYJ</a> 创建，采用 <a href="https://github.com/CriseLYJ/criselyj.github.io">Genius</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/CriseLYJ/criselyj.github.io">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

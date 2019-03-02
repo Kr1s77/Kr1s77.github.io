@@ -5,9 +5,599 @@
     <description>嗨，我是梁英健(@Crise-LYJ)，我会成为一名出色的开发者。</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 20 Jan 2019 16:29:45 +0800</pubDate>
-    <lastBuildDate>Sun, 20 Jan 2019 16:29:45 +0800</lastBuildDate>
+    <pubDate>Sat, 02 Mar 2019 14:42:00 +0800</pubDate>
+    <lastBuildDate>Sat, 02 Mar 2019 14:42:00 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>你必须学写Python装饰器的五个理由</title>
+        <description>&lt;h2 id=&quot;你必须学写python装饰器的五个理由&quot;&gt;你必须学写Python装饰器的五个理由&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Python装饰器是很容易使用的。任何一个会写Python函数的人都能够学会使用装饰器，比如下面这个：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;somedecorator&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;some_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Check it out, I&quot;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decorators&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;但是，写出一个装饰器是一个完全不一样的技能。而且这也不是，你不得不理解下面这些：&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;闭包&lt;/li&gt;
+  &lt;li&gt;如何将函数作为”第一类”参数来使用&lt;/li&gt;
+  &lt;li&gt;变量参数&lt;/li&gt;
+  &lt;li&gt;参数解包&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;甚至是Python是如何装载源码的一些细节&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;所有这些都需要花很多时间去理解和掌握。而且当你已经有这么一堆事情要学的时候，这些值得你花时间吗？&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;对我来说，这个问题的答案已然是上千次的“肯定，是的，我会学习！”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;写装饰器的最重要的好处是什么呢？在你每天的开发中，装饰器让你做什么做起来是很容易并且很强大的呢？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;分析、日志以及指导&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;尤其是在大型软件中，我们通常需要专门来测试到底发生了什么，以及记录那些能量化不同行为的指标。通过在装饰器内部的函数或者方法里面封装这些重要的事件，这个装饰器能通俗易懂且容易地处理刚才这些所讲的需求。比如：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;myapp.log&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;log_order_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Ordering: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Order result: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapper&lt;/span&gt;
+
+   &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log_order_event&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;order_pizza&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toppings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# let&quot;s get some pizza!
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;同样的方式可以被用来计数或者其他指标。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;验证与运行检查&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Python的类型系统是相当类型化了的，但是也是很动态的。对于它的这些所有的好处，也意味着某一些bugs能够悄悄产生，而这些bugs能够在编译的时候被更类型化的语言（比如Java）所捕获。即使更长远看，你可能需要强化更复杂的，在数据进出的时候能个性化检查。装饰器能让你易于处理所有这些，并能一次性地应用它到很多函数上。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;假设：你有一堆函数，每个函数都返回一个字典，这个字典包含一个称作“summary”的字段。这个字段的值不能超过80个字符长度；如果违反了，就是不对的。这里给出一个装饰器，当条件不满足的时候它能够抛出一个值错误（ValueError），如下：&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;validate_summary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;summary&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+               &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ValueError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Summary too long&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapper&lt;/span&gt;
+
+   &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;validate_summary&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fetch_customer_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# ...
+&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;validate_summary&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;query_orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;criteria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# ...
+&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;validate_summary&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_invoice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# ...
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;创建框架&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;一旦你掌握了装饰器的编程，你将能够受益于使用装饰器的简单语法，而这让你增加语意给你的代码以便容易使用它。这就是下一个能够扩展Python自身语法的最好的工具。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;实际中，很多流行的开源框架都在使用装饰器。网页应用框架Flask就使用了装饰器将URLs的路由交给那些处理HTTPS请求的函数。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;for-a-restful-todo-list-api&quot;&gt;For a RESTful todo-list API.&lt;/h3&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tasks/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GET&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_all_tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;tasks&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_all_tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dumps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tasks/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;POST&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;force&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create_task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;summary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;summary&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;task_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dumps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;201&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tasks/&amp;lt;int:task_id&amp;gt;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;task_details&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;task_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_details&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task_info&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dumps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;在这里，你有一个被叫做app的全局的对象，它有一个被称作route（路由）的方法并接受特定参数。这个路由方法返回一个被应用到处理函数的装饰器。在这个“面罩”下发生了一些很错综复杂的的事情，但是从Flask的使用者角度看，所有这些复杂性是完全被隐藏起来的了。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;以这样的方式使用装饰器在stock Python中也有体现。举个例子，完全使用对象系统是有赖于@classmethod和@property装饰器的：&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WeatherSimulation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;
+
+       &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;classmethod&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;for_winter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;other_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;month&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Jan&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;temp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;other_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+       &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;property&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;progress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;completed_iterations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;total_iterations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;这个类有3个不同的定义声明。但是，他们的语意是各不相同的。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;：constructor是一个正常方法&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;：for_winter是一个类方法且提供一种类似于“车间”的东西&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;：progess是只读、动态属性&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;对于日常来说，@classmethod和@property两个装饰器如此简单以致可以很容易扩展Python的对象语意&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;复用那些不可能复用的代码&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Python提供给你一些很强大的工具用以封装代码为一个易用的形式，并带有充分的函数表示语法，支持函数式编程以及全面的对象系统。但是，装饰器也有它所不能捕获的某些形式的代码复用。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;比如使用一个不可靠的API。你给那些通过HTTP对话的JSON发出一些请求的时候，API可以99.9%的时候工作正常。但是，有一小部分请求将使得服务器返回一个内部错误，然后你需要重试这些请求。在这个情况下，你将写一个重试逻辑，比如：&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_api_call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tries&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MAX_TRIES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;tries&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;process_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;现在，假设你有十多个类似于make_api_call的函数，并且他们被所有代码调用。那么你是想要每次调用它们的时候写一个while循环呢？还是每次增加一个API调用函数的时候都把这段代码再写一遍？无论哪种选择都会产生大量的重复代码，除非你用装饰器。用了装饰器事情就简单了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;加了装饰器的函数会返回一个response对象&quot;&gt;加了装饰器的函数会返回一个Response对象，&lt;/h3&gt;
+&lt;h3 id=&quot;这个对象有个一二status_code的属性&quot;&gt;这个对象有个一二status_code的属性，&lt;/h3&gt;
+&lt;h3 id=&quot;200表示成功500表示服务器错误&quot;&gt;200表示成功；500表示服务器错误。&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retried_func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;MAX_TRIES&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;tries&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tries&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MAX_TRIES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+               &lt;span class=&quot;n&quot;&gt;tries&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+               &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retried_func&lt;/span&gt;
+
+
+&lt;span class=&quot;err&quot;&gt;上述例子可以让你方便使用装饰器&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retry&lt;/span&gt;
+
+
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retry&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;make_api_call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# ....
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;提升你的职业生涯&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;编写装饰器在一开始并不容易。它虽然不像火箭科学但是也需要你花很多努力去学习，去排除一些细微差异。很多开发者也从来不会通过这些麻烦而学习掌握装饰器编写。但是学习装饰器的确会给你优势。当你是你的团队里面学习如何写好装饰器的那个人的时候，并且你写的装饰器能解决一些实际问题的时候，其他开发者将会使用你的装饰器。因为，一旦这些装饰器编写的困难的部分被完成了，装饰器就会很容易使用。这就对你所写的代码产生极大的正面作用。这也会让你成为一个重要角色。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;不论你如何编写装饰器，你会对下面你所要做的事情而感到兴奋，比如你即将能使用装饰器来做一些事情，以及装饰器是如何能永远改变你写Python代码的方式。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 01 Mar 2019 12:20:15 +0800</pubDate>
+        <link>http://localhost:4000/2019/03/python-%E4%BD%A0%E5%BF%85%E9%A1%BB%E5%AD%A6%E5%86%99Python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%BA%94%E4%B8%AA%E7%90%86%E7%94%B1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/03/python-%E4%BD%A0%E5%BF%85%E9%A1%BB%E5%AD%A6%E5%86%99Python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%BA%94%E4%B8%AA%E7%90%86%E7%94%B1/</guid>
+        
+        <category>你必须学写Python装饰器的五个理由</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Pipenv-最好用的python虚拟环境和包管理工具</title>
+        <description>&lt;h1 id=&quot;pipenv-最好用的python虚拟环境和包管理工具&quot;&gt;Pipenv-最好用的python虚拟环境和包管理工具&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;作为一个希望把所有的事情都准备好的死理性派，我对python的开发环境非常重视，不过python常常面临生产环境和开发环境不一致；或者在A处开发一阵子，又放到B处开发的问题，之前的pip以及requirement有诸多问题，pipenv解决了这些问题，并给出了最佳实践方案。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;pipenv所解决的问题&quot;&gt;pipenv所解决的问题&lt;/h2&gt;
+&lt;h3 id=&quot;requirementstxt依赖管理的局限&quot;&gt;requirements.txt依赖管理的局限&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果我要使用 flask, 我会在&lt;code class=&quot;highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt;里面写上&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  flask
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;不过由于没有指定版本，因此在另一个环境通过&lt;code class=&quot;highlighter-rouge&quot;&gt;pip install -r requirements.txt&lt;/code&gt;安装依赖模块时，会默认安装最新版本的flask，如果新版本向后兼容，这当然是没问题的。但是如果新版本不兼容旧的接口，那么就出问题了：代码无法在该环境运行。因此测试环境和生产环境的不一致出现了，同一份&lt;code class=&quot;highlighter-rouge&quot;&gt;requirement.txt&lt;/code&gt;，结果出来2份不同的环境，这叫做 不确定构建 (&lt;code class=&quot;highlighter-rouge&quot;&gt;the build isn’t deterministic&lt;/code&gt;) 问题。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;这时候，可以考虑加上版本号，requirements.txt这么写&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  flask==0.12.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;这么写肯定可以了吧？因为以后在新环境安装&lt;code class=&quot;highlighter-rouge&quot;&gt;pip install -r requirements.txt&lt;/code&gt;的时候，用的是该指定版本，就不会发生跑不起来的情况。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;是这样吗？不一定哟，我们再分析一下：因为flask本身还依赖于其他模块，因此执行&lt;code class=&quot;highlighter-rouge&quot;&gt;pip install -r requirements.txt&lt;/code&gt;的时候，flask使用的是&lt;code class=&quot;highlighter-rouge&quot;&gt;0.12.1&lt;/code&gt;版本，但是它的依赖模块可不一定相同。比如说flask依赖&lt;code class=&quot;highlighter-rouge&quot;&gt;Werkzeug&lt;/code&gt;模块，而Werkzeug模块的新版本有bug！&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;这时候，传统的解决方式是使用&lt;code class=&quot;highlighter-rouge&quot;&gt;pip freeze&lt;/code&gt;， 它能给出当前环境下第三方模块和所有依赖子模块的版本号，因此在生产环境就可以确保使用与开发环境相同的模块了。这样我就可以把pip freeze的输出写入到requirement.txt：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  click==6.7
+  Flask==0.12.1
+  itsdangerous==0.24
+  Jinja2==2.10
+  MarkupSafe==1.0
+  Werkzeug==0.14.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;这或许解决了生产与开发环境不一致的问题，可是它又引入了一大坨新问题！&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;因为，也许&lt;code class=&quot;highlighter-rouge&quot;&gt;Werkzeug==0.14.1&lt;/code&gt;隐藏了一个漏洞，官方发布了0.14.2版本修复了该问题，那么我不仅需要及时下载更新模块，还得去更新requirememts.txt文件。但是那么多模块，我难道要把所有更新版本都记录下来？事实上，我本不需要记录那么多我不关心的模块的版本，我只想记录自己关心的核心模块版本。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;这就出现了一个矛盾：&lt;确定构建&gt;与&lt;不记录所有模块版本&gt;之间的矛盾。&lt;/不记录所有模块版本&gt;&lt;/确定构建&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;多个项目依赖不同版本的子模块&quot;&gt;多个项目依赖不同版本的子模块&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;假如我有2个项目A和B，A依赖&lt;code class=&quot;highlighter-rouge&quot;&gt;django==1.9&lt;/code&gt;，B依赖&lt;code class=&quot;highlighter-rouge&quot;&gt;django==1.10&lt;/code&gt;。linux默认使用全局共享的依赖包，因此当我在A和B项目间切换时，需要检测–卸载–安装django。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;传统的解决方式是使用&lt;code class=&quot;highlighter-rouge&quot;&gt;virtual environment&lt;/code&gt; ，将项目A和B的第三包隔离开。python2目前有&lt;code class=&quot;highlighter-rouge&quot;&gt;virtualenv&lt;/code&gt;方案，python3目前有&lt;code class=&quot;highlighter-rouge&quot;&gt;venv&lt;/code&gt;方案。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;而pipenv也集成了虚拟环境管理的功能。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;依赖分析&quot;&gt;依赖分析&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;先解释一下什么叫依赖分析，假如我有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;requirments.txt&lt;/code&gt;如下：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  package_a
+  package_b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果&lt;code class=&quot;highlighter-rouge&quot;&gt;package_a&lt;/code&gt;依赖于&lt;code class=&quot;highlighter-rouge&quot;&gt;package_c&amp;gt;=1.0&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;package_b&lt;/code&gt;依赖于同样的&lt;code class=&quot;highlighter-rouge&quot;&gt;package_c&amp;lt;=2.0&lt;/code&gt;, 那么在安装a，b模块时，就只能在（1.0，2.0）的中选择&lt;code class=&quot;highlighter-rouge&quot;&gt;package_c&lt;/code&gt;的版本，如果安装工具有这种能力，就说它能做依赖分析。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;不过pip工具没有这种依赖分析的功能。这时候只能通过在requirement.txt里面添加package_c的版本范围才能解决问题，好傻：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  package_c&amp;gt;=1.0,&amp;lt;=2.0
+  package_a
+  package_b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pipenv上场啦&quot;&gt;Pipenv上场啦&lt;/h3&gt;
+
+&lt;h3 id=&quot;例子&quot;&gt;例子&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装, 我们默认是安装的python3版本哈&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pip env pipenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在指定目录下创建虚拟环境, 会使用本地默认版本的python&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果要指定版本创建环境，可以使用如下命令，当然前提是本地启动目录能找到该版本的python&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv --python 3.6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;激活虚拟环境&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv shell
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装第三方模块, 运行后会生成Pipfile和Pipfile.lock文件&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv install flask==0.12.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当然也可以不指定版本：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv install numpy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果想只安装在开发环境才使用的包，这么做：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv install pytest --dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;无论是生产环境还是开发环境的包都会写入一个Pipfile里面，而如果是用传统方法，需要2个文件：&lt;code class=&quot;highlighter-rouge&quot;&gt;dev-requirements.txt&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;test-requirements.txt&lt;/code&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;接下来如果在开发环境已经完成开发，如何构建生产环境的东东呢？这时候就要使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Pipfile.lock&lt;/code&gt;了，运行以下命令，把当前环境的模块lock住, 它会更新&lt;code class=&quot;highlighter-rouge&quot;&gt;Pipfile.lock&lt;/code&gt;文件，该文件是用于生产环境的，你永远不应该编辑它。&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv lock
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;然后只需要把代码和Pipfile.lock放到生产环境，运行下面的代码，就可以创建和开发环境一样的环境咯，Pipfile.lock里记录了所有包和子依赖包的确切版本，因此是&lt;code class=&quot;highlighter-rouge&quot;&gt;确定构建&lt;/code&gt;：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv install --ignore-pipfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果要在另一个开发环境做开发，则将代码和Pipfile复制过去，运行以下命令：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv install --dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;由于Pipfile里面没有所有子依赖包或者确定的版本，因此该安装可能会更新未指定模块的版本号，这不仅不是问题，还解决了一些其他问题，我在这里做一下解释：&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;假如该命令更新了一些依赖包的版本，由于我肯定还会在新环境做单元测试或者功能测试，因此我可以确保这些包的版本更新是不会影响软件功能的；然后我会pipenv lock并把它发布到生产环境，因此我可以确定生产环境也是不会有问题的。这样一来，我既可以保证生产环境和开发环境的一致性，又可以不用管理众多依赖包的版本，完美的解决方案！&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pipenv依赖分析详解&quot;&gt;pipenv依赖分析详解&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;pipenv每次安装核心包时，都会检测所有核心包的子依赖包，对不满足的子依赖包会做更新。如果核心包package_a和package_b依赖有矛盾，比如(package_a依赖package_c&amp;gt;2.0, package_b依赖package_c&amp;lt;1.9），则会有警告提示。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用以下命令可以查看依赖关系：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv graph
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;举个栗子：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      Flask==0.12.1
+    - click [required: &amp;gt;=2.0, installed: 6.7]
+    - itsdangerous [required: &amp;gt;=0.21, installed: 0.24]
+    - Jinja2 [required: &amp;gt;=2.4, installed: 2.10]
+      - MarkupSafe [required: &amp;gt;=0.23, installed: 1.0]
+    - Werkzeug [required: &amp;gt;=0.7, installed: 0.14.1]
+  numpy==1.14.1
+  pytest==3.4.1
+    - attrs [required: &amp;gt;=17.2.0, installed: 17.4.0]
+    - funcsigs [required: Any, installed: 1.0.2]
+    - pluggy [required: &amp;lt;0.7,&amp;gt;=0.5, installed: 0.6.0]
+    - py [required: &amp;gt;=1.5.0, installed: 1.5.2]
+    - setuptools [required: Any, installed: 38.5.1]
+    - six [required: &amp;gt;=1.10.0, installed: 1.11.0]
+  requests==2.18.4
+    - certifi [required: &amp;gt;=2017.4.17, installed: 2018.1.18]
+    - chardet [required: &amp;gt;=3.0.2,&amp;lt;3.1.0, installed: 3.0.4]
+    - idna [required: &amp;gt;=2.5,&amp;lt;2.7, installed: 2.6]
+    - urllib3 [required: &amp;lt;1.23,&amp;gt;=1.21.1, installed: 1.22]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pipfile&quot;&gt;Pipfile&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;举个栗子，它是 TOML 格式的：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  [[source]]
+  url = &quot;https://pypi.python.org/simple&quot;
+  verify_ssl = true
+  name = &quot;pypi&quot;
+	
+  [dev-packages]
+  pytest = &quot;*&quot;
+	
+  [packages]
+  flask = &quot;==0.12.1&quot;
+  numpy = &quot;*&quot;
+  requests = {git = &quot;https://github.com/requests/requests.git&quot;, editable = true}
+	
+  [requires]
+  python_version = &quot;3.6&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;我不用管子依赖包，只会把我项目中实际用到的包放进去，子依赖包在pipenv install package的时候自动安装或更新。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pipfilelock&quot;&gt;Pipfile.lock&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;举个栗子，它是JSON格式的，它包含了所有子依赖包的确定版本：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  {
+      &quot;_meta&quot;: {
+          ...
+      },
+      &quot;default&quot;: {
+          &quot;flask&quot;: {
+              &quot;hashes&quot;: [
+                  &quot;sha256:6c3130c8927109a08225993e4e503de4ac4f2678678ae211b33b519c622a7242&quot;,
+                  &quot;sha256:9dce4b6bfbb5b062181d3f7da8f727ff70c1156cbb4024351eafd426deb5fb88&quot;
+              ],
+              &quot;version&quot;: &quot;==0.12.1&quot;
+          },
+          &quot;requests&quot;: {
+              &quot;editable&quot;: true,
+              &quot;git&quot;: &quot;https://github.com/requests/requests.git&quot;,
+              &quot;ref&quot;: &quot;4ea09e49f7d518d365e7c6f7ff6ed9ca70d6ec2e&quot;
+          },
+          &quot;werkzeug&quot;: {
+              &quot;hashes&quot;: [
+                  &quot;sha256:d5da73735293558eb1651ee2fddc4d0dedcfa06538b8813a2e20011583c9e49b&quot;,
+                  &quot;sha256:c3fd7a7d41976d9f44db327260e263132466836cef6f91512889ed60ad26557c&quot;
+              ],
+              &quot;version&quot;: &quot;==0.14.1&quot;
+          }
+          ...
+      },
+      &quot;develop&quot;: {
+          &quot;pytest&quot;: {
+              &quot;hashes&quot;: [
+                  &quot;sha256:8970e25181e15ab14ae895599a0a0e0ade7d1f1c4c8ca1072ce16f25526a184d&quot;,
+                  &quot;sha256:9ddcb879c8cc859d2540204b5399011f842e5e8823674bf429f70ada281b3cc6&quot;
+              ],
+              &quot;version&quot;: &quot;==3.4.1&quot;
+          },
+          ...
+      }
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;我永远也不应该编辑Pipfile.lock, 它只应该由pipenv lock生成。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pipenv的其他指令&quot;&gt;pipenv的其他指令&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;卸载包&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv uninstall numpy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当前虚拟环境目录&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv --venv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当前项目根目录&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv --where
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;旧项目的requirmentstxt转化为pipfile&quot;&gt;旧项目的requirments.txt转化为Pipfile&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;pipenv install&lt;/code&gt;会自动检测当前目录下的requirments.txt, 并生成Pipfile, 我也可以再对生成的Pipfile做修改。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;此外以下命令也有同样效果, 可以指定具体文件名：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果我有一个开发环境的requirent-dev.txt, 可以用以下命令加入到Pipfile:&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ pipenv install -r dev-requirements.txt --dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;是否要将pipfile加入到版本管理&quot;&gt;是否要将Pipfile加入到版本管理&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	按照上文分析，代码和Pipfile都应该加入版本管理，Pipfile.lock就见仁见智了，我倾向于不加入到版本管理，因为Pipfile.lock在不同的操作系统，不同的开发阶段都可能发生变化。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;哎呀妈呀！好累！不知不觉撸了这么多东西！&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 05 Feb 2019 09:40:15 +0800</pubDate>
+        <link>http://localhost:4000/2019/02/Pipenv-%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%92%8C%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/02/Pipenv-%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%92%8C%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid>
+        
+        <category>Pipenv</category>
+        
+        <category>最好用的python虚拟环境和包管理工具</category>
+        
+        
+      </item>
     
       <item>
         <title>PYTHON深浅拷贝解析</title>

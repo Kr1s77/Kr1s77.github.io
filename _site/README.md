@@ -9,11 +9,11 @@
 
 ------------------------------------------------
 
-#### 基础课件地址：[点击此处即可查看](https://criselyj.github.io/class/python_basic)
+#### 基础地址：[点击此处即可查看](https://criselyj.github.io/class/python_basic)
 
 ------------------------------------------------
 
-#### 高级课件地址：[点击此处即可查看](https://criselyj.github.io/class/python_advanced)
+#### 高级地址：[点击此处即可查看](https://criselyj.github.io/class/python_advanced)
 
 ------------------------------------------------
 
