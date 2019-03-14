@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>爬虫的攻与防</title>
+  <meta name="description" content="爬虫的攻与防什么是爬虫和反爬虫  爬虫：使用任何技术手段，批量获取网站信息的一种方式。  反爬虫：使用任何技术手段，阻止别人批量获取自己网站信息的一种方式。  未被授权的爬虫抓取程序是危害web原创内容生态圈的一大元凶，因此想要保护网站内容首先就要考虑如何反爬虫">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="爬虫的攻与防">
+  <meta name="twitter:description" content="爬虫的攻与防什么是爬虫和反爬虫  爬虫：使用任何技术手段，批量获取网站信息的一种方式。  反爬虫：使用任何技术手段，阻止别人批量获取自己网站信息的一种方式。  未被授权的爬虫抓取程序是危害web原创内容生态圈的一大元凶，因此想要保护网站内容首先就要考虑如何反爬虫">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="爬虫的攻与防">
+  <meta property="og:description" content="爬虫的攻与防什么是爬虫和反爬虫  爬虫：使用任何技术手段，批量获取网站信息的一种方式。  反爬虫：使用任何技术手段，阻止别人批量获取自己网站信息的一种方式。  未被授权的爬虫抓取程序是危害web原创内容生态圈的一大元凶，因此想要保护网站内容首先就要考虑如何反爬虫">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/03/%E7%88%AC%E8%99%AB%E7%9A%84%E6%94%BB%E4%B8%8E%E9%98%B2/">
+  <link rel="alternate" type="application/rss+xml" title="Crise-Genius" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Crise-Genius 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Crise-Genius logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Crise-Genius" class="blog-button">Crise-Genius</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">站在巨人的肩膀上 We Will Be Giants</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">嗨，我是梁英健(@Crise-LYJ)，我会成为一名出色的开发者。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="https://github.com/CriseLYJ" target="_blank">Here Is My Github</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://criselyj.github.io/" target="_blank" title="My Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/Github每日开源KYZG" title="@Github每日开源KYZG 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/CriseLYJ" title="@CriseLYJ 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/CriseLYJ" title="@CriseLYJ" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Google Plus -->
+  <li class="navigation__item">
+    <a href="https://plus.google.com/1998lyjvip@gmail.com" rel="author" title="Google+" target="_blank">
+      <i class='social fa fa-google-plus-square'></i>
+      <span class="label">Google Plus</span>
+    </a>
+  </li>
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:1148995537@qq.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-read"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-03-07 09:20:51 +0800" itemprop="datePublished" class="post-meta__date date">2019-03-07</time> &#8226; <span class="post-meta__tags tags">python 爬虫</span>
+    </div>
+    <h1 class="post-title">爬虫的攻与防</h1>
+  </header>
+
+  <section class="post">
+    <h1 id="爬虫的攻与防">爬虫的攻与防</h1>
+<h3 id="什么是爬虫和反爬虫">什么是爬虫和反爬虫</h3>
+<ul>
+  <li>爬虫：使用任何技术手段，批量获取网站信息的一种方式。</li>
+  <li>反爬虫：使用任何技术手段，阻止别人批量获取自己网站信息的一种方式。</li>
+  <li>未被授权的爬虫抓取程序是危害web原创内容生态圈的一大元凶，因此想要保护网站内容首先就要考虑如何反爬虫</li>
+</ul>
+
+<h4 id="常见的反爬虫">常见的反爬虫</h4>
+<ul>
+  <li>最最最简单的爬虫，是几乎所有客户端或者编程语言都支持的http请求，只要发起一个http请求，就可以获取web页面的html文档。
+    <ol>
+      <li>对此，防守方一般都是根据http请求头中的User-Agent来检查对方是否客户端，或者是一个脚本程序，再考虑是否将信息发送给你。
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这种方式一般都容易破解，作为爬虫的一方，完全可以伪造User-Agent来破解，所以这种方式一般没什么用，就是一个架子而已，其实还不止可以伪造这些东西，只要你愿意，request header的Referrer、cookie都可以被爬虫轻易的伪造
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>UA方式很容易被破解怎么办？于是就有更多的防守方，就设置ip的访问频率，如果超过频率，则防守方会弹出验证码</p>
+  </li>
+  <li>
+    <ol>
+      <li>设置ip访问频率
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>对于这种反爬机制，也很好破解，一般都采用，下载延迟，或者使用IP代理池。。。通过抓取暴露的ip来使用，这里不深究
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>爬虫爬取网页的频率都是比较固定的，不像人去访问网页，中间的间隔时间比较无规则，所以我们可以给每个IP地址建立一个时间窗口，记录IP地址最近12次访问时间，每记录一次就滑动一次窗口，比较最近访问时间和当前时间，如果间隔时间很长判断不是爬虫，清除时间窗口，如果间隔不长，就回溯计算指定时间段的访问频率，如果访问频率超过阀值，就转向验证码页面让用户填写验证码</li>
+</ul>
+
+<ol>
+  <li>请求的时间窗口过滤统计
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>对于这种建议使用一个列表，列表中的元素就是访问的间隔时间，这样就能大概率的避免请求的时间窗口过滤统计，建议5-20s之间
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<ul>
+  <li>其实前面的那些都是雕虫小技，更厉害的是基于客户端js运行时的检测，通常防守方会把页面的所有核心内容都做成js异步请求ajax获取数据后渲染在页面中，这种反爬机制，完全提高了爬虫的门槛</li>
+</ul>
+
+<ol>
+  <li>基于客户端的js检测
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>此时就需要让程序去操作浏览器访问网页，这样编写爬虫的人可以通过调用浏览器暴露出来给程序去调用，其中，有基于webkit内核的PhantomJS，基于Firefox浏览器内核的SlimerJS,甚至还有基于IE内核的trifleJS.
+这些headless brower程序实现了一个简易的无GUI界面的browser程序，但是这些仍然存在兼容问题，不如真正的GUI浏览器
+这里不得不说的是Google chrome团队开源的一个基于Node.js调用的headless chromium dirver，他解决了兼容与css渲染特性和js运行时的语法问题。分分钟，秒杀其他headless browser程序有没有。
+</code></pre></div>    </div>
+    <ul>
+      <li>爬虫解析离不开正则的匹配，适当在页面添加一些正常浏览器浏览访问不到的资源，一旦有ip访问，过滤下头部是不是搜素引擎的蜘蛛，不是就可以直接封了。比如说隐式链接。</li>
+    </ul>
+  </li>
+  <li>蜜罐资源
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>对于这种，还望大家伙注意观察，自己明明很小心了，为什么还被封，可能就是自己掉进了蜜罐当中，爬虫需仔细。
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h5 id="谨慎行事毕竟道高一尺魔高一丈爬虫永远不会倒下反爬也永远不会结束">谨慎行事，毕竟道高一尺，魔高一丈！爬虫永远不会倒下！反爬也永远不会结束！</h5>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://localhost:4000/2019/03/%E7%88%AC%E8%99%AB%E7%9A%84%E6%94%BB%E4%B8%8E%E9%98%B2/";
+        this.page.identifier = "/2019/03/%E7%88%AC%E8%99%AB%E7%9A%84%E6%94%BB%E4%B8%8E%E9%98%B2/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+</section>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/03/python-%E4%BD%A0%E5%BF%85%E9%A1%BB%E5%AD%A6%E5%86%99Python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%BA%94%E4%B8%AA%E7%90%86%E7%94%B1/" title="link to 你必须学写Python装饰器的五个理由">你必须学写Python装饰器的五个理由</a></h2>
+       <p class="excerpt">你必须学写Python装饰器的五个理由  Python装饰器是很容易使用的。任何一个会写Python函数的人都能够学会使用装饰器，比如下面这个：@somedecoratordef some_function():  print("Check it out, I"m using decorators!")      但是，写出一个装饰器是一个完全不一样的技能。而且这也不是，你不得不理解下面这些：    闭包  如何将函数作为”第一类”参数来使用  变量参数  参数解包      甚至是Pyt...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-03-01 12:20:15 +0800" class="post-list__meta--date date">2019-03-01</time> &#8226; <span class="post-list__meta--tags tags">你必须学写Python装饰器的五个理由</span><a class="btn-border-small" href=/2019/03/python-%E4%BD%A0%E5%BF%85%E9%A1%BB%E5%AD%A6%E5%86%99Python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%BA%94%E4%B8%AA%E7%90%86%E7%94%B1/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://localhost:4000/2019/03/%E7%88%AC%E8%99%AB%E7%9A%84%E6%94%BB%E4%B8%8E%E9%98%B2/";
+        this.page.identifier = "/2019/03/%E7%88%AC%E8%99%AB%E7%9A%84%E6%94%BB%E4%B8%8E%E9%98%B2/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-03-14 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/CriseLYJ">@Crise-LYJ</a> 创建，采用 <a href="https://github.com/CriseLYJ/criselyj.github.io">Genius</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/CriseLYJ/criselyj.github.io">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

@@ -245,3 +245,40 @@ tags: Pipenv 最好用的python虚拟环境和包管理工具
 		按照上文分析，代码和Pipfile都应该加入版本管理，Pipfile.lock就见仁见智了，我倾向于不加入到版本管理，因为Pipfile.lock在不同的操作系统，不同的开发阶段都可能发生变化。
 		
 - 哎呀妈呀！好累！不知不觉撸了这么多东西！
+
+<section class="post-comments">
+  {% if site.comment.disqus %}
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "{{ page.url | prepend: site.baseurl | prepend: site.url }}";
+        this.page.identifier = "{{ page.url }}";
+    };
+
+    var disqus_shortname = '{{ site.comment.disqus }}';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  {% elsif site.comment.duoshuo %}
+    <div class="ds-thread" data-thread-key="{{ page.url }}" data-title="{{ page.title }}" data-url="{{ page.url | prepend: site.baseurl | prepend: site.url }}"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"{{ site.comment.duoshuo }}"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  {% endif %}
+  
+</section>

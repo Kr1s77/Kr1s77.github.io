@@ -5,9 +5,108 @@
     <description>嗨，我是梁英健(@Crise-LYJ)，我会成为一名出色的开发者。</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 02 Mar 2019 14:42:00 +0800</pubDate>
-    <lastBuildDate>Sat, 02 Mar 2019 14:42:00 +0800</lastBuildDate>
+    <pubDate>Thu, 14 Mar 2019 23:09:55 +0800</pubDate>
+    <lastBuildDate>Thu, 14 Mar 2019 23:09:55 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>爬虫的攻与防</title>
+        <description>&lt;h1 id=&quot;爬虫的攻与防&quot;&gt;爬虫的攻与防&lt;/h1&gt;
+&lt;h3 id=&quot;什么是爬虫和反爬虫&quot;&gt;什么是爬虫和反爬虫&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;爬虫：使用任何技术手段，批量获取网站信息的一种方式。&lt;/li&gt;
+  &lt;li&gt;反爬虫：使用任何技术手段，阻止别人批量获取自己网站信息的一种方式。&lt;/li&gt;
+  &lt;li&gt;未被授权的爬虫抓取程序是危害web原创内容生态圈的一大元凶，因此想要保护网站内容首先就要考虑如何反爬虫&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;常见的反爬虫&quot;&gt;常见的反爬虫&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;最最最简单的爬虫，是几乎所有客户端或者编程语言都支持的http请求，只要发起一个http请求，就可以获取web页面的html文档。
+    &lt;ol&gt;
+      &lt;li&gt;对此，防守方一般都是根据http请求头中的User-Agent来检查对方是否客户端，或者是一个脚本程序，再考虑是否将信息发送给你。
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;这种方式一般都容易破解，作为爬虫的一方，完全可以伪造User-Agent来破解，所以这种方式一般没什么用，就是一个架子而已，其实还不止可以伪造这些东西，只要你愿意，request header的Referrer、cookie都可以被爬虫轻易的伪造
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;UA方式很容易被破解怎么办？于是就有更多的防守方，就设置ip的访问频率，如果超过频率，则防守方会弹出验证码&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;设置ip访问频率
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;对于这种反爬机制，也很好破解，一般都采用，下载延迟，或者使用IP代理池。。。通过抓取暴露的ip来使用，这里不深究
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;爬虫爬取网页的频率都是比较固定的，不像人去访问网页，中间的间隔时间比较无规则，所以我们可以给每个IP地址建立一个时间窗口，记录IP地址最近12次访问时间，每记录一次就滑动一次窗口，比较最近访问时间和当前时间，如果间隔时间很长判断不是爬虫，清除时间窗口，如果间隔不长，就回溯计算指定时间段的访问频率，如果访问频率超过阀值，就转向验证码页面让用户填写验证码&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;请求的时间窗口过滤统计
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;对于这种建议使用一个列表，列表中的元素就是访问的间隔时间，这样就能大概率的避免请求的时间窗口过滤统计，建议5-20s之间
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;其实前面的那些都是雕虫小技，更厉害的是基于客户端js运行时的检测，通常防守方会把页面的所有核心内容都做成js异步请求ajax获取数据后渲染在页面中，这种反爬机制，完全提高了爬虫的门槛&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;基于客户端的js检测
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;此时就需要让程序去操作浏览器访问网页，这样编写爬虫的人可以通过调用浏览器暴露出来给程序去调用，其中，有基于webkit内核的PhantomJS，基于Firefox浏览器内核的SlimerJS,甚至还有基于IE内核的trifleJS.
+这些headless brower程序实现了一个简易的无GUI界面的browser程序，但是这些仍然存在兼容问题，不如真正的GUI浏览器
+这里不得不说的是Google chrome团队开源的一个基于Node.js调用的headless chromium dirver，他解决了兼容与css渲染特性和js运行时的语法问题。分分钟，秒杀其他headless browser程序有没有。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;爬虫解析离不开正则的匹配，适当在页面添加一些正常浏览器浏览访问不到的资源，一旦有ip访问，过滤下头部是不是搜素引擎的蜘蛛，不是就可以直接封了。比如说隐式链接。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;蜜罐资源
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;对于这种，还望大家伙注意观察，自己明明很小心了，为什么还被封，可能就是自己掉进了蜜罐当中，爬虫需仔细。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5 id=&quot;谨慎行事毕竟道高一尺魔高一丈爬虫永远不会倒下反爬也永远不会结束&quot;&gt;谨慎行事，毕竟道高一尺，魔高一丈！爬虫永远不会倒下！反爬也永远不会结束！&lt;/h5&gt;
+
+&lt;section class=&quot;post-comments&quot;&gt;
+  
+    &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+    &lt;script&gt;
+    
+    var disqus_config = function () {
+        this.page.url = &quot;http://localhost:4000/2019/03/%E7%88%AC%E8%99%AB%E7%9A%84%E6%94%BB%E4%B8%8E%E9%98%B2/&quot;;
+        this.page.identifier = &quot;/2019/03/%E7%88%AC%E8%99%AB%E7%9A%84%E6%94%BB%E4%B8%8E%E9%98%B2/&quot;;
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    &lt;/script&gt;
+    &lt;noscript&gt;要查看&lt;a href=&quot;http://disqus.com/?ref_noscript&quot;&gt; Disqus &lt;/a&gt;评论，请启用 JavaScript&lt;/noscript&gt;
+    
+  
+  
+&lt;/section&gt;
+</description>
+        <pubDate>Thu, 07 Mar 2019 09:20:51 +0800</pubDate>
+        <link>http://localhost:4000/2019/03/%E7%88%AC%E8%99%AB%E7%9A%84%E6%94%BB%E4%B8%8E%E9%98%B2/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/03/%E7%88%AC%E8%99%AB%E7%9A%84%E6%94%BB%E4%B8%8E%E9%98%B2/</guid>
+        
+        <category>python</category>
+        
+        <category>爬虫</category>
+        
+        
+      </item>
     
       <item>
         <title>你必须学写Python装饰器的五个理由</title>
@@ -248,6 +347,31 @@
     &lt;p&gt;不论你如何编写装饰器，你会对下面你所要做的事情而感到兴奋，比如你即将能使用装饰器来做一些事情，以及装饰器是如何能永远改变你写Python代码的方式。&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;section class=&quot;post-comments&quot;&gt;
+  
+    &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+    &lt;script&gt;
+    
+    var disqus_config = function () {
+        this.page.url = &quot;http://localhost:4000/2019/03/python-%E4%BD%A0%E5%BF%85%E9%A1%BB%E5%AD%A6%E5%86%99Python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%BA%94%E4%B8%AA%E7%90%86%E7%94%B1/&quot;;
+        this.page.identifier = &quot;/2019/03/python-%E4%BD%A0%E5%BF%85%E9%A1%BB%E5%AD%A6%E5%86%99Python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%BA%94%E4%B8%AA%E7%90%86%E7%94%B1/&quot;;
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    &lt;/script&gt;
+    &lt;noscript&gt;要查看&lt;a href=&quot;http://disqus.com/?ref_noscript&quot;&gt; Disqus &lt;/a&gt;评论，请启用 JavaScript&lt;/noscript&gt;
+    
+  
+  
+&lt;/section&gt;
 </description>
         <pubDate>Fri, 01 Mar 2019 12:20:15 +0800</pubDate>
         <link>http://localhost:4000/2019/03/python-%E4%BD%A0%E5%BF%85%E9%A1%BB%E5%AD%A6%E5%86%99Python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%BA%94%E4%B8%AA%E7%90%86%E7%94%B1/</link>
@@ -587,6 +711,31 @@
 &lt;ul&gt;
   &lt;li&gt;哎呀妈呀！好累！不知不觉撸了这么多东西！&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;section class=&quot;post-comments&quot;&gt;
+  
+    &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+    &lt;script&gt;
+    
+    var disqus_config = function () {
+        this.page.url = &quot;http://localhost:4000/2019/02/Pipenv-%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%92%8C%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/&quot;;
+        this.page.identifier = &quot;/2019/02/Pipenv-%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%92%8C%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/&quot;;
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    &lt;/script&gt;
+    &lt;noscript&gt;要查看&lt;a href=&quot;http://disqus.com/?ref_noscript&quot;&gt; Disqus &lt;/a&gt;评论，请启用 JavaScript&lt;/noscript&gt;
+    
+  
+  
+&lt;/section&gt;
 </description>
         <pubDate>Tue, 05 Feb 2019 09:40:15 +0800</pubDate>
         <link>http://localhost:4000/2019/02/Pipenv-%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%92%8C%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
@@ -984,6 +1133,31 @@ copy_items = items[::] 或者 items[:]
 &lt;ul&gt;
   &lt;li&gt;字典推导式是python2.7新增的特性，可读性增强了很多，类似的还是列表推导式和集合推导式。&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;section class=&quot;post-comments&quot;&gt;
+  
+    &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+    &lt;script&gt;
+    
+    var disqus_config = function () {
+        this.page.url = &quot;http://localhost:4000/2019/01/%E4%BC%98%E9%9B%85%E7%9A%84(python)%E4%BB%A3%E7%A0%81/&quot;;
+        this.page.identifier = &quot;/2019/01/%E4%BC%98%E9%9B%85%E7%9A%84(python)%E4%BB%A3%E7%A0%81/&quot;;
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    &lt;/script&gt;
+    &lt;noscript&gt;要查看&lt;a href=&quot;http://disqus.com/?ref_noscript&quot;&gt; Disqus &lt;/a&gt;评论，请启用 JavaScript&lt;/noscript&gt;
+    
+  
+  
+&lt;/section&gt;
 </description>
         <pubDate>Wed, 02 Jan 2019 21:15:11 +0800</pubDate>
         <link>http://localhost:4000/2019/01/%E4%BC%98%E9%9B%85%E7%9A%84(python)%E4%BB%A3%E7%A0%81/</link>
@@ -1127,6 +1301,30 @@ copy_items = items[::] 或者 items[:]
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;section class=&quot;post-comments&quot;&gt;
+  
+    &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+    &lt;script&gt;
+    
+    var disqus_config = function () {
+        this.page.url = &quot;http://localhost:4000/2018/12/Pyhton-%E7%AE%97%E6%B3%95/&quot;;
+        this.page.identifier = &quot;/2018/12/Pyhton-%E7%AE%97%E6%B3%95/&quot;;
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    &lt;/script&gt;
+    &lt;noscript&gt;要查看&lt;a href=&quot;http://disqus.com/?ref_noscript&quot;&gt; Disqus &lt;/a&gt;评论，请启用 JavaScript&lt;/noscript&gt;
+    
+  
+  
+&lt;/section&gt;
 </description>
         <pubDate>Tue, 25 Dec 2018 09:21:32 +0800</pubDate>
         <link>http://localhost:4000/2018/12/Pyhton-%E7%AE%97%E6%B3%95/</link>
@@ -1141,7 +1339,7 @@ copy_items = items[::] 或者 items[:]
     
       <item>
         <title>PYTHON网络编程</title>
-        <description>&lt;h1 id=&quot;pyhon进阶&quot;&gt;pyhon进阶：&lt;/h1&gt;
+        <description>&lt;h1 id=&quot;pyhon网络编程&quot;&gt;pyhon网络编程：&lt;/h1&gt;
 &lt;h3 id=&quot;导出为pdf可能每页内容可能有点乱&quot;&gt;导出为pdf可能每页内容可能有点乱&lt;/h3&gt;
 &lt;h3 id=&quot;重要为&quot;&gt;重要为🍅&lt;/h3&gt;
 &lt;h3 id=&quot;次重要为&quot;&gt;次重要为🍎&lt;/h3&gt;
