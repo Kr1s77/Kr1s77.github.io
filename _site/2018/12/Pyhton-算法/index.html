@@ -6,16 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>算法</title>
+  <title>用python完成算法</title>
   <meta name="description" content="算法（更新中）概念简述算法（Algorithm）是基于特定的计算模型旨在解决某一信息处理问题而设计的一个指令序列不正式地说，算法是任何定义明确的计算过程该过程取某个值或值的集合作为输入并产生某个值或值的集合作为输出算法就是这样的把输入转换成输出的计算步骤的一个序列。">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="算法">
+  <meta name="twitter:title" content="用python完成算法">
   <meta name="twitter:description" content="算法（更新中）概念简述算法（Algorithm）是基于特定的计算模型旨在解决某一信息处理问题而设计的一个指令序列不正式地说，算法是任何定义明确的计算过程该过程取某个值或值的集合作为输入并产生某个值或值的集合作为输出算法就是这样的把输入转换成输出的计算步骤的一个序列。">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="算法">
+  <meta property="og:title" content="用python完成算法">
   <meta property="og:description" content="算法（更新中）概念简述算法（Algorithm）是基于特定的计算模型旨在解决某一信息处理问题而设计的一个指令序列不正式地说，算法是任何定义明确的计算过程该过程取某个值或值的集合作为输入并产生某个值或值的集合作为输出算法就是这样的把输入转换成输出的计算步骤的一个序列。">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
@@ -152,7 +152,7 @@
     <div class="post-meta">
       <time datetime="2018-12-25 09:21:32 +0800" itemprop="datePublished" class="post-meta__date date">2018-12-25</time> &#8226; <span class="post-meta__tags tags">python 算法</span>
     </div>
-    <h1 class="post-title">算法</h1>
+    <h1 class="post-title">用python完成算法</h1>
   </header>
 
   <section class="post">
@@ -287,6 +287,43 @@
 
 </code></pre></div></div>
 
+<h3 id="冒泡排序">冒泡排序</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">bubble_sort</span><span class="p">(</span><span class="n">alist</span><span class="p">):</span>
+    <span class="c1"># 冒泡排序
+</span>    <span class="c1"># 算出列表的长度
+</span>    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+    <span class="c1"># 外层循环控制从头走到尾的次数
+</span>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># 用一个count记录一共交换的次数,可以排除已经是排好的序列
+</span>        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 内层循环控制走一次的过程
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">j</span><span class="p">):</span>
+            <span class="c1"># 如果前一个元素大于后一个元素，则交换数据
+</span>            <span class="k">if</span> <span class="n">alist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">alist</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="c1"># 交换元素
+</span>                <span class="n">alist</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">alist</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">alist</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">alist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="c1"># 记录交换的次数
+</span>                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="c1"># count == 0代表没有交换，序列已经有序
+</span>                <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">break</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">bubble_sort</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'新列表为: </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="n">alist</span><span class="p">)</span>
+
+</code></pre></div></div>
+<ul>
+  <li>冒泡排序：一种简单的排序语法，他通过重复的遍历数列，一次次比较将他们交换，直到遍历到数列的最后。
+    <ol>
+      <li>比较相邻的元素，如果第一个比第二个大（升序），就交换他们两个</li>
+      <li>比较至数列的最后</li>
+    </ol>
+  </li>
+</ul>
+
 <section class="post-comments">
   
     <div id="disqus_thread"></div>
@@ -368,7 +405,7 @@
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-03-14 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-03-15 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
         <span class="footer__copyright">本站由 <a href="https://github.com/CriseLYJ">@Crise-LYJ</a> 创建，采用 <a href="https://github.com/CriseLYJ/criselyj.github.io">Genius</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/CriseLYJ/criselyj.github.io">本站源码</a> - &copy; 2019</span>
     </footer>
 </section>
