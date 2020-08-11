@@ -1,5 +1,4 @@
-# 人生苦短，我用python
-
+##### Hello Friends...
 
 Blog_address：[点击此处即可查看](https://kr1s77.github.io/)
 
