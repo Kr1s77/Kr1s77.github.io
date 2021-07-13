@@ -1,7 +1,7 @@
 ---
 active_modules: [pygments, tags, blog, latex]
 author: Kris Liang
-canonical_url: http://tukki.github.io/
+canonical_url: https://kr1s77.github.io/
 modules:
   pygments:
     style: tango
