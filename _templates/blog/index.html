@@ -7,7 +7,7 @@
     <div class=entry-overview>
       <div class=date>{{ format_date(entry.pub_date, format='medium') }}</div>
       <div class=detail>
-        <h1><a href="{{ link_to('page', slug=entry.slug) }}">{{ entry.title }}</a></h1>
+        <h1><a href="/_build{{ link_to('page', slug=entry.slug) }}">{{ entry.title }}</a></h1>
         {% if entry.summary %}
         <div class=summary>{{ entry.render_summary() }}</div>
         {% endif %}
