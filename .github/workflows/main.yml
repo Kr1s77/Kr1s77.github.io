@@ -40,6 +40,6 @@ jobs:
            pip install pyOpenSSL==0.13.1
            pip install Werkzeug==0.16.1
            pip install PyYAML==5.4.1
-	   
+
       - name: Run tests
         run: python test.py hello
