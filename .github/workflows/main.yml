@@ -23,29 +23,23 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-	    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-	    - name: Set up Python
-	      uses: actions/setup-python@v2
-	      with:
-	        python-version: 2.7
-      
-	    - name: Create and start virtual environment
-	      run: |
-	        python -m venv venv
-	        source venv/bin/activate
-
-	    - name: Install dependencies
-	      run: |
-
-		       pip install Babel==2.2.0	
-		       pip install blinker==1.4
-		       pip install docutils==0.17.1
-		       pip install Jinja2==2.5
-		       pip install Pygments==2.5.2
-		       pip install pyOpenSSL==0.13.1
-		       pip install Werkzeug==0.16.1
-		       pip install PyYAML==5.4.1
-
-	    - name: Run tests
-		    run: python test.py hello
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+           python-version: 2.7
+ 
+      - name: Install dependencies
+        run: |
+           pip install Babel==2.2.0	
+           pip install blinker==1.4
+           pip install docutils==0.17.1
+           pip install Jinja2==2.5
+           pip install Pygments==2.5.2
+           pip install pyOpenSSL==0.13.1
+           pip install Werkzeug==0.16.1
+           pip install PyYAML==5.4.1
+	   
+      - name: Run tests
+        run: python test.py hello
