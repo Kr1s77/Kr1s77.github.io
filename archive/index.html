@@ -2,19 +2,15 @@
 <html>
   <head>
     <meta charset=utf-8>
-  {% block htmlhead %}
-    <title>{% block title %}Home{% endblock %} | Armin Ronacher's Thoughts and Writings</title>
+  
+    <title>Blog Archive | Armin Ronacher's Thoughts and Writings</title>
     <link rel="stylesheet" href="/static/style.css" type="text/css">
     <link href="/feed.atom" rel="alternate" title="Kris Liang's Learning And Writing" type="application/atom+xml">
-    {%- for link in links %}
-    <link rel="{{ link.rel }}" href="{{ link.href }}"{%
-      if link.media %} media="{{ link.media }}"{% endif %} type="{{ link.type }}">
-    {%- endfor %}
-    <meta property="title" content="{{ self.title() }}">
-    <meta property="og:title" content="{{ self.title() }}">
+    <meta property="title" content="Blog Archive">
+    <meta property="og:title" content="Blog Archive">
     <meta name="twitter:site" content="@">
-    <meta name="twitter:title" content="{{ self.title() }}" />
-  {% endblock %}
+    <meta name="twitter:title" content="Blog Archive" />
+  
   </head>
   <body>
     <div class=container>
@@ -32,10 +28,21 @@
         </ul>
       </div>
       <div class=body>
-        {% block body %}{% endblock %}
+        
+
+  <h1>Blog Archive</h1>
+
+  <ul class=blog-archive>
+    <li><a href="/2021/">2021</a>
+      <ul>
+        <li><a href="/2021/07/">July</a>
+          — 3 entries
+      </ul>
+  </ul>
+
       </div>
       <div class=footer>
-        <p>&copy; Copyright {{ format_date(format='YYYY') }} by Kris Liang.
+        <p>&copy; Copyright 2021 by Kris Liang.
         <p>
           Content licensed under the Creative Commons
           attribution-noncommercial-sharealike License.
