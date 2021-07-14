@@ -39,6 +39,7 @@ jobs:
            pip install Pygments==2.5.2
            pip install Werkzeug==0.16.1
            pip install PyYAML==5.4.1
+           pip install flask==1.1.4
 
       - name: Run tests
         run: python test.py hello
