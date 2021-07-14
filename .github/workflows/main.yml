@@ -37,7 +37,6 @@ jobs:
            pip install docutils==0.17.1
            pip install Jinja2==2.5
            pip install Pygments==2.5.2
-           pip install pyOpenSSL==0.13.1
            pip install Werkzeug==0.16.1
            pip install PyYAML==5.4.1
 
