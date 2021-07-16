@@ -30,9 +30,9 @@ How do I decorate asynchronous functions with python
             return result
         return wrapper
 
-
     @func_decorator
     def return_a_num():
+        print("Hello World")
         return 3
 
     stdout >> 4
@@ -42,9 +42,6 @@ How do I decorate asynchronous functions with python
 上面的代码其实就等于：
 
 .. sourcecode:: python3
-
-    def return_a_num():
-        return 3
 
     def func_decorator(func):
         def wrapper(*args, **kwargs):
@@ -81,11 +78,10 @@ How do I decorate asynchronous functions with python
             return wrapper
         return decorator
 
-
     @add_two_num(1)
     def return_a_num():
+        print("Hello World")
         return 3
-
 
     stdout >> 4
 
@@ -100,7 +96,6 @@ How do I decorate asynchronous functions with python
         print(result + 1)
         return result
     return wrapper
-
 
 
 想要传递参数到装饰器中，其实也跟同步的装饰器一样，我们也只需要将内层的 wrapper 函数加上 async 即可。
