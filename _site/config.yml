@@ -1,0 +1,10 @@
+---
+active_modules: [pygments, tags, blog, latex]
+author: Kris Liang
+canonical_url: https://kr1s77.github.io/
+modules:
+  pygments:
+    style: tango
+feed:
+  name: Kris Liang's Learning And Writings
+  subtitle: Kris Liang's personal blog about programming, games and random thoughts that come to his mind.
