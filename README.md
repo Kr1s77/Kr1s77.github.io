@@ -2,6 +2,6 @@
 
 ---
 							
-			  如果我们不能站在巨人的肩膀上- 那就让我们就应该变成巨人
+			          If we cannot stand on the shoulders of giants - then let us be giants
 
 
