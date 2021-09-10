@@ -3,14 +3,21 @@
   <head>
     <meta charset=utf-8>
   
-    <title>Blog Archive | Kris Liang's Learning And Writings</title>
+  
+    <title>mysql paradigm | Kris Liang's Learning And Writings</title>
     <link rel="stylesheet" href="/static/style.css" type="text/css">
     <link href="/feed.atom" rel="alternate" title="Kris Liang's Learning And Writing" type="application/atom+xml">
-    <meta property="title" content="Blog Archive">
-    <meta property="og:title" content="Blog Archive">
+    <link rel="stylesheet" href="/static/_pygments.css" type="text/css">
+    <meta property="title" content="mysql paradigm">
+    <meta property="og:title" content="mysql paradigm">
     <meta name="twitter:site" content="@">
-    <meta name="twitter:title" content="Blog Archive" />
+    <meta name="twitter:title" content="mysql paradigm" />
   
+  <meta name="description" content="pass">
+  <meta name="og:description" content="pass">
+  <meta name="twitter:description" content="pass">
+  <meta name="twitter:card" content="summary">
+
   </head>
   <body>
     <div class=container>
@@ -29,16 +36,27 @@
       </div>
       <div class=body>
         
+  <h1 class="title">mysql paradigm</h1>
 
-  <h1>Blog Archive</h1>
+  
+  <p class=date>written on Monday, July 19, 2021
+  
 
-  <ul class=blog-archive>
-    <li><a href="/2021/">2021</a>
-      <ul>
-        <li><a href="/2021/07/">July</a>
-          — 4 entries
-      </ul>
-  </ul>
+  <div class="line-block">
+<div class="line">1. 保证表中每列数据的原子性，及每列数据都是不可拆分的</div>
+<div class="line">2. 保证一个表只描述一件事情，否则这张表就是需要拆分为多个的</div>
+<div class="line">3. 保证表中的数据都依赖于主键，不能出现传递依赖的关系，即 A -&gt; B -&gt; C -&gt; 主键</div>
+</div>
+<p>以上为个人理解的 <strong>MYSQL</strong> 三范式。</p>
+
+
+  
+  <p class=tags>This entry was tagged
+    
+      <a href="/tags/decorator/">decorator</a>, 
+      <a href="/tags/functools-partial/">functools-partial</a> and 
+      <a href="/tags/python/">python</a>
+  
 
       </div>
       <div class=footer>
