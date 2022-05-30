@@ -1,3 +1,8 @@
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 .hll { background-color: #ffffcc }
 .c { color: #8f5902; font-style: italic } /* Comment */
 .err { color: #a40000; border: 1px solid #ef2929 } /* Error */
@@ -48,7 +53,7 @@
 .nt { color: #204a87; font-weight: bold } /* Name.Tag */
 .nv { color: #000000 } /* Name.Variable */
 .ow { color: #204a87; font-weight: bold } /* Operator.Word */
-.w { color: #f8f8f8; text-decoration: underline } /* Text.Whitespace */
+.w { color: #f8f8f8 } /* Text.Whitespace */
 .mb { color: #0000cf; font-weight: bold } /* Literal.Number.Bin */
 .mf { color: #0000cf; font-weight: bold } /* Literal.Number.Float */
 .mh { color: #0000cf; font-weight: bold } /* Literal.Number.Hex */

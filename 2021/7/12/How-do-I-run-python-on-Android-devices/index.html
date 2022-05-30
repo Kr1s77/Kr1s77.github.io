@@ -4,69 +4,70 @@
     <meta charset=utf-8>
   
   
-    <title>How do I run python on Android devices | Kris Liang's Learning And Writings</title>
+    <title>在安卓手机上运行安卓程序 | Kris's Thoughts and Writings</title>
     <link rel="stylesheet" href="/static/style.css" type="text/css">
-    <link href="/feed.atom" rel="alternate" title="Kris Liang's Learning And Writing" type="application/atom+xml">
+    <link href="/feed.atom" rel="alternate" title="Kris's Thoughts and Writings" type="application/atom+xml">
     <link rel="stylesheet" href="/static/_pygments.css" type="text/css">
-    <meta property="title" content="How do I run python on Android devices">
-    <meta property="og:title" content="How do I run python on Android devices">
-    <meta name="twitter:site" content="@">
-    <meta name="twitter:title" content="How do I run python on Android devices" />
+    <meta property="title" content="在安卓手机上运行安卓程序">
+    <meta property="og:title" content="在安卓手机上运行安卓程序">
+    <meta name="twitter:site" content="@mitsuhiko">
+    <meta name="twitter:title" content="在安卓手机上运行安卓程序" />
   
-  <meta name="description" content="Run Python At Android Devices">
-  <meta name="og:description" content="Run Python At Android Devices">
-  <meta name="twitter:description" content="Run Python At Android Devices">
+  <meta name="description" content="在已 root 手机上运行 python 程序">
+  <meta name="og:description" content="在已 root 手机上运行 python 程序">
+  <meta name="twitter:description" content="在已 root 手机上运行 python 程序">
   <meta name="twitter:card" content="summary">
 
   </head>
   <body>
     <div class=container>
       <div class=header>
-        <a href="/about/">Kris Liang</a>'s Learning And Writing
+        <a href="/about/">OpenShriek</a>
       </div>
       <div class=navigation>
         <ul>
           <li><a href="/">blog</a>
-          <li><a href="/archive/">archive</a>
           <li><a href="/tags/">tags</a>
+          <li><a href="/archive/">archive</a>
           <li><a href="/projects/">projects</a>
-<!--          <li><a href="/talks/">talks</a>-->
           <li><a href="/about/">about</a>
         </ul>
       </div>
       <div class=body>
         
-  <h1 class="title">How do I run python on Android devices</h1>
+  <h1 class="title">在安卓手机上运行安卓程序</h1>
 
   
   <p class=date>written on Monday, July 12, 2021
   
 
-  <p><strong>一、起因:</strong></p>
-<p>第一个版本的安卓版 4G 代理是运行在电脑上的，电脑当作一个中转服务站
-，切换 IP、流量接收都是由电脑完成，然后手机端安装 <cite>privoxy</cite> 使用
-电脑 <cite>adb forward</cite> 命令做端口转发即可，现在想开发一个服务是直接运
-行在 android 设备上的，在开发过程中遇到一个问题就是如何在手机上直接
-能运行 <cite>python</cite> 程序，这样我们的服务就可以完美的运行在手机上了。</p>
-<p><strong>二、在手机上运行 python 程序:</strong></p>
-<p>调研一圈以后发现 tmux 可以在手机上直接跑 python 程序，并且 python3-python2 都是支持的，
-这里先放一下链接 <cite>https://termux.com/</cite>, 但是当我们使用的时候又发现了一个问题，就是 python
-只能在 termux 终端里面使用，是无法在 <cite>adb shell</cite> 中调用的。</p>
-<p><strong>三、怎样移植 termux 中的 python 到 adb shell 中:</strong></p>
+  <div class="section" id="g">
+<h2>4G 代理</h2>
+<p>4G 代理的原理就是在手机上创建一个可以做流量转发的服务，然后将此服务通过 <cite>adb forward</cite> 转发到中转服务器上，那么之后就可以使用 frp
+将流量转到云厂商服务器上，或者直接在本地进行使用，关键程序的开发是使用 <cite>python</cite> 实现的，那么想要在手机上运行 python 代理反而成为
+了我们目前遇到的最大问题，那么下面我们就来解决这个问题，然后 python 程序可以优雅的在 <strong>android</strong> 设备上运行。</p>
+</div>
+<div class="section" id="python">
+<h2>在手机上运行 python 程序</h2>
+<p>调研一圈以后发现 tmux 可以在手机上直接跑 python 程序，并且 python3-python2 都是支持的，但是当我们使用的时候又发现了一个问题，就是 <strong>python</strong>
+只能在 termux 终端里面使用，是无法在 <cite>adb shell</cite> 中调用的，这里我们首先要处理的就是将 termux 中的 python 包迁移到 adb shell 中使用。</p>
+</div>
+<div class="section" id="termux-python-adb-shell">
+<h2>怎样移植 termux 中的 python 到 adb shell</h2>
 <p>经过一圈的调研以后终于找到了完美的解决办法，那就是将 termux 中的 python 可执行文件移动到 <cite>/system/xbin/</cite> 目录下即可，
 这样我们在 adb shell 中直接输入 python 就可以愉快的玩耍了，在配置之前请确保手机可以 root，remount 下面开始操作</p>
-<div class="highlight"><pre><span></span><span class="m">1</span>. 初始化环境
-adb root
-adb remount
+<div class="highlight"><pre><span></span><span class="c1"># 1. 初始化环境</span>
+$ adb root
+$ adb remount
 
-<span class="m">2</span>. 手机安装 termux，在 termux 中安装 python3
-pkg install python
+<span class="c1"># 2. 手机安装 termux，在 termux 中安装 python3</span>
+$ pkg install python
 
-<span class="m">3</span>. 移动目录文件
-<span class="nb">cd</span> /data/data/com.termux/files/usr/bin
-ls
+<span class="c1"># 3. 移动目录文件</span>
+$ <span class="nb">cd</span> /data/data/com.termux/files/usr/bin
+$ ls <span class="p">|</span> grep python
 
-<span class="m">4</span>. 输出内容
+<span class="c1"># 4. 输出内容</span>
 sailfish:/data/data/com.termux/files/usr/bin <span class="c1"># ls | grep python</span>
 python
 python-config
@@ -76,24 +77,24 @@ python3.9
 python3.9-config
 sailfish:/data/data/com.termux/files/usr/bin <span class="c1">#</span>
 
-<span class="m">5</span>. 这里测试此 Python 是否是我们想要的，得到的答案当然是
-sailfish:/data/data/com.termux/files/usr/bin <span class="c1"># ./python</span>
+<span class="c1"># 5. 这里测试此 Python 是否是我们想要的，得到的答案当然是</span>
+$ ./python
 Python <span class="m">3</span>.9.6 <span class="o">(</span>default, Jun <span class="m">30</span> <span class="m">2021</span>, <span class="m">09</span>:17:59<span class="o">)</span>
 <span class="o">[</span>Clang <span class="m">9</span>.0.8 <span class="o">(</span>https://android.googlesource.com/toolchain/llvm-project 98c855489 on linux
-Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
-&gt;&gt;&gt;
 
-<span class="m">6</span>. 移动 python 可执行文件到 /system/xbin/ 下
-cp /data/data/com.termux/files/usr/bin/python /system/xbin/
+<span class="c1"># 6. 移动 python 可执行文件到 /system/xbin/ 下</span>
+$ cp /data/data/com.termux/files/usr/bin/python /system/xbin/
 
-<span class="m">7</span>. 然后回到根目录下执行 python 试试是不是成功了
-sailfish:/ <span class="c1"># python</span>
+<span class="c1"># 7. 然后回到根目录下执行 python 试试是不是成功了</span>
+$ python
 Python <span class="m">3</span>.9.6 <span class="o">(</span>default, Jun <span class="m">30</span> <span class="m">2021</span>, <span class="m">09</span>:17:59<span class="o">)</span>
 <span class="o">[</span>Clang <span class="m">9</span>.0.8 <span class="o">(</span>https://android.googlesource.com/toolchain/llvm-project 98c855489 on linux
-Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
-&gt;&gt;&gt;
 </pre></div>
-<p>如果按照我的操作步骤做还是失败了，可以到 <cite>FGProxy</cite> 仓库中提 issues。仓库链接 <a class="reference external" href="https://github.com/Kr1s77/FgSurfing">https://github.com/Kr1s77/FgSurfing</a></p>
+<div class="line-block">
+<div class="line">如果按照我的操作步骤做还是失败了，可以到 <cite>FGProxy</cite> 仓库中提 issues</div>
+<div class="line">如果不想提交 Issues 可以直接邮件联系我，如果我看到了肯定会为你解答所有问题</div>
+</div>
+</div>
 
 
   
@@ -108,20 +109,19 @@ Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&
 
       </div>
       <div class=footer>
-        <p>&copy; Copyright 2021 by Kris Liang.
+        <p>&copy; Copyright 2022 by Kr1s77.
         <p>
           Content licensed under the Creative Commons
           attribution-noncommercial-sharealike License.
         <p>
-          Contact me via <a href="mailto:criselyj@163.com">mail</a>,
-<!--          <a href="http://twitter.com/mitsuhiko">twitter</a>,-->
-          <a href="http://github.com/Kr1s77">github</a> or
-<!--          <a href="http://bitbucket.org/mitsuhiko">bitbucket</a>.-->
+          Contact me via <a href="mailto:armin.ronacher@active-4.com">mail</a>,
+          <a href="http://github.com/Kr1s77">github</a>
+        <p>
+          You can <a href="https://github.com/sponsors/Kr1s77/">sponsor me on github</a>.
         <p>
           More info: <a href="/about#imprint">imprint</a>.
-          Subscribe <a href="/feed.atom" rel="alternate" title="Kris Liang's Learning And Writings">to Atom feed</a>
-
-<!--          (or <a href="http://www.devtacular.com/utilities/atomtorss/?url=http%3a%2f%2flucumr.pocoo.org%2ffeed.atom">RSS</a>)-->
+          Subscribe <a href="/feed.atom" rel="alternate" title="Kris's
+            Thoughts and Writings">to Atom feed</a>
       </div>
     </div>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20909083-1"></script>

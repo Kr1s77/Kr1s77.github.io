@@ -4,50 +4,106 @@
     <meta charset=utf-8>
   
   
-    <title>mysql paradigm | Kris Liang's Learning And Writings</title>
+    <title>mysql 表设计三大范式 | Kris's Thoughts and Writings</title>
     <link rel="stylesheet" href="/static/style.css" type="text/css">
-    <link href="/feed.atom" rel="alternate" title="Kris Liang's Learning And Writing" type="application/atom+xml">
+    <link href="/feed.atom" rel="alternate" title="Kris's Thoughts and Writings" type="application/atom+xml">
     <link rel="stylesheet" href="/static/_pygments.css" type="text/css">
-    <meta property="title" content="mysql paradigm">
-    <meta property="og:title" content="mysql paradigm">
-    <meta name="twitter:site" content="@">
-    <meta name="twitter:title" content="mysql paradigm" />
+    <meta property="title" content="mysql 表设计三大范式">
+    <meta property="og:title" content="mysql 表设计三大范式">
+    <meta name="twitter:site" content="@mitsuhiko">
+    <meta name="twitter:title" content="mysql 表设计三大范式" />
   
-  <meta name="description" content="Learning mysql paradigm">
-  <meta name="og:description" content="Learning mysql paradigm">
-  <meta name="twitter:description" content="Learning mysql paradigm">
+  <meta name="description" content="学习 Mysql 三范式">
+  <meta name="og:description" content="学习 Mysql 三范式">
+  <meta name="twitter:description" content="学习 Mysql 三范式">
   <meta name="twitter:card" content="summary">
 
   </head>
   <body>
     <div class=container>
       <div class=header>
-        <a href="/about/">Kris Liang</a>'s Learning And Writing
+        <a href="/about/">OpenShriek</a>
       </div>
       <div class=navigation>
         <ul>
           <li><a href="/">blog</a>
-          <li><a href="/archive/">archive</a>
           <li><a href="/tags/">tags</a>
+          <li><a href="/archive/">archive</a>
           <li><a href="/projects/">projects</a>
-<!--          <li><a href="/talks/">talks</a>-->
           <li><a href="/about/">about</a>
         </ul>
       </div>
       <div class=body>
         
-  <h1 class="title">mysql paradigm</h1>
+  <h1 class="title">mysql 表设计三大范式</h1>
 
   
   <p class=date>written on Tuesday, July 13, 2021
   
 
-  <div class="line-block">
+  <div class="section" id="section-1">
+<h2>设计数据库表时，要遵循以下范式以下范式</h2>
+<div class="line-block">
+<div class="line">这里的规则是按照我的理解来写的，准确的表达可以看每一个范式介绍下方第一条内容，这个内容是标准的解释:</div>
 <div class="line">1. 保证表中每列数据的原子性，及每列数据都是不可拆分的</div>
-<div class="line">2. 保证一个表只描述一件事情，否则这张表就是需要拆分为多个的</div>
-<div class="line">3. 保证表中的数据都依赖于主键，不能出现传递依赖的关系，即 A -&gt; B -&gt; C -&gt; 主键</div>
+<div class="line">2. 保证表中的数据都依赖于主键，不能出现传递依赖的关系，即 A -&gt; B -&gt; C -&gt; 主键</div>
+<div class="line">3. 保证一个表只描述一件事情，否则这张表就是需要拆分为多个的</div>
 </div>
-<p>以上为个人理解的 <strong>MYSQL</strong> 三范式。</p>
+</div>
+<div class="section" id="section-2">
+<h2>第一范式:</h2>
+<p>数据库表中不能出现重复记录，每一个字段都应该遵循原子性，即不可分割的，什么是不可分割的，让我们往下看:</p>
+<div class="highlight"><pre><span></span><span class="o">|</span><span class="w"> </span><span class="k">name</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="n">Contact</span><span class="w">                      </span><span class="o">|</span><span class="w"></span>
+<span class="o">------------------------------------------------</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">kris</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">10</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="mi">12345678910</span><span class="p">,</span><span class="n">criselyj</span><span class="nv">@163.com</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+</pre></div>
+<div class="line-block">
+<div class="line">这里就出现了一个很明显的问题，就是在 <cite>Contact</cite> 字段中出现了手机号和邮箱号，其实这个字段是可以拆分为多个字段 <cite>email</cite>, <cite>phone</cite>，所以按照上面的表格设计是不符合规范的。</div>
+<div class="line"><br /></div>
+<div class="line">如果这里按照规范来拆分表结构应该是这样的:</div>
+</div>
+<div class="highlight"><pre><span></span><span class="o">|</span><span class="w"> </span><span class="k">name</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="n">phone</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">email</span><span class="w">            </span><span class="o">|</span><span class="w"></span>
+<span class="o">--------------------------------------------------</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">kris</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">10</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="mi">12345678910</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">criselyj</span><span class="nv">@163.com</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="section" id="section-3">
+<h2>第二范式</h2>
+<div class="line-block">
+<div class="line">第二范式是建立在第一范式基础上的，另外要求所有非主键字段完全依赖主键，不能产生部分依赖</div>
+<div class="line">比如一张表中同时存在学生和老师，并且学生和老师是关联的，这样是不符合要求的。那么想要处理这个问题也很简单，只需要将学生和老师放到两张表中，然后给两张表建立一个中间表，使 <cite>学生编号</cite> 和 <cite>老师编号</cite> 建立关联即可，中间表设计如下</div>
+</div>
+<div class="highlight"><pre><span></span><span class="o">|</span><span class="w"> </span><span class="n">student_id</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">teacher_id</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="o">-----------------------------</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">           </span><span class="o">|</span><span class="w">  </span><span class="mi">001</span><span class="w">        </span><span class="o">|</span><span class="w"></span>
+</pre></div>
+<p>这样每次我们都可以使用这个中间表来查询学生和老师关联的数据了</p>
+</div>
+<div class="section" id="section-4">
+<h2>第三范式</h2>
+<div class="line-block">
+<div class="line">建立在第二范式基础上的，非主键字段不能传递依赖于主键字段（不要产生传递依赖）</div>
+<div class="line">比如一张表中同时存在学生和班级，并且存在学生编号，班级编号，班级名称，那么这个班级名称就存在了冗余，因为班级名称没有直接依赖于主键，班级名称字段依赖于班级编号，班级编号依赖于学生编号，这就是传递依赖，解决的办法就是将冗余字段单独拿出来建立表</div>
+<div class="line">错误表结构示范：</div>
+</div>
+<div class="highlight"><pre><span></span><span class="o">|</span><span class="w"> </span><span class="n">student_id</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">student_name</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">class_id</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">class_name</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="o">---------------------------------------------------------</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">           </span><span class="o">|</span><span class="w">  </span><span class="n">kris</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="mi">001</span><span class="w">       </span><span class="o">|</span><span class="w">  </span><span class="n">class1</span><span class="w">     </span><span class="o">|</span><span class="w"></span>
+</pre></div>
+<p>接下来按照我们上面的总结来解决这个问题，其实就很简单，这里只需要拆分出一个班级表，然后将班级表的 id 与 student 进行关联</p>
+<div class="highlight"><pre><span></span><span class="n n-Quoted">`student table`</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">student_name</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">class_id</span><span class="p">(</span><span class="n">FK</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="o">--------------------------------------------</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="n">kris</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">            </span><span class="o">|</span><span class="w"></span>
+
+
+<span class="n n-Quoted">`class table`</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">id</span><span class="w">     </span><span class="o">|</span><span class="w">  </span><span class="n">class_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">class_name</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="o">-----------------------------------</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">      </span><span class="o">|</span><span class="w">  </span><span class="mi">001</span><span class="w">       </span><span class="o">|</span><span class="w">  </span><span class="n">class1</span><span class="w">   </span><span class="o">|</span><span class="w"></span>
+</pre></div>
+<p>实际开发中，数据库设计尽量遵循三范式，但是还是根据实际情况进行取舍，有时可能会拿冗余换速度，最终目的是要满足我们的需求</p>
+</div>
 
 
   
@@ -60,20 +116,19 @@
 
       </div>
       <div class=footer>
-        <p>&copy; Copyright 2021 by Kris Liang.
+        <p>&copy; Copyright 2022 by Kr1s77.
         <p>
           Content licensed under the Creative Commons
           attribution-noncommercial-sharealike License.
         <p>
-          Contact me via <a href="mailto:criselyj@163.com">mail</a>,
-<!--          <a href="http://twitter.com/mitsuhiko">twitter</a>,-->
-          <a href="http://github.com/Kr1s77">github</a> or
-<!--          <a href="http://bitbucket.org/mitsuhiko">bitbucket</a>.-->
+          Contact me via <a href="mailto:armin.ronacher@active-4.com">mail</a>,
+          <a href="http://github.com/Kr1s77">github</a>
+        <p>
+          You can <a href="https://github.com/sponsors/Kr1s77/">sponsor me on github</a>.
         <p>
           More info: <a href="/about#imprint">imprint</a>.
-          Subscribe <a href="/feed.atom" rel="alternate" title="Kris Liang's Learning And Writings">to Atom feed</a>
-
-<!--          (or <a href="http://www.devtacular.com/utilities/atomtorss/?url=http%3a%2f%2flucumr.pocoo.org%2ffeed.atom">RSS</a>)-->
+          Subscribe <a href="/feed.atom" rel="alternate" title="Kris's
+            Thoughts and Writings">to Atom feed</a>
       </div>
     </div>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20909083-1"></script>

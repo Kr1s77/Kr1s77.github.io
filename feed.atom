@@ -1,61 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title type="text">Kris Liang's Learning And Writings</title>
+  <title type="text">Kris Thoughts and Writings</title>
   <id>https://kr1s77.github.io/feed.atom</id>
   <updated>2021-07-13T00:00:00Z</updated>
   <link href="https://kr1s77.github.io/" />
   <link href="https://kr1s77.github.io/feed.atom" rel="self" />
-  <subtitle type="text">Kris Liang's personal blog about programming, games and random thoughts that come to his mind.</subtitle>
+  <subtitle type="text">Kris's personal blog about programming, games and random thoughts that come to his mind.</subtitle>
   <generator>Werkzeug</generator>
   <entry xml:base="https://kr1s77.github.io/feed.atom">
-    <title type="text">mysql paradigm</title>
+    <title type="text">mysql 表设计三大范式</title>
     <id>https://kr1s77.github.io/2021/7/13/Mysql-paradigm</id>
     <updated>2021-07-13T00:00:00Z</updated>
     <link href="https://kr1s77.github.io/2021/7/13/Mysql-paradigm" />
     <author>
-      <name>Kris Liang</name>
+      <name>OpenShriek</name>
     </author>
-    <content type="html">&lt;div class=&quot;line-block&quot;&gt;
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;section-1&quot;&gt;
+&lt;h2&gt;设计数据库表时，要遵循以下范式以下范式&lt;/h2&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;这里的规则是按照我的理解来写的，准确的表达可以看每一个范式介绍下方第一条内容，这个内容是标准的解释:&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;1. 保证表中每列数据的原子性，及每列数据都是不可拆分的&lt;/div&gt;
-&lt;div class=&quot;line&quot;&gt;2. 保证一个表只描述一件事情，否则这张表就是需要拆分为多个的&lt;/div&gt;
-&lt;div class=&quot;line&quot;&gt;3. 保证表中的数据都依赖于主键，不能出现传递依赖的关系，即 A -&amp;gt; B -&amp;gt; C -&amp;gt; 主键&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;2. 保证表中的数据都依赖于主键，不能出现传递依赖的关系，即 A -&amp;gt; B -&amp;gt; C -&amp;gt; 主键&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;3. 保证一个表只描述一件事情，否则这张表就是需要拆分为多个的&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;以上为个人理解的 &lt;strong&gt;MYSQL&lt;/strong&gt; 三范式。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;section-2&quot;&gt;
+&lt;h2&gt;第一范式:&lt;/h2&gt;
+&lt;p&gt;数据库表中不能出现重复记录，每一个字段都应该遵循原子性，即不可分割的，什么是不可分割的，让我们往下看:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Contact&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                      &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;------------------------------------------------&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kris&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12345678910&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;criselyj&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;@163.com&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;这里就出现了一个很明显的问题，就是在 &lt;cite&gt;Contact&lt;/cite&gt; 字段中出现了手机号和邮箱号，其实这个字段是可以拆分为多个字段 &lt;cite&gt;email&lt;/cite&gt;, &lt;cite&gt;phone&lt;/cite&gt;，所以按照上面的表格设计是不符合规范的。&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;如果这里按照规范来拆分表结构应该是这样的:&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phone&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;--------------------------------------------------&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kris&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12345678910&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;criselyj&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;@163.com&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;section-3&quot;&gt;
+&lt;h2&gt;第二范式&lt;/h2&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;第二范式是建立在第一范式基础上的，另外要求所有非主键字段完全依赖主键，不能产生部分依赖&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;比如一张表中同时存在学生和老师，并且学生和老师是关联的，这样是不符合要求的。那么想要处理这个问题也很简单，只需要将学生和老师放到两张表中，然后给两张表建立一个中间表，使 &lt;cite&gt;学生编号&lt;/cite&gt; 和 &lt;cite&gt;老师编号&lt;/cite&gt; 建立关联即可，中间表设计如下&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;teacher_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-----------------------------&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;           &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;001&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这样每次我们都可以使用这个中间表来查询学生和老师关联的数据了&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;section-4&quot;&gt;
+&lt;h2&gt;第三范式&lt;/h2&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;建立在第二范式基础上的，非主键字段不能传递依赖于主键字段（不要产生传递依赖）&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;比如一张表中同时存在学生和班级，并且存在学生编号，班级编号，班级名称，那么这个班级名称就存在了冗余，因为班级名称没有直接依赖于主键，班级名称字段依赖于班级编号，班级编号依赖于学生编号，这就是传递依赖，解决的办法就是将冗余字段单独拿出来建立表&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;错误表结构示范：&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student_name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class_name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---------------------------------------------------------&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;           &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kris&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;001&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;       &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;接下来按照我们上面的总结来解决这个问题，其实就很简单，这里只需要拆分出一个班级表，然后将班级表的 id 与 student 进行关联&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n n-Quoted&quot;&gt;`student table`&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student_name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;--------------------------------------------&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kris&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+
+
+&lt;span class=&quot;n n-Quoted&quot;&gt;`class table`&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class_name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-----------------------------------&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;001&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;       &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;实际开发中，数据库设计尽量遵循三范式，但是还是根据实际情况进行取舍，有时可能会拿冗余换速度，最终目的是要满足我们的需求&lt;/p&gt;
+&lt;/div&gt;
 </content>
   </entry>
   <entry xml:base="https://kr1s77.github.io/feed.atom">
-    <title type="text">How do I run python on Android devices</title>
+    <title type="text">在安卓手机上运行安卓程序</title>
     <id>https://kr1s77.github.io/2021/7/12/How-do-I-run-python-on-Android-devices</id>
     <updated>2021-07-12T00:00:00Z</updated>
     <link href="https://kr1s77.github.io/2021/7/12/How-do-I-run-python-on-Android-devices" />
     <author>
-      <name>Kris Liang</name>
+      <name>OpenShriek</name>
     </author>
-    <content type="html">&lt;p&gt;&lt;strong&gt;一、起因:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;第一个版本的安卓版 4G 代理是运行在电脑上的，电脑当作一个中转服务站
-，切换 IP、流量接收都是由电脑完成，然后手机端安装 &lt;cite&gt;privoxy&lt;/cite&gt; 使用
-电脑 &lt;cite&gt;adb forward&lt;/cite&gt; 命令做端口转发即可，现在想开发一个服务是直接运
-行在 android 设备上的，在开发过程中遇到一个问题就是如何在手机上直接
-能运行 &lt;cite&gt;python&lt;/cite&gt; 程序，这样我们的服务就可以完美的运行在手机上了。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;二、在手机上运行 python 程序:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;调研一圈以后发现 tmux 可以在手机上直接跑 python 程序，并且 python3-python2 都是支持的，
-这里先放一下链接 &lt;cite&gt;https://termux.com/&lt;/cite&gt;, 但是当我们使用的时候又发现了一个问题，就是 python
-只能在 termux 终端里面使用，是无法在 &lt;cite&gt;adb shell&lt;/cite&gt; 中调用的。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;三、怎样移植 termux 中的 python 到 adb shell 中:&lt;/strong&gt;&lt;/p&gt;
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;g&quot;&gt;
+&lt;h2&gt;4G 代理&lt;/h2&gt;
+&lt;p&gt;4G 代理的原理就是在手机上创建一个可以做流量转发的服务，然后将此服务通过 &lt;cite&gt;adb forward&lt;/cite&gt; 转发到中转服务器上，那么之后就可以使用 frp
+将流量转到云厂商服务器上，或者直接在本地进行使用，关键程序的开发是使用 &lt;cite&gt;python&lt;/cite&gt; 实现的，那么想要在手机上运行 python 代理反而成为
+了我们目前遇到的最大问题，那么下面我们就来解决这个问题，然后 python 程序可以优雅的在 &lt;strong&gt;android&lt;/strong&gt; 设备上运行。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
+&lt;h2&gt;在手机上运行 python 程序&lt;/h2&gt;
+&lt;p&gt;调研一圈以后发现 tmux 可以在手机上直接跑 python 程序，并且 python3-python2 都是支持的，但是当我们使用的时候又发现了一个问题，就是 &lt;strong&gt;python&lt;/strong&gt;
+只能在 termux 终端里面使用，是无法在 &lt;cite&gt;adb shell&lt;/cite&gt; 中调用的，这里我们首先要处理的就是将 termux 中的 python 包迁移到 adb shell 中使用。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;termux-python-adb-shell&quot;&gt;
+&lt;h2&gt;怎样移植 termux 中的 python 到 adb shell&lt;/h2&gt;
 &lt;p&gt;经过一圈的调研以后终于找到了完美的解决办法，那就是将 termux 中的 python 可执行文件移动到 &lt;cite&gt;/system/xbin/&lt;/cite&gt; 目录下即可，
 这样我们在 adb shell 中直接输入 python 就可以愉快的玩耍了，在配置之前请确保手机可以 root，remount 下面开始操作&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;. 初始化环境
-adb root
-adb remount
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# 1. 初始化环境&lt;/span&gt;
+$ adb root
+$ adb remount
 
-&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;. 手机安装 termux，在 termux 中安装 python3
-pkg install python
+&lt;span class=&quot;c1&quot;&gt;# 2. 手机安装 termux，在 termux 中安装 python3&lt;/span&gt;
+$ pkg install python
 
-&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;. 移动目录文件
-&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /data/data/com.termux/files/usr/bin
-ls
+&lt;span class=&quot;c1&quot;&gt;# 3. 移动目录文件&lt;/span&gt;
+$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /data/data/com.termux/files/usr/bin
+$ ls &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep python
 
-&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;. 输出内容
+&lt;span class=&quot;c1&quot;&gt;# 4. 输出内容&lt;/span&gt;
 sailfish:/data/data/com.termux/files/usr/bin &lt;span class=&quot;c1&quot;&gt;# ls | grep python&lt;/span&gt;
 python
 python-config
@@ -65,106 +124,23 @@ python3.9
 python3.9-config
 sailfish:/data/data/com.termux/files/usr/bin &lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
 
-&lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;. 这里测试此 Python 是否是我们想要的，得到的答案当然是
-sailfish:/data/data/com.termux/files/usr/bin &lt;span class=&quot;c1&quot;&gt;# ./python&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 5. 这里测试此 Python 是否是我们想要的，得到的答案当然是&lt;/span&gt;
+$ ./python
 Python &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.9.6 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;default, Jun &lt;span class=&quot;m&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2021&lt;/span&gt;, &lt;span class=&quot;m&quot;&gt;09&lt;/span&gt;:17:59&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Clang &lt;span class=&quot;m&quot;&gt;9&lt;/span&gt;.0.8 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;https://android.googlesource.com/toolchain/llvm-project 98c855489 on linux
-Type &lt;span class=&quot;s2&quot;&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; or &lt;span class=&quot;s2&quot;&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; more information.
-&amp;gt;&amp;gt;&amp;gt;
 
-&lt;span class=&quot;m&quot;&gt;6&lt;/span&gt;. 移动 python 可执行文件到 /system/xbin/ 下
-cp /data/data/com.termux/files/usr/bin/python /system/xbin/
+&lt;span class=&quot;c1&quot;&gt;# 6. 移动 python 可执行文件到 /system/xbin/ 下&lt;/span&gt;
+$ cp /data/data/com.termux/files/usr/bin/python /system/xbin/
 
-&lt;span class=&quot;m&quot;&gt;7&lt;/span&gt;. 然后回到根目录下执行 python 试试是不是成功了
-sailfish:/ &lt;span class=&quot;c1&quot;&gt;# python&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 7. 然后回到根目录下执行 python 试试是不是成功了&lt;/span&gt;
+$ python
 Python &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.9.6 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;default, Jun &lt;span class=&quot;m&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2021&lt;/span&gt;, &lt;span class=&quot;m&quot;&gt;09&lt;/span&gt;:17:59&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Clang &lt;span class=&quot;m&quot;&gt;9&lt;/span&gt;.0.8 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;https://android.googlesource.com/toolchain/llvm-project 98c855489 on linux
-Type &lt;span class=&quot;s2&quot;&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; or &lt;span class=&quot;s2&quot;&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; more information.
-&amp;gt;&amp;gt;&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;如果按照我的操作步骤做还是失败了，可以到 &lt;cite&gt;FGProxy&lt;/cite&gt; 仓库中提 issues。仓库链接 &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Kr1s77/FgSurfing&quot;&gt;https://github.com/Kr1s77/FgSurfing&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="https://kr1s77.github.io/feed.atom">
-    <title type="text">How do I decorate asynchronous functions with python</title>
-    <id>https://kr1s77.github.io/2021/7/1/How-do-I-decorate asynchronous-functions with-python</id>
-    <updated>2021-07-01T00:00:00Z</updated>
-    <link href="https://kr1s77.github.io/2021/7/1/How-do-I-decorate asynchronous-functions with-python" />
-    <author>
-      <name>Kris Liang</name>
-    </author>
-    <content type="html">&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
-&lt;h2&gt;起因：&lt;/h2&gt;
-&lt;p&gt;由于需要添加一个预警程序，但是不想修改原来的异步方法，所以选择使用装饰器的方式实现，
-使用装饰器有一个好处就是我们能取到方法的参数和返回值，这样更加的方便我们去做预警程序，
-我们可以将参数和返回值都输出到预警内容当中去。开始想要用装饰器的时候就发现我的这个方法
-是个异步的方法，那怎么办呢？&lt;/p&gt;
-&lt;p&gt;当然有解决办法了！请看下面的程序，首先第一个程序实现的是最基本的装饰器的功能&lt;/p&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;如果按照我的操作步骤做还是失败了，可以到 &lt;cite&gt;FGProxy&lt;/cite&gt; 仓库中提 issues&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;如果不想提交 Issues 可以直接邮件联系我，如果我看到了肯定会为你解答所有问题&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
-&lt;h2&gt;示例以及简单讲解：&lt;/h2&gt;
-&lt;p&gt;首先展示一个最基本的装饰器，功能很少，但是很强大，可以做到很多事情&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;func_decorator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapper&lt;/span&gt;
-
-&lt;span class=&quot;nd&quot;&gt;@func_decorator&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;return_a_num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello World&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;这里有会让我们有一个思考，装饰器到底是做了什么，才能帮我们为函数添加功能，下面我来解释一下，这个具有魔法的东西,
-上面的代码其实就等于：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;func_decorator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapper&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 这里如果调用 return_a_num， 就相当于调用了 wrapper，&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# 因为 func_decorator 返回的是 wrapper 函数引用&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;return_a_num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func_decorator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;return_a_num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;从上面的代码我们可以看到装饰器的基本原理，当我们调用 return_a_num 之前，其实 return_a_num 已经是被替换掉了的，
-那么我们调用 return_a_num 的时候也就等于调用了 wrapper 函数，所以等式如下 return_a_num(args) == wrapper(args)
-，看懂了吗？那么现在开始下一个阶段，为异步方法添加装饰器，并为装饰器传参数。&lt;/p&gt;
-&lt;p&gt;从上面的例子我们可以看出，方法是在装饰器中执行了，并且我们将 &lt;cite&gt;return_a_num&lt;/cite&gt; 方法的返回值加一输出了出来
-下面我们就开始看看如何给装饰器传递参数，如果想要了解 &lt;cite&gt;functools.wraps&lt;/cite&gt; 的实现原理可以尝试看一下源码，
-这里不做过多的赘述。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add_two_num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;Use Wraps to decorate the wrapper to pass parameters&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;decorator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;nd&quot;&gt;@wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapper&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decorator&lt;/span&gt;
-
-&lt;span class=&quot;nd&quot;&gt;@add_two_num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;return_a_num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello World&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;上面的代码我们都实现了输出 4 的功能，但是装饰器是同步的，只能装饰同步方法，
-如果想要装饰异步方法只要在 &lt;cite&gt;wrapper&lt;/cite&gt; 方法前加上 &lt;cite&gt;async&lt;/cite&gt; 即可&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Individual decorators cannot pass parameters&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapper&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;想要传递参数到装饰器中，其实也跟同步的装饰器一样，我们也只需要将内层的 wrapper 函数加上 async 即可。&lt;/p&gt;
 &lt;/div&gt;
 </content>
   </entry>
