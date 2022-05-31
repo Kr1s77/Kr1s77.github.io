@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  
+  
+    <title>iptables vs ipvs | Kris's Thoughts and Writings</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <link href="/feed.atom" rel="alternate" title="Kris's Thoughts and Writings" type="application/atom+xml">
+    <link rel="stylesheet" href="/static/_pygments.css" type="text/css">
+    <meta property="title" content="iptables vs ipvs">
+    <meta property="og:title" content="iptables vs ipvs">
+    <meta name="twitter:site" content="@mitsuhiko">
+    <meta name="twitter:title" content="iptables vs ipvs" />
+  
+  <meta name="description" content="iptables, ipvs 的测试以及区别">
+  <meta name="og:description" content="iptables, ipvs 的测试以及区别">
+  <meta name="twitter:description" content="iptables, ipvs 的测试以及区别">
+  <meta name="twitter:card" content="summary">
+
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/about/">OpenShriek</a>
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/">blog</a>
+          <li><a href="/tags/">tags</a>
+          <li><a href="/archive/">archive</a>
+          <li><a href="/projects/">projects</a>
+          <li><a href="/about/">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        
+  <h1 class="title">iptables vs ipvs</h1>
+
+  
+  <p class=date>written on Wednesday, June 1, 2022
+  
+
+  <div class="section" id="iptables">
+<h2>iptables</h2>
+<p>iptables 是运行在用户空间的应用软件，通过控制 linux 内核 netfilter 模块，来管理网络数据包的处理和转发。
+并且 iptables 是一个非常高效的防火墙，并提供大量的处理和过滤方面的能力，它可以在核心数据包处理管线上用 Hook 挂接一系列的规则。
+iptables 模式中 kube-proxy 在 <cite>NAT pre-routing</cite> HOOK 中实现他的 NAT 和负载均衡的功能。这种方法非常的高效，依赖于成熟的内核功能，并且能够和
+其他 iptables 协作的应用融洽相处。</p>
+<div class="section" id="netfilter">
+<h3>1. 什么是 netfilter 模块？</h3>
+<p>netfilter 指的是内核中的 netfilter 框架，iptables 是运行在用户态对 netfilter 配置的工具
+netfilter 在协议栈中添加了一些钩子，通过这些钩子注册回调函数，这样经过钩子这些数据包都会
+被注册在相应的钩子函数进行处理，在我们定义这些函数的时候就可以对数据进行修改打标记丢掉数
+据包或者统计数据包信息等。netfilter 框架就负责维护钩子上注册的处理函数或者是模块，以及这
+些函数的优先级，netfilter 框架负责在需要的时候动态加载其它的内核模块，比如 ip_conntrack、
+nf_conntrack、NAT subsystem 等。</p>
+</div>
+<div class="section" id="netfilter-1">
+<h3>2. netfilter 原理</h3>
+<p>netfilter 的机制其实就是对我们主机的数据包进行过滤，而过滤数据包的规则则是由 iptables 设置的，所有的数据包都会先
+去匹配规则，如果匹配成功，那么就要按照 iptables 设置的行为进行处理，比如说抛弃数据包或者是接受数据包，流程图如下：</p>
+<div class="highlight"><pre><span></span><span class="o">|</span><span class="n">数据包</span><span class="o">|</span><span class="w"></span>
+<span class="w">   </span><span class="o">|</span><span class="w"></span>
+<span class="w"> </span><span class="n">rule1</span><span class="w"> </span><span class="o">-----</span><span class="n">yes</span><span class="o">-----</span><span class="w"> </span><span class="n">action1</span><span class="w"></span>
+<span class="w">   </span><span class="o">|</span><span class="w"></span>
+<span class="w">   </span><span class="k">no</span><span class="w"></span>
+<span class="w">   </span><span class="o">|</span><span class="w"></span>
+<span class="w"> </span><span class="n">rule2</span><span class="w"> </span><span class="o">-----</span><span class="n">yes</span><span class="o">-----</span><span class="w"> </span><span class="n">action2</span><span class="w"></span>
+<span class="w">   </span><span class="n">｜</span><span class="w"></span>
+<span class="w">   </span><span class="k">no</span><span class="w"></span>
+<span class="w">   </span><span class="o">|</span><span class="w"></span>
+<span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">policy</span><span class="w"></span>
+</pre></div>
+<p>数据包的过滤，如果没有匹配到相关规则则会走默认的规则，如果匹配到相关规则，则会走 action 进行处理，如果匹配到规则那么
+数据包就不会在向下处理了，比如数据包过来，匹配到了 rule1 执行了 action1 那么这个数据包就不会再继续匹配 rule2 了</p>
+</div>
+<div class="section" id="iptables-iptables">
+<h3>3. 下面通过 iptables 来实现端口流量的监控来了解一下 iptables</h3>
+<p>首先我们监控服务器上的 redis 服务，redis 服务使用的是 <cite>6379</cite> 端口，iptables 监控端口使用的命令为 --dport（destination port）</p>
+<div class="highlight"><pre><span></span><span class="c1"># in  入口流量</span>
+iptables -A INPUT -p tcp --dport <span class="m">6379</span>
+<span class="c1"># out 出口流量</span>
+iptables -A OUTPUT -p tcp --dport <span class="m">6379</span>
+</pre></div>
+<p>然后我们访问一下 redis 服务，接下来查看一下流量的统计数据，查看统计数据使用如下命令:</p>
+<div class="highlight"><pre><span></span>iptables -L -v -n -x
+</pre></div>
+<p>示例结果，可以看到这里的 bytes 5639 就是访问端口的流量了：</p>
+<div class="highlight"><pre><span></span><span class="k">Chain</span><span class="w"> </span><span class="n">INPUT</span><span class="w"> </span><span class="p">(</span><span class="n">policy</span><span class="w"> </span><span class="n">ACCEPT</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">packets</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">bytes</span><span class="p">)</span><span class="w"></span>
+<span class="n">pkts</span><span class="w">      </span><span class="n">bytes</span><span class="w"> </span><span class="n">target</span><span class="w">     </span><span class="n">prot</span><span class="w"> </span><span class="n">opt</span><span class="w"> </span><span class="k">in</span><span class="w">     </span><span class="k">out</span><span class="w">     </span><span class="k">source</span><span class="w">               </span><span class="n">destination</span><span class="w"></span>
+<span class="w"> </span><span class="mi">106</span><span class="w">     </span><span class="mi">5639</span><span class="w">            </span><span class="n">tcp</span><span class="w">  </span><span class="c1">--  *      *       0.0.0.0/0            0.0.0.0/0            tcp dpt:6379</span><span class="w"></span>
+</pre></div>
+<p>如果想要重置端口数据统计：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 重置输入端口</span>
+iptables -Z INPUT
+<span class="c1"># 重置输出端口</span>
+iptables -Z INPUT
+</pre></div>
+<p>如果想要移除统计的端口监控也很简单：</p>
+<div class="highlight"><pre><span></span><span class="c1"># remove input port</span>
+iptables -D INPUT -p tcp --dport <span class="m">6379</span>
+<span class="c1"># remove output port</span>
+iptables -D INPUT -p tcp --dport <span class="m">6379</span>
+</pre></div>
+</div>
+<div class="section" id="iptables-1">
+<h3>4. iptables 架构信息</h3>
+<p>netfilter 是 iptables 的重要工作模块，位于内核中，在网络层的 5 个位置注册了一些钩子函数，这五个位置代表防火墙 4 表 5 链中的 5 链。
+链就是位置：分别为 进路由（PREROUTING）、 进系统（INPUT）、转发（FORWARD）、出系统（OUTPUT）、出路由（POSTROUTING）。
+存储规则的表总共有 4 张，这四张表就是防火墙 4 表 5 链中的 4 表，这 4 张表用于存储规则，数据包到了不同的链后就会去对应的表中查询设置的规则
+，然后决定是否放行，丢弃，转发还是修改等操作。
+下面是链和表的对应解释信息:</p>
+<pre class="literal-block">
+四表
+-------------------------------------------------------------------
+* filter 表 ---- 过滤数据包
+* nat 表 ---- 用于网络地址转换（IP，端口）
+* mangle 表 ---- 修改数据包服务类型、TTL、并且可以配置路由实现 QOS
+* raw 表 ---- 决定数据包是否被状态跟踪机制处理
+-------------------------------------------------------------------
+
+五链
+-------------------------------------------------------------------------------------------------
+* PREROUTING 链 ---- 对数据包做路由选择前应用此链中的规则（进来的数据包首先由此链处理）
+* INPUT 链 ---- 进来的数据包应用此规则链中的策略
+* OUTPUT 链 ---- 出去的数据包应用此链中的策略
+* FORWARD 链 ---- 转发数据包应用此链中的侧苦厄
+* POSTROUTING 链 ---- 对数据包做路由选择后应用此链中的规则（所有数据包出来的时候都先由这个链处理）
+-------------------------------------------------------------------------------------------------
+
+四表五链之间的规则
+--------------------------------------------------------------------------------------------
+| UserSpace                                                                                |
+|              |--------------------&gt; application--------------------------|               |
+---------------|-----------------------------------------------------------|---------------|
+|KernelSpace   |                                                           |               |
+|              |                                                           |               |
+|   input(mangle-&gt;filter)                                                  |               |
+|          |                          output(raw-&gt;mangle-&gt;nat-&gt;filter)&lt;-----               |
+|          |                                 |___________________________________________  |
+|          |--------------------------&lt;-|                                               |  |
+|                                      yes                                              |  |
+|                                       |                                               |  |
+| prerouting(raw-&gt;mangle-&gt;nat) ----&gt; &lt;为本机&gt; ---no---&gt; forward(mangle-&gt;filter)         |  |
+|             |                                         |                               |  |
+|             |                                         |---&gt; postrouting(mangle-&gt;nat)&lt;-|  |
+|             |                                                           |                |
+--------------|-----------------------------------------------------------|----------------|
+| NIC         |                                                           |                |
+|             |                                                           |                |
+|   ----&gt;-----|                                                           |                |
+----|---------------------------------------------------------------------|-----------------
+    |                                                                     |
+    |                                                                     |
+-----------                                                          -----------
+| users   |                                                          | servers |
+-----------                                                          -----------
+</pre>
+</div>
+<div class="section" id="iptables-2">
+<h3>5. iptables 介绍以及简单的配置</h3>
+<p>iptables 命令以及参数介绍:</p>
+<pre class="literal-block">
+常用命令
+iptables -A 将一个规则添加到链末尾
+iptables -D 将指定的链中删除规则
+iptables -F 将指定的链中删除所有规则
+iptables -I 将在指定链的指定编号位置插入一个规则
+iptables -L 列出指定链中所有规则
+iptables -t nat -L 列出所有NAT链中所有规则
+iptables -N 建立用户定义链
+iptables -X 删除用户定义链
+iptables -P 修改链的默认设置，如将iptables -P INPUT DROP (将INPUT链设置为DROP)
+
+常用参数
+--dport 指定目标TCP/IP端口 如 –dport 80
+--sport 指定源TCP/IP端口 如 –sport 80
+-p tcp 指定协议为tcp
+-p icmp 指定协议为ICMP
+-p udp 指定协议为UDP
+-j DROP 拒绝
+-j ACCEPT 允许
+-j REJECT 拒绝并向发出消息的计算机发一个消息
+-j LOG 在/var/log/messages中登记分组匹配的记录
+-m mac –mac 绑定MAC地址
+-m limit –limit 1/s 1/m 设置时间策列
+-s 10.10.0.0或10.10.0.0/16 指定源地址或地址段
+-d 10.10.0.0或10.10.0.0/16 指定目标地址或地址段
+-s ! 10.10.0.0 指定源地址以外的
+
+iptables 配置文件
+配置文件位置： /etc/sysconfig/iptables
+</pre>
+<p>iptables 配置防火墙，禁止所有源访问 redis 6379 端口:</p>
+<pre class="literal-block">
+首先我们可以看到这里，我们内网服务器上面的 6379 端口是正常可以在其他服务器上访问的
+$ telnet 192.168.0.250 6379
+Trying 192.168.0.250...
+Connected to 192.168.0.250.
+Escape character is '^]'.
+quit
++OK
+Connection closed by foreign host.
+</pre>
+<p>下面让我们通过防火墙来屏蔽掉所有 ip 对此服务的访问</p>
+<div class="highlight"><pre><span></span><span class="c1"># -A 在末尾添加 INPUT 输入 -p tcp 协议为 tcp 的 --dport 6379 端口 -j DROP 直接拒绝</span>
+iptables -A INPUT -p tcp --dport <span class="m">6379</span> -j DROP
+</pre></div>
+<p>先来看一下添加的防火墙规则是否已经在规则列表中了，这里可以看到新增的规则已经在列表中了:</p>
+<pre class="literal-block">
+# iptables -L
+Chain INPUT (policy ACCEPT)
+target   prot opt source        destination
+DROP    tcp -- anywhere       anywhere       tcp dpt:redis
+</pre>
+<p>然后再使用 telnet 测试端口的连通性发现端口已经无法连通:</p>
+<pre class="literal-block">
+$ telnet 192.168.0.250 6379
+Trying 192.168.0.250...
+^C
+</pre>
+<p>想要删除掉规则也很简单:</p>
+<div class="highlight"><pre><span></span><span class="c1"># 获取行号</span>
+$ iptables -L INPUT --line-numbers
+<span class="c1"># 删除行 4 为获取的行号</span>
+$ iptables -D INPUT <span class="m">4</span>
+</pre></div>
+</div>
+<div class="section" id="iptables-3">
+<h3>6. iptables 的优缺点</h3>
+<p>优点:</p>
+<pre class="literal-block">
+iptables 采用的是顺序列表，查看起来比较直观
+iptables 在做防火墙方面规则非常实用
+iptables 支持 insert 规则，可以指定位置插入
+</pre>
+<p>缺点:</p>
+<pre class="literal-block">
+集群数量越多，iptables 的规则就越多
+iptables 规则匹配是自上而下的，所以规则越多，匹配起来越慢
+</pre>
+</div>
+</div>
+<div class="section" id="ipvs">
+<h2>ipvs</h2>
+<p>ipvs(IP Virtual Server) 实现了传输层的负载均衡，也就是我们常说的 4 层 LAN 交换，它是通过用户空间
+ipvsadm 工具进行配置的，与 iptables 一样，ipvs 也同样是建立在 netfilter 之上的，ipvs 则是内置在内
+核中的，这样的解释听过可能有点云里雾里的感觉，下面说些通俗易懂的:</p>
+<pre class="literal-block">
+熟悉 TCP 协议的小伙伴应该都知道，在 TCP 建立连接的时候需要进行三次握手，ipvs 就是在 TCP 进行第一次
+握手的时候也就是在客户端向服务端发送 syn 报文到达的时候, ipvs 就会选择一台服务器，将报文转发到这台
+服务器，此后通过查发报文 IP 和 TCP 报文头地址，保证这个连接的后续报文可以顺利的发送到选中的那台服务
+器，并且 ipvs 也可以对 UDP 请求实现相同的功能。
+
+ipvsadm 是 ipvs 的管理工具，ipvs 也就是配置的 netfilter 的钩子，并且 ipvs 运行在内核中，看完上面的内
+容大家应该对 netfilter 有了一定的了解了，如果不了解的可以看看上面的内容。
+
+ipvs 的算法与 iptables 不同，ipvs 采用的是 hash 表。
+</pre>
+<div class="section" id="hash">
+<h3>1. 什么是 hash 表（下面将简单的介绍一下）?</h3>
+<p>｜ 哈希表是一个指针数组，假设它有 500 个单元，我们可以这样表示 hash[500]</p>
+<p>哈希表算法:</p>
+<pre class="literal-block">
+比如我们想要存储一系列的数据
+马云资产:：1000000001
+马化腾资产：100000000002
+马斯克资产：100000000000003
+那么这些数据在哈希表中是如何存储的呢？
+其实哈希表的存储方式是 key-value 的形式。比如上面的*马云资产*的哈希值为 100 这个哈希值就是 key ，那么 1000000001 就是 value
+这一条数据在哈希表中存储的样式就是 hash[100]，这里我们就知道了原来是这样 hash[哈希算法(key)] = &amp;value
+那么哈希表是如何查询数据的呢？
+想要查询数据的时候我们只需要给它提供一下我们的 key，然后哈希表通过它的哈希算法计算出来 key 对应的 hash 值，然后通过 hash 值直接取出数组对应的位置直接就确定了值是多少
+</pre>
+<p>而且 hash 表是有索引的，所以当规则越多其实对 hash 表的影响并不是很大，除非数据的量级已经远远超过我们的想象了，
+而 iptables 则不同，iptables 由于是顺序比较的缘故，规则越多，越影响查询效率。</p>
+</div>
+</div>
+<div class="section" id="section-1">
+<h2>结语</h2>
+<p>ipvs 暂时就先聊到这里，在我了解的过程中感觉这个东西还是挺有意思的，准备单独在写两篇文章分别讲解 iptables 与 ipvs，这里只做一些简单的操作和
+比较，看看能不能开尝试开发一下相关规则，便于理解。</p>
+</div>
+
+
+  
+  <p class=tags>This entry was tagged
+    
+      <a href="/tags/iptables/">iptables</a>, 
+      <a href="/tags/ipvs/">ipvs</a>, 
+      <a href="/tags/kubernetes/">kubernetes</a>, 
+      <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a> and 
+      <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/">防火墙</a>
+  
+
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2022 by Kr1s77.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+          Contact me via <a href="mailto:armin.ronacher@active-4.com">mail</a>,
+          <a href="http://github.com/Kr1s77">github</a>
+        <p>
+          You can <a href="https://github.com/sponsors/Kr1s77/">sponsor me on github</a>.
+        <p>
+          More info: <a href="/about#imprint">imprint</a>.
+          Subscribe <a href="/feed.atom" rel="alternate" title="Kris's
+            Thoughts and Writings">to Atom feed</a>
+      </div>
+    </div>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20909083-1"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-20909083-1', {
+        'anonymize_ip': true,
+        'cookie_expires': 0,
+      });
+    </script>
+  </body>
+</html>
